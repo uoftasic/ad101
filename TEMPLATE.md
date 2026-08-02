@@ -11,9 +11,9 @@ Create a course or lab-notes repo from this template under **`uoftasic`**, fill 
 
 | Token | Meaning | Example |
 |-------|---------|---------|
-| `{{COURSE_ID}}` | Repo slug / course id | `dd103`, `ic101`, `serdes-lab` |
-| `{{COURSE_TITLE}}` | Display name | `DD103 — RTL on FPGAs & ASICs` |
-| `{{DESCRIPTION}}` | One-line blurb | `RTL synthesis intro with Yosys` |
+| `ad101` | Repo slug / course id | `dd103`, `ic101`, `serdes-lab` |
+| `AD101 — Signals` | Display name | `DD103 — RTL on FPGAs & ASICs` |
+| `Signals in time and frequency: waveforms, spectra, and Bode plots.` | One-line blurb | `RTL synthesis intro with Yosys` |
 
 ## Init script
 
@@ -28,7 +28,7 @@ Dry run: add `--dry-run`.
 
 ## After-clone checklist
 
-- [ ] Repo created under `uoftasic` with id matching `{{COURSE_ID}}`
+- [ ] Repo created under `uoftasic` with id matching `ad101`
 - [ ] `scripts/init-template.py` run (or manual replace of the three tokens)
 - [ ] Pushed to `main`
 - [ ] Pages: **Settings → Pages → `main` / `/docs`**
@@ -39,7 +39,7 @@ Dry run: add `--dry-run`.
 
 ## Naming
 
-Prefer course ids already used by the team (`ic###`, `ad###`, `dd###`) or a clear kebab-case lab name. Keep the GitHub repo name equal to `{{COURSE_ID}}` so Pages and clone URLs stay predictable.
+Prefer course ids already used by the team (`ic###`, `ad###`, `dd###`) or a clear kebab-case lab name. Keep the GitHub repo name equal to `ad101` so Pages and clone URLs stay predictable.
 
 ## Related
 

@@ -1,80 +1,51 @@
-# {{COURSE_TITLE}}
+# AD101 — Signals
 
-{{DESCRIPTION}}
+Signals in time and frequency: waveforms, spectra, and Bode plots.
 
-Docsify course / lab template for the **UofT ASIC Team** (`uoftasic`). Published docs live under `./docs`; runnable labs, scripts, notebooks, and data stay in the repo root. Zero build for GitHub Pages — Markdown, MathJax, and images work out of the box.
+Docs: **https://uoftasic.com/ad101/** · Hub: **https://edu.uoftasic.com/**
 
-Org: [github.com/uoftasic](https://github.com/uoftasic)
-
-## Live docs
-
-**This template:** https://uoftasic.com/course-template/
-
-**Education hub:** https://edu.uoftasic.com/
-
-After Pages is enabled on a course repo created from this template:
-
-**https://uoftasic.com/{{COURSE_ID}}/**
-
-## Use this template
-
-1. On [uoftasic/course-template](https://github.com/uoftasic/course-template), click **Use this template** → create a repo named after the course id (e.g. `dd103`, `serdes-lab`).
-2. Clone and bootstrap:
-
-```bash
-python3 scripts/init-template.py \
-  --id {{COURSE_ID}} \
-  --title "{{COURSE_TITLE}}" \
-  --description "{{DESCRIPTION}}"
-```
-
-3. Enable **Settings → Pages → Deploy from a branch → `main` / `/docs`**.
-
-See [TEMPLATE.md](TEMPLATE.md) for the checklist. Org is always `uoftasic` — only course id / title / description are filled in.
+Part of the **UofT ASIC Team** (`uoftasic`) Internal Education Initiative. Prerequisite: [IC101](https://github.com/uoftasic/ic101).
 
 ## Quick start
 
 ```bash
-git clone https://github.com/uoftasic/{{COURSE_ID}}.git
-cd {{COURSE_ID}}
+# Clone into the shared workbench modules folder
+cd workspace/modules
+git clone https://github.com/uoftasic/ad101.git
+cd ad101
 
-# Docs (requires Node.js)
+# Docs preview (host machine, needs Node.js)
 npx docsify-cli serve docs
 # → http://localhost:3000
 
-# Sample script
-python3 scripts/hello.py
-
-# Sample lab
-python3 labs/lab-01/src/main.py
+# Inside the IIC-OSIC-TOOLS noVNC desktop
+. /foss/designs/common/.designinit
+mod ad101
+python3 scripts/check_env.py
+cd labs/lab-01-signal-explorer && python3 src/explore.py
 ```
-
-Tool-heavy courses that need IIC-OSIC-TOOLS / SKY130 should document the team workbench setup in-course rather than bundling Docker in every repo.
 
 ## Layout
 
 | Path | On Pages? | Purpose |
 |------|-----------|---------|
-| `docs/` | **Yes** | Human-facing Docsify site |
-| `docs/labs/` | Yes | Lab *writeups* (procedure, theory) |
-| `labs/` | No | Runnable packages (HDL, Python, data, graders) |
-| `scripts/` | No | Team utilities / automation |
-| `notebooks/` | No | Exploratory / assignment notebooks |
-| `data/`, `figures/` | No | Shared datasets / source figures |
+| `docs/` | **Yes** | Docsify course site |
+| `docs/guide/` | Yes | Lessons 1–4 + getting started |
+| `docs/labs/` | Yes | Lab writeups |
+| `docs/reference/` | Yes | Plot cheat sheet + workbench Python notes |
+| `labs/` | No | Interactive matplotlib explorers |
+| `scripts/` | No | `check_env.py`, `build_figures.py` |
 
-## GitHub Pages
+## Labs
 
-| Setting | Value |
-|---------|--------|
-| Source | Deploy from a branch |
-| Branch | `main` |
-| Folder | `/docs` |
+| Lab | Explorers |
+|-----|-----------|
+| `lab-01-signal-explorer` | F1–F3 time-domain waveforms |
+| `lab-02-harmonic-builder` | F4–F6 Fourier / duty cycle |
+| `lab-03-spectrum-detective` | F7–F11 spectra, THD, aliasing |
+| `lab-04-rc-bode` | F12–F15 Bode / RC filter |
 
-No Actions deploy step is required for the baseline Docsify site.
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md).
+Regenerate docs PNGs: `python3 scripts/build_figures.py`
 
 ## License
 

@@ -1,8 +1,18 @@
 - [Home](README.md)
 - **Guide**
   - [Getting started](guide/getting-started.md)
+  - [Signals in time](guide/signals-in-time.md)
+  - [Building signals](guide/building-signals.md)
+  - [The frequency domain](guide/the-frequency-domain.md)
+  - [Filters & Bode](guide/filters-and-bode.md)
 - **Labs**
-  - [Lab 01 overview](labs/lab-01-overview.md)
+  - [Lab 01 — Signal explorer](labs/lab-01-signal-explorer-overview.md)
+  - [Lab 02 — Harmonic builder](labs/lab-02-harmonic-builder-overview.md)
+  - [Lab 03 — Spectrum detective](labs/lab-03-spectrum-detective-overview.md)
+  - [Lab 04 — RC filter & Bode](labs/lab-04-rc-bode-overview.md)
+- **Reference**
+  - [Reading plots](reference/reading-plots.md)
+  - [Python in the workbench](reference/python-in-the-workbench.md)
 - **Repo**
-  - [Scripts](https://github.com/uoftasic/{{COURSE_ID}}/tree/main/scripts)
-  - [Lab packages](https://github.com/uoftasic/{{COURSE_ID}}/tree/main/labs)
+  - [Scripts](https://github.com/uoftasic/ad101/tree/main/scripts)
+  - [Lab packages](https://github.com/uoftasic/ad101/tree/main/labs)

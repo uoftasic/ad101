@@ -1,28 +1,13 @@
-# Scripts
-
-Utilities for **{{COURSE_TITLE}}** under the UofT ASIC org (`uoftasic`).
-
-## Entry points
+# Scripts — AD101
 
 | Script | Purpose |
 |--------|---------|
-| `hello.py` | Smoke-check that Python runs in this clone |
-| `init-template.py` | Fill `{{COURSE_ID}}` / title / description after using the template |
-
-## Usage
+| `check_env.py` | Preflight: Python, numpy, matplotlib, GUI backend, `adsig` smoke |
+| `build_figures.py` | Export every lab figure into `docs/assets/img/` (seeded RNG) |
+| `hello.py` | Tiny sanity print (template leftover) |
+| `init-template.py` | Already run — do not re-bootstrap |
 
 ```bash
-# From repo root
-python3 scripts/hello.py
-
-python3 scripts/init-template.py \
-  --id dd103 \
-  --title "DD103 — RTL on FPGAs & ASICs" \
-  --description "RTL on FPGAs and open-source ASIC flows"
+python3 scripts/check_env.py
+python3 scripts/build_figures.py
 ```
-
-## Conventions
-
-- Prefer Python; HDL tooling belongs in `labs/` or the shared workbench.
-- No secrets in the repo; use `.env.example` if configuration is needed.
-- Document new scripts here when you add them.

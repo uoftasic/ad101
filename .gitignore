@@ -25,3 +25,7 @@ venv/
 # Build artifacts (if any local tools)
 site/
 _book/
+
+# Lab local outputs (docs figures live in docs/assets/img/)
+labs/**/results/*
+!labs/**/results/.gitkeep
