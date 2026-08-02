@@ -1,0 +1,27 @@
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Python
+__pycache__/
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# Notebooks / data noise
+.ipynb_checkpoints/
+*.h5
+*.pt
+*.pkl
+
+# Env / secrets
+.env
+*.pem
+
+# Build artifacts (if any local tools)
+site/
+_book/
