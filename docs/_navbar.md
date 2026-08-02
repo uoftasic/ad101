@@ -1,0 +1,3 @@
+- [Guide](guide/getting-started.md)
+- [Labs](labs/lab-01-overview.md)
+- [GitHub](https://github.com/uoftasic/{{COURSE_ID}})
