@@ -5,7 +5,7 @@ from __future__ import annotations
 
 
 def main() -> None:
-    print("hello from uoftasic/{{COURSE_ID}} ({{COURSE_TITLE}})")
+    print("hello from uoftasic/ad101 (AD101 — Signals)")
 
 
 if __name__ == "__main__":

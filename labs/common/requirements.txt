@@ -1,0 +1,3 @@
+# AD101 lab dependencies (also available inside IIC-OSIC-TOOLS)
+numpy>=1.24
+matplotlib>=3.7

@@ -16,9 +16,9 @@ Only these three are fillable:
 
 | Token | Example |
 |-------|---------|
-| `{{COURSE_ID}}` | `dd103` |
-| `{{COURSE_TITLE}}` | `DD103 — RTL on FPGAs & ASICs` |
-| `{{DESCRIPTION}}` | `RTL synthesis intro with Yosys` |
+| `ad101` | `dd103` |
+| `AD101 — Signals` | `DD103 — RTL on FPGAs & ASICs` |
+| `Signals in time and frequency: waveforms, spectra, and Bode plots.` | `RTL synthesis intro with Yosys` |
 
 ## Conventions
 

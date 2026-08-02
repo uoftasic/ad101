@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Replace course placeholders after creating a repo from the UofT ASIC template.
 
-Fills {{COURSE_ID}}, {{COURSE_TITLE}}, and {{DESCRIPTION}} only.
+Fills ad101, AD101 — Signals, and Signals in time and frequency: waveforms, spectra, and Bode plots. only.
 Does not scaffold or remove docs pages — keep the published site barebones.
 """
 
