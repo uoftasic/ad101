@@ -77,6 +77,19 @@ python3 scripts/build_figures.py
 
 Noise figures use a fixed seed (`RNG_SEED = 42` in `labs/common/adsig.py`) so rebuilds do not churn git.
 
+## Running the "write it yourself" snippets
+
+Every guide page from [What is a signal?](guide/what-is-a-signal.md) onward ends with a short Python snippet. Unlike the labs, these don't need `_path.py` or `mod ad101` — they only import `numpy` and `matplotlib`, so you can paste them into any Python 3 shell (host machine, noVNC desktop, or your own laptop) and run them immediately. Keep a scratch file, e.g. `my_signals.py`, and append each new snippet as you go — by [Lab 05](labs/lab-05-signal-workshop-overview.md) you'll have written most of a signal-analysis toolkit by hand.
+
+## Listening to a filtered signal (Lab 05)
+
+Lab 05 has you export and play audio so you can *hear* a filter change a chord, not just see it on a plot. Real-time audio playback needs a sound device, which the noVNC desktop may not have passed through from the host. The lab script follows the same fallback pattern as the GUI backend above:
+
+1. **Try real playback** with `sounddevice` (`pip install --user sounddevice`, listed as optional in `labs/lab-05-signal-workshop/requirements.txt`).
+2. **If that fails**, write a `.wav` file into `results/` instead and print its path — open it from your host machine's file manager or media player.
+
+Either path lets you compare the filtered and unfiltered chord; only the "how you listen" step changes.
+
 ## Common errors
 
 | Symptom | Fix |

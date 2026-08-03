@@ -5,7 +5,7 @@ Full runnable package: [`labs/lab-02-harmonic-builder/`](https://github.com/uoft
 ## Prerequisites
 
 - Lab 01 complete
-- Read [Building signals](guide/building-signals.md)
+- Read Movement II: [Adding signals](guide/adding-signals.md) → [Timbre and harmonics](guide/timbre-and-harmonics.md) → [Rhythm and duty cycle](guide/rhythm-and-duty-cycle.md)
 
 ## Objectives
 

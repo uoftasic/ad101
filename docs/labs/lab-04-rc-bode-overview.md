@@ -5,7 +5,7 @@ Full runnable package: [`labs/lab-04-rc-bode/`](https://github.com/uoftasic/ad10
 ## Prerequisites
 
 - Lab 03 complete
-- Read [Filters & Bode](guide/filters-and-bode.md)
+- Read Movement IV: [Filters are tone knobs](guide/filters-are-tone-knobs.md) → [Reading a Bode plot](guide/reading-a-bode-plot.md) → [Filtering a beat](guide/filtering-a-beat.md) → [More filter shapes](guide/more-filter-shapes.md)
 
 ## Objectives
 
