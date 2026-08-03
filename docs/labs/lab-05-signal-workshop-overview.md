@@ -1,6 +1,6 @@
 # Lab 05 — Signal workshop
 
-Full runnable package: [`labs/lab-05-signal-workshop/`](https://github.com/uoftasic/ad101/tree/main/labs/lab-05-signal-workshop).
+Full runnable package: [`labs/lab-05-signal-workshop/`](https://github.com/uoftasic/ad101/tree/music-curriculum/labs/lab-05-signal-workshop).
 
 This lab is different from Labs 01–04: there are no sliders. You write the script yourself, one function at a time, then listen to what it produces.
 
@@ -56,7 +56,7 @@ python3 src/workshop.py --headless   # save PNGs + WAVs, skip live playback
 python3 src/workshop.py              # full run: plots + live audio, if available
 ```
 
-Stuck on one function? [`solutions/workshop_solution.py`](https://github.com/uoftasic/ad101/tree/main/labs/lab-05-signal-workshop/solutions) has the filled-in reference — try to get further on your own first.
+Stuck on one function? [`solutions/workshop_solution.py`](https://github.com/uoftasic/ad101/blob/music-curriculum/labs/lab-05-signal-workshop/solutions/workshop_solution.py) has the filled-in reference — try to get further on your own first.
 
 ## Expected results
 
@@ -67,7 +67,7 @@ Stuck on one function? [`solutions/workshop_solution.py`](https://github.com/uof
 
 ## Links
 
-- [Lab package](https://github.com/uoftasic/ad101/tree/main/labs/lab-05-signal-workshop)
+- [Lab package](https://github.com/uoftasic/ad101/tree/music-curriculum/labs/lab-05-signal-workshop)
 - [Music and signals](reference/music-and-signals.md) — the note-frequency table used in this lab
 - Course home: [AD101](README.md)
 - Next course: AD102 — Linear Circuits & Fabrication
