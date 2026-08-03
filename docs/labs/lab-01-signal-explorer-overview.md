@@ -7,7 +7,7 @@ Full runnable package: [`labs/lab-01-signal-explorer/`](https://github.com/uofta
 - [IC101](https://uoftasic.com/ic101/) complete (noVNC desktop working)
 - AD101 cloned under `workspace/modules/ad101`
 - `python3 scripts/check_env.py` passes
-- Read [Signals in time](guide/signals-in-time.md)
+- Read Movement I: [What is a signal?](guide/what-is-a-signal.md) → [Pitch and loudness](guide/pitch-and-loudness.md) → [A family of waveforms](guide/a-family-of-waveforms.md) → [Two voices in time](guide/two-voices-in-time.md)
 
 ## Objectives
 
