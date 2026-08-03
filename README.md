@@ -44,6 +44,7 @@ cd labs/lab-01-signal-explorer && python3 src/explore.py
 | `lab-02-harmonic-builder` | F4–F6 Fourier / duty cycle |
 | `lab-03-spectrum-detective` | F7–F11 spectra, THD, aliasing |
 | `lab-04-rc-bode` | F12–F15 Bode / RC filter |
+| `lab-05-signal-workshop` | Code-along capstone: write your own scope, spectrum, and filter — then listen to one |
 
 Regenerate docs PNGs: `python3 scripts/build_figures.py`
 
