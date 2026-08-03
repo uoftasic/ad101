@@ -60,6 +60,6 @@ Phase (delay) is why digital timing closure exists, why clocks skew, and why ana
 
 ## Try it
 
-Open [Lab 01 — Signal explorer](../labs/lab-01-signal-explorer-overview.md) and drag the sliders on F1–F3 until the readouts match what you expect from the formulas above.
+Open [Lab 01 — Signal explorer](labs/lab-01-signal-explorer-overview.md) and drag the sliders on F1–F3 until the readouts match what you expect from the formulas above.
 
-Next: [Building signals](building-signals.md).
+Next: [Building signals](guide/building-signals.md).

@@ -5,8 +5,8 @@ Full runnable package: [`labs/lab-03-spectrum-detective/`](https://github.com/uo
 ## Prerequisites
 
 - Lab 02 complete
-- Read [The frequency domain](../guide/the-frequency-domain.md)
-- Know the dB table from [Reading plots](../reference/reading-plots.md)
+- Read [The frequency domain](guide/the-frequency-domain.md)
+- Know the dB table from [Reading plots](reference/reading-plots.md)
 
 ## Objectives
 
@@ -18,7 +18,7 @@ Full runnable package: [`labs/lab-03-spectrum-detective/`](https://github.com/uo
 ## Theory (short)
 
 FFT: time → spectrum. Amplitude in dB: $20\log_{10}(A/A_{\mathrm{ref}})$.  
-THD $= \sqrt{A_2^2+A_3^2+\cdots}/A_1$.  
+THD is $\sqrt{A_2^2+A_3^2+\cdots}/A_1$.  
 Nyquist: $f_s > 2 f_{\max}$.
 
 ## Procedure
@@ -85,4 +85,4 @@ python3 src/check.py --guess 237
 ## Links
 
 - [Lab package](https://github.com/uoftasic/ad101/tree/main/labs/lab-03-spectrum-detective)
-- Next lab: [Lab 04 — RC filter & Bode](lab-04-rc-bode-overview.md)
+- Next lab: [Lab 04 — RC filter & Bode](labs/lab-04-rc-bode-overview.md)

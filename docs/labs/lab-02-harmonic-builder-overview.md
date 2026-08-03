@@ -5,7 +5,7 @@ Full runnable package: [`labs/lab-02-harmonic-builder/`](https://github.com/uoft
 ## Prerequisites
 
 - Lab 01 complete
-- Read [Building signals](../guide/building-signals.md)
+- Read [Building signals](guide/building-signals.md)
 
 ## Objectives
 
@@ -56,4 +56,4 @@ python3 src/explore.py
 ## Links
 
 - [Lab package](https://github.com/uoftasic/ad101/tree/main/labs/lab-02-harmonic-builder)
-- Next lab: [Lab 03 — Spectrum detective](lab-03-spectrum-detective-overview.md)
+- Next lab: [Lab 03 — Spectrum detective](labs/lab-03-spectrum-detective-overview.md)
