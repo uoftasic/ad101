@@ -43,6 +43,6 @@ A pulse that is not 50% on / 50% off brings **even** harmonics back into the spe
 
 ## Try it
 
-Open [Lab 02 — Harmonic builder](../labs/lab-02-harmonic-builder-overview.md). Toggle harmonics in F4/F5 and sweep duty cycle in F6.
+Open [Lab 02 — Harmonic builder](labs/lab-02-harmonic-builder-overview.md). Toggle harmonics in F4/F5 and sweep duty cycle in F6.
 
-Next: [The frequency domain](the-frequency-domain.md).
+Next: [The frequency domain](guide/the-frequency-domain.md).

@@ -7,7 +7,7 @@ Full runnable package: [`labs/lab-01-signal-explorer/`](https://github.com/uofta
 - [IC101](https://uoftasic.com/ic101/) complete (noVNC desktop working)
 - AD101 cloned under `workspace/modules/ad101`
 - `python3 scripts/check_env.py` passes
-- Read [Signals in time](../guide/signals-in-time.md)
+- Read [Signals in time](guide/signals-in-time.md)
 
 ## Objectives
 
@@ -25,7 +25,7 @@ T = 1/f
 t_{\mathrm{delay}} = \frac{\phi}{360^\circ}\,T
 $$
 
-For a pure sine with no DC: $\mathrm{RMS} = A/\sqrt{2}$, peak-to-peak $= 2A$.
+For a pure sine with no DC: $\mathrm{RMS} = A/\sqrt{2}$, peak-to-peak is $2A$.
 
 ## Procedure
 
@@ -71,4 +71,4 @@ python3 src/explore.py --figure f1
 ## Links
 
 - [Lab package](https://github.com/uoftasic/ad101/tree/main/labs/lab-01-signal-explorer)
-- Next lab: [Lab 02 — Harmonic builder](lab-02-harmonic-builder-overview.md)
+- Next lab: [Lab 02 — Harmonic builder](labs/lab-02-harmonic-builder-overview.md)

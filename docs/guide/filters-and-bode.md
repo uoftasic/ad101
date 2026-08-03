@@ -6,7 +6,7 @@
 
 Think of a linear circuit as a machine that takes the frequency-domain recipe of its input and **turns each entry up or down** (and delays it). The report card for that machine is the **Bode plot**:
 
-- **Magnitude** vs frequency — how much comes out ($|H(f)|$), usually in dB
+- **Magnitude** vs frequency — how much comes out ($\lvert H(f)\rvert$), usually in dB
 - **Phase** vs frequency — how late it arrives ($\angle H(f)$), in degrees
 
 ## The RC low-pass — the first filter everyone draws
@@ -20,12 +20,12 @@ $$
 Magnitude and phase (no calculus required — this is the measured sweep result):
 
 $$
-|H(f)| = \frac{1}{\sqrt{1 + (f/f_c)^2}}
+\lvert H(f)\rvert = \frac{1}{\sqrt{1 + (f/f_c)^2}}
 \qquad
 \angle H(f) = -\arctan(f/f_c)
 $$
 
-At $f = f_c$: $|H| = 1/\sqrt{2}$ (−3 dB) and phase = −45°.
+At $f = f_c$: $\lvert H\rvert = 1/\sqrt{2}$ (−3 dB) and phase = −45°.
 
 ![F12 — Bode explorer](../assets/img/f12-bode-explorer.png)
 
@@ -70,7 +70,7 @@ AD201 picks these up again as intentional design blocks.
 
 ## Try it
 
-Open [Lab 04 — RC filter & Bode](../labs/lab-04-rc-bode-overview.md). At $f_c$, confirm the output is ≈ 0.707× the input and lagging by ≈ 45°.
+Open [Lab 04 — RC filter & Bode](labs/lab-04-rc-bode-overview.md). At $f_c$, confirm the output is ≈ 0.707× the input and lagging by ≈ 45°.
 
 ## Where to go next
 

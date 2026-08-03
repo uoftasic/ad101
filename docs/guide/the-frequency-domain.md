@@ -76,10 +76,10 @@ $$
 
 That is why ADC sample rates are chosen carefully — a teaser for AD202 (mixed signal).
 
-> **Stretch:** [F10](../labs/lab-03-spectrum-detective-overview.md) shows **spectral leakage** — a non-integer number of cycles in the analysis window smears a clean spike. Window functions (Hann) help.
+> **Stretch:** [F10](labs/lab-03-spectrum-detective-overview.md) shows **spectral leakage** — a non-integer number of cycles in the analysis window smears a clean spike. Window functions (Hann) help.
 
 ## Try it
 
-Open [Lab 03 — Spectrum detective](../labs/lab-03-spectrum-detective-overview.md). Hunt the hidden tone in F8 and confirm with `check.py`.
+Open [Lab 03 — Spectrum detective](labs/lab-03-spectrum-detective-overview.md). Hunt the hidden tone in F8 and confirm with `check.py`.
 
-Next: [Filters & Bode](filters-and-bode.md).
+Next: [Filters & Bode](guide/filters-and-bode.md).

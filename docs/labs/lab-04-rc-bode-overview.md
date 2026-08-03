@@ -5,11 +5,11 @@ Full runnable package: [`labs/lab-04-rc-bode/`](https://github.com/uoftasic/ad10
 ## Prerequisites
 
 - Lab 03 complete
-- Read [Filters & Bode](../guide/filters-and-bode.md)
+- Read [Filters & Bode](guide/filters-and-bode.md)
 
 ## Objectives
 
-- Build intuition for $|H(f)|$ and $\angle H(f)$ on a Bode plot
+- Build intuition for $\lvert H(f)\rvert$ and $\angle H(f)$ on a Bode plot
 - Link a Bode marker to a shrinking, lagging sine in time
 - Watch a square wave lose its edges as high harmonics are filtered
 - Compare low-pass, high-pass, and band-pass shapes
@@ -19,12 +19,12 @@ Full runnable package: [`labs/lab-04-rc-bode/`](https://github.com/uoftasic/ad10
 $$
 f_c = \frac{1}{2\pi R C}
 \qquad
-|H(f)| = \frac{1}{\sqrt{1+(f/f_c)^2}}
+\lvert H(f)\rvert = \frac{1}{\sqrt{1+(f/f_c)^2}}
 \qquad
 \angle H(f) = -\arctan(f/f_c)
 $$
 
-At $f_c$: $|H|=1/\sqrt{2}$ (−3 dB), phase = −45°. High-frequency slope ≈ −20 dB/decade.
+At $f_c$: $\lvert H\rvert=1/\sqrt{2}$ (−3 dB), phase = −45°. High-frequency slope ≈ −20 dB/decade.
 
 ## Procedure
 
@@ -70,11 +70,11 @@ python3 src/explore.py --figure f12
 ## Expected results
 
 - With $R=1\,\mathrm{k}\Omega$, $C=100\,\mathrm{nF}$: $f_c \approx 1592$ Hz
-- At the marker $f=f_c$: $|H|\approx 0.707$ (−3 dB), phase ≈ −45°
+- At the marker $f=f_c$: $\lvert H\rvert\approx 0.707$ (−3 dB), phase ≈ −45°
 - Raising C on F14 visibly softens square edges and attenuates harmonics 5, 7, 9
 
 ## Links
 
 - [Lab package](https://github.com/uoftasic/ad101/tree/main/labs/lab-04-rc-bode)
-- Course home: [AD101](../README.md)
+- Course home: [AD101](README.md)
 - Next course: AD102 — Linear Circuits & Fabrication

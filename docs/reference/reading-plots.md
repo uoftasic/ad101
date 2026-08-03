@@ -67,4 +67,4 @@ The three plots every analog engineer reads daily, and how not to misread them.
   does to signals   →  Bode plot
 ```
 
-Return to the labs: [Lab 01](../labs/lab-01-signal-explorer-overview.md) · [Lab 02](../labs/lab-02-harmonic-builder-overview.md) · [Lab 03](../labs/lab-03-spectrum-detective-overview.md) · [Lab 04](../labs/lab-04-rc-bode-overview.md).
+Return to the labs: [Lab 01](labs/lab-01-signal-explorer-overview.md) · [Lab 02](labs/lab-02-harmonic-builder-overview.md) · [Lab 03](labs/lab-03-spectrum-detective-overview.md) · [Lab 04](labs/lab-04-rc-bode-overview.md).
