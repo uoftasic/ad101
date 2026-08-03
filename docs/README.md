@@ -42,6 +42,7 @@ Cheat sheets: [Reading plots](reference/reading-plots.md) · [Music and signals]
 ```bash
 # inside the noVNC desktop, after IC101
 . /foss/designs/common/.designinit
+mod add ad101    # first time only — clones into modules/ad101
 mod ad101
 python3 scripts/check_env.py
 cd labs/lab-01-signal-explorer && python3 src/explore.py
