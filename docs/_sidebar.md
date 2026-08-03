@@ -1,17 +1,34 @@
 - [Home](README.md)
 - **Guide**
   - [Getting started](guide/getting-started.md)
-  - [Signals in time](guide/signals-in-time.md)
-  - [Building signals](guide/building-signals.md)
-  - [The frequency domain](guide/the-frequency-domain.md)
-  - [Filters & Bode](guide/filters-and-bode.md)
+  - **I. A single note**
+    - [What is a signal?](guide/what-is-a-signal.md)
+    - [Pitch and loudness](guide/pitch-and-loudness.md)
+    - [A family of waveforms](guide/a-family-of-waveforms.md)
+    - [Two voices in time](guide/two-voices-in-time.md)
+  - **II. Chords & timbre**
+    - [Adding signals](guide/adding-signals.md)
+    - [Timbre and harmonics](guide/timbre-and-harmonics.md)
+    - [Rhythm and duty cycle](guide/rhythm-and-duty-cycle.md)
+  - **III. The mixing board**
+    - [The FFT as an equalizer](guide/the-fft-as-an-equalizer.md)
+    - [Finding a quiet note](guide/finding-a-quiet-note.md)
+    - [Distortion and THD](guide/distortion-and-thd.md)
+    - [Sampling fast enough](guide/sampling-fast-enough.md)
+  - **IV. Tone controls**
+    - [Filters are tone knobs](guide/filters-are-tone-knobs.md)
+    - [Reading a Bode plot](guide/reading-a-bode-plot.md)
+    - [Filtering a beat](guide/filtering-a-beat.md)
+    - [More filter shapes](guide/more-filter-shapes.md)
 - **Labs**
   - [Lab 01 — Signal explorer](labs/lab-01-signal-explorer-overview.md)
   - [Lab 02 — Harmonic builder](labs/lab-02-harmonic-builder-overview.md)
   - [Lab 03 — Spectrum detective](labs/lab-03-spectrum-detective-overview.md)
   - [Lab 04 — RC filter & Bode](labs/lab-04-rc-bode-overview.md)
+  - [Lab 05 — Signal workshop](labs/lab-05-signal-workshop-overview.md)
 - **Reference**
   - [Reading plots](reference/reading-plots.md)
+  - [Music and signals](reference/music-and-signals.md)
   - [Python in the workbench](reference/python-in-the-workbench.md)
 - **Repo**
   - [Scripts](https://github.com/uoftasic/ad101/tree/main/scripts)

@@ -5,7 +5,7 @@ Full runnable package: [`labs/lab-03-spectrum-detective/`](https://github.com/uo
 ## Prerequisites
 
 - Lab 02 complete
-- Read [The frequency domain](guide/the-frequency-domain.md)
+- Read Movement III: [The FFT as an equalizer](guide/the-fft-as-an-equalizer.md) → [Finding a quiet note](guide/finding-a-quiet-note.md) → [Distortion and THD](guide/distortion-and-thd.md) → [Sampling fast enough](guide/sampling-fast-enough.md)
 - Know the dB table from [Reading plots](reference/reading-plots.md)
 
 ## Objectives

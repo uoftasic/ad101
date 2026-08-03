@@ -1,0 +1,8 @@
+# Lab 05 — Signal workshop
+numpy>=1.24
+matplotlib>=3.7
+# Optional: real-time audio playback. If unavailable (e.g. no audio device
+# passed through from noVNC), the script falls back to writing .wav files
+# into results/ that you can open from your host machine instead.
+sounddevice>=0.4
+soundfile>=0.12
