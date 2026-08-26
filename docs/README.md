@@ -57,6 +57,6 @@ npx docsify-cli serve docs
 
 ## Next courses
 
-- **AD102** — Linear Circuits & Fabrication
+- **[AD102](https://uoftasic.com/ad102/)** — Linear Circuits & Fabrication
 - **AD103** — Nonlinear Circuits (XSchem)
 - **AD104** — Layout (Magic / Netgen)
