@@ -77,4 +77,4 @@ python3 src/explore.py --figure f12
 
 - [Lab package](https://github.com/uoftasic/ad101/tree/main/labs/lab-04-rc-bode)
 - Course home: [AD101](README.md)
-- Next course: AD102 — Linear Circuits & Fabrication
+- Next course: [**AD102** — Linear Circuits & Fabrication](https://uoftasic.com/ad102/)

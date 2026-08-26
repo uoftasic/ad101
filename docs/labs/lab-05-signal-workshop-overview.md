@@ -70,4 +70,4 @@ Stuck on one function? [`solutions/workshop_solution.py`](https://github.com/uof
 - [Lab package](https://github.com/uoftasic/ad101/tree/main/labs/lab-05-signal-workshop)
 - [Music and signals](reference/music-and-signals.md) — the note-frequency table used in this lab
 - Course home: [AD101](README.md)
-- Next course: AD102 — Linear Circuits & Fabrication
+- Next course: [**AD102** — Linear Circuits & Fabrication](https://uoftasic.com/ad102/)
