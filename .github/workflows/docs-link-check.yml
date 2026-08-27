@@ -1,18 +1,17 @@
-# Optional: markdown link check for docs/**
+# Markdown link check for docs/**
 name: Docs link check
 
 on:
   pull_request:
     paths:
       - "docs/**"
-      - "scripts/check_docs_links.py"
       - ".github/workflows/docs-link-check.yml"
   push:
     branches: [main]
     paths:
       - "docs/**"
-      - "scripts/check_docs_links.py"
       - ".github/workflows/docs-link-check.yml"
+  workflow_dispatch:
 
 jobs:
   link-check:
@@ -20,20 +19,61 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Docsify local links
-        run: python3 scripts/check_docs_links.py
-
-      - name: External Link Checker
-        uses: lycheeverse/lychee-action@v2
-        with:
-          # Pages = docs-root paths; images on nested pages = ../assets/…
-          # (see scripts/check_docs_links.py). Lychee checks http(s) only.
-          args: >-
-            --verbose
-            --no-progress
-            --scheme https
-            --scheme http
-            --exclude localhost
-            --exclude '%7B%7B'
+      # Run lychee directly rather than through the action. The action puts its
+      # detail in a job summary and writes only a stub to stdout, so a red badge
+      # tells you an exit code and nothing else — which is how a broken link sat
+      # unnoticed. This prints every result in the log.
+      #
+      # --base-url: docsify runs with relativePath:false, so a .md link written
+      #   `guide/x.md` resolves from the docs root, not the file's own directory.
+      # --exclude '/assets/img/': IMAGES are the one thing docsify resolves
+      #   relative to the page (`../assets/img/...`); the next step checks those.
+      # --accept: 403 and 429 mean a host is refusing a datacentre IP or rate
+      #   limiting a bot. Neither means the link is broken, and treating them as
+      #   failures makes CI red for reasons no author can fix.
+      - name: Link check
+        run: |
+          docker run --rm -v "$PWD:/w" -w /w lycheeverse/lychee:latest \
+            --verbose --no-progress \
+            --base-url '/w/docs' \
+            --exclude '/assets/img/' \
+            --exclude '%7B%7B' \
+            --exclude 'localhost' \
+            --max-retries 3 \
+            --timeout 20 \
+            --accept 200,206,301,302,303,307,308,403,429 \
             'docs/**/*.md'
-          fail: true
+
+      - name: Images referenced by a page exist on disk
+        run: |
+          python3 - <<'PY'
+          import os, re, sys
+          # Markdown images are resolved by docsify relative to the page.
+          # Raw <video>/<img> HTML is resolved by the browser against the site
+          # root (docs/), because the hash route does not change the base URL.
+          md  = re.compile(r'!\[[^\]]*\]\(([^)]+\.(?:png|jpe?g|gif|svg|webp|mp4|webm))\)')
+          raw = re.compile(r'(?:src|poster|href)="([^"]+\.(?:png|jpe?g|gif|svg|webp|mp4|webm))"')
+          bad = []
+          for dp, _, fns in os.walk("docs"):
+              for fn in fns:
+                  if not fn.endswith(".md"):
+                      continue
+                  path = os.path.join(dp, fn)
+                  text = open(path, encoding="utf-8").read()
+                  for ref in md.findall(text):
+                      if ref.startswith(("http:", "https:", "data:")):
+                          continue
+                      t = os.path.normpath(os.path.join(dp, ref))
+                      if not os.path.isfile(t):
+                          bad.append(f"{path}: markdown image -> {t}")
+                  for ref in raw.findall(text):
+                      if ref.startswith(("http:", "https:", "data:")):
+                          continue
+                      t = os.path.normpath(os.path.join("docs", ref))
+                      if not os.path.isfile(t):
+                          bad.append(f"{path}: html asset -> {t}")
+          for b in bad:
+              print("MISSING", b)
+          print(f"{len(bad)} missing asset reference(s)")
+          sys.exit(1 if bad else 0)
+          PY
