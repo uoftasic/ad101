@@ -60,7 +60,7 @@ You should see a traceback ending in `NotImplementedError: TODO: synthesize the 
 
 ## Part 1: Build and plot the chord
 
-1. Fill in `synthesize_chord`. Its docstring has you build each note with `harmonic_sum(t, fundamental=freq, harmonics=[1, 3, 5, 7, 9])`, add the three notes, and divide by the number of notes. The notes are `CHORD_NOTES` at the top of the file: C4, E4 and G4 at 261.6, 329.6 and 392.0 Hz.
+1. Fill in `synthesize_chord`. Its docstring has you build each note with `harmonic_sum(t, fundamental=freq, harmonics=[1, 3, 5, 7, 9])`, add the three notes, and divide by the number of notes so the result stays roughly within ±1. The notes are `CHORD_NOTES` at the top of the file: C4, E4 and G4 at 261.6, 329.6 and 392.0 Hz.
 
    This is the chord from Lab 02, Part 1, except that each note now has odd harmonics, like the square wave from Lab 02, Part 2. Those high harmonics give the filter in Part 3 something to change audibly.
 
@@ -68,7 +68,7 @@ You should see a traceback ending in `NotImplementedError: TODO: synthesize the 
 
 3. Run `python3 src/workshop.py --headless` again.
 
-You should see the traceback move on and end in `NotImplementedError: TODO: compute the spectrum — see the docstring above`. The script only saves its plots once the filter in Part 3 works, so you'll check your waveform plot then.
+You should see the traceback move on and end in `NotImplementedError: TODO: compute the spectrum — see the docstring above`. `run()` saves all three figures together after the filter step, so you'll check your waveform plot once Part 3 works.
 
 ## Part 2: Compute and plot the spectrum
 
@@ -92,7 +92,7 @@ $$
 
 The first factor is the magnitude and the exponential carries the phase, the same two curves as the Bode plot in Lab 04. $j$ is the imaginary unit ($j^2 = -1$; electrical engineers write $j$ instead of $i$). You don't need to work with complex numbers by hand here: numpy does the arithmetic once you build `H`.
 
-1. Fill in `apply_lowpass`, following the four numbered steps in its docstring: get `freqs`, get the magnitude and phase from `rc_lowpass`, build the complex `H`, then multiply in the frequency domain and transform back with `np.fft.irfft`. It's the same method as the `rc_lowpass_filter` snippet in Lab 04, Part 3.
+1. Fill in `apply_lowpass`, following the four numbered steps in its docstring: get `freqs`, get the magnitude and phase from `rc_lowpass` (the phase comes back in degrees, so convert it with `np.deg2rad`), build the complex `H`, then multiply in the frequency domain and transform back with `np.fft.irfft`. It's the same method as the `rc_lowpass_filter` snippet in Lab 04, Part 3.
 
 2. Run `python3 src/workshop.py --headless` again.
 
@@ -110,7 +110,7 @@ The first factor is the magnitude and the exponential carries the phase, the sam
 
 2. Fill in `play_audio`. Try `sounddevice` first, with the imports and the playback all inside one `try/except Exception`. If it fails, print the file's path and tell the user to open it from their host's file manager. Playback failing must never crash the script.
 
-   Neither `sounddevice` nor `soundfile` (which the docstring uses to read the WAV back) is installed in the course image. Both are listed as optional in `requirements.txt`; install them with `pip install --user sounddevice soundfile` if you want to try live playback. That install goes into the container, not your `workspace` folder, so you'd have to repeat it if you remove the container. Without them your fallback runs, and that's fine. The noVNC desktop may not have a sound device anyway; see [Python in the workbench](reference/python-in-the-workbench.md).
+   Neither `sounddevice` nor `soundfile` (which the docstring uses to read the WAV back) is installed in the course image. Both are listed as optional in this lab's `requirements.txt`; install them with `pip install --user sounddevice soundfile` if you want to try live playback. That install goes into the container, not your `workspace` folder, so you'd have to repeat it if you remove the container. Without them your fallback runs, and that's fine. The noVNC desktop may not have a sound device anyway; see [Python in the workbench](reference/python-in-the-workbench.md).
 
 3. Run the headless version:
 
