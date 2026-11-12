@@ -1,20 +1,24 @@
-# Lab 04 — RC filter & Bode
+# Lab 04: RC filter and Bode
 
-Full runnable package: [`labs/lab-04-rc-bode/`](https://github.com/uoftasic/ad101/tree/main/labs/lab-04-rc-bode).
+You'll sweep an RC low-pass on a live Bode plot, link a point on that plot to a shrinking, lagging sine, filter a square wave until its edges round off, and compare low-pass, high-pass and band-pass shapes. Each explorer has a matching snippet that computes the same thing from the formulas.
 
-## Prerequisites
+Lab package: [`labs/lab-04-rc-bode/`](https://github.com/uoftasic/ad101/tree/main/labs/lab-04-rc-bode)
 
-- Lab 03 complete
-- Read Movement IV: [Filters are tone knobs](guide/filters-are-tone-knobs.md) → [Reading a Bode plot](guide/reading-a-bode-plot.md) → [Filtering a beat](guide/filtering-a-beat.md) → [More filter shapes](guide/more-filter-shapes.md)
+## Before you start
 
-## Objectives
+- Finish [Lab 03](labs/lab-03-spectrum-detective-overview.md).
+- Read Movement IV: [Filters are tone knobs](guide/filters-are-tone-knobs.md), [Reading a Bode plot](guide/reading-a-bode-plot.md), [Filtering a beat](guide/filtering-a-beat.md) and [More filter shapes](guide/more-filter-shapes.md).
+- In a terminal in the noVNC desktop, go to the lab folder:
 
-- Build intuition for $\lvert H(f)\rvert$ and $\angle H(f)$ on a Bode plot
-- Link a Bode marker to a shrinking, lagging sine in time
-- Watch a square wave lose its edges as high harmonics are filtered
-- Compare low-pass, high-pass, and band-pass shapes
+  ```bash
+  . /foss/designs/common/.designinit
+  mod ad101
+  cd labs/lab-04-rc-bode
+  ```
 
-## Theory (short)
+Time: about 1.5 hours.
+
+The formulas you'll use throughout:
 
 $$
 f_c = \frac{1}{2\pi R C}
@@ -24,57 +28,211 @@ f_c = \frac{1}{2\pi R C}
 \angle H(f) = -\arctan(f/f_c)
 $$
 
-At $f_c$: $\lvert H\rvert=1/\sqrt{2}$ (−3 dB), phase = −45°. High-frequency slope ≈ −20 dB/decade.
+As before, each part pairs an explorer (`python3 src/explore.py --figure <id>`) with a snippet you save as a new `.py` file in this folder and run with `python3 <file>.py`.
 
-## Procedure
+## Part 1: The Bode explorer (F12)
 
-```bash
-mod ad101
-cd labs/lab-04-rc-bode
-python3 src/explore.py
-python3 src/explore.py --figure f12
-```
+1. Open the Bode explorer:
 
-### F12 — Bode explorer
+   ```bash
+   python3 src/explore.py --figure f12
+   ```
 
-![F12](../assets/img/f12-bode-explorer.png)
+   It starts at R = 1000 Ω and C = 100 nF. The box at the bottom reads `fc = 1592 Hz`.
 
-- **Try this:** Move R and C. Watch $f_c$ track $1/(2\pi RC)$. Double R and halve C — $f_c$ stays put.
-- **What you should see:** Magnitude crosses −3 dB at the marker; phase passes −45°; the dashed asymptote falls at −20 dB/decade past $f_c$.
-- **Why an engineer cares:** The Bode plot is the **most-used graph in analog design**. Only the product $RC$ sets the cutoff.
+2. Check that number against $f_c = 1/(2\pi RC)$ by hand.
 
-### F13 — Marker ↔ time domain
+3. Look at where the magnitude curve crosses the dotted −3 dB line, and at the phase curve below it.
 
-![F13](../assets/img/f13-bode-time.png)
+   You should see the magnitude cross −3 dB at the dashed $f_c$ marker, the phase pass −45° there, and the dashed asymptote fall at −20 dB/decade past $f_c$.
 
-- **Try this:** Park the marker at $f_c$, then a decade below, then a decade above.
-- **What you should see:** At $f_c$, output ≈ 0.707× input, lagging ~45°. Far below: almost identical. Far above: tiny and nearly −90° lag.
-- **Why an engineer cares:** Converts "gain and phase" from two numbers into a **visible shrinking and lagging wave** — what a bench measurement physically does.
+4. Move R and C and watch $f_c$ follow $1/(2\pi RC)$. Then set R = 2000 Ω and C = 50 nF (double R, halve C).
 
-### F14 — Square through the RC
+   You should see `fc = 1592 Hz` again: only the product $RC$ sets the cutoff. Close the window.
 
-![F14](../assets/img/f14-square-through-rc.png)
+5. Save this as `bode.py` and run it. It draws a Bode plot from nothing but the two formulas:
 
-- **Try this:** Raise C (lower $f_c$). Compare input vs output harmonics on the stem plot.
-- **What you should see:** Edges round off; high-odd harmonics shrink on the output stems.
-- **Why an engineer cares:** Interconnect **RC delay** is why clock speed is capped — foreshadowing parasitic extraction in AD104.
+   ```python
+   import numpy as np
+   import matplotlib.pyplot as plt
 
-### F15 — Filter-type comparison
+   R, C = 1_000.0, 100e-9              # 1 kΩ, 100 nF
+   fc = 1 / (2 * np.pi * R * C)
+   print(f"cutoff fc ≈ {fc:.0f} Hz")
 
-![F15](../assets/img/f15-filter-types.png)
+   f = np.logspace(1, 5, 400)          # 10 Hz to 100 kHz, log-spaced
+   mag = 1 / np.sqrt(1 + (f / fc) ** 2)
+   mag_db = 20 * np.log10(mag)
+   phase_deg = -np.rad2deg(np.arctan(f / fc))
 
-- **Try this:** Overlay low-pass / high-pass / band-pass. Move $f_c$.
-- **What you should see:** Three different pass/stop patterns around the same $f_c$.
-- **Why an engineer cares:** Picking the right filter for a job — leading into AD201.
+   fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True, figsize=(7, 5))
+   ax1.semilogx(f, mag_db)
+   ax1.axvline(fc, color="orange", linestyle="--")
+   ax1.axhline(-3, color="gray", linestyle=":")
+   ax1.set_ylabel("Magnitude (dB)")
 
-## Expected results
+   ax2.semilogx(f, phase_deg)
+   ax2.axvline(fc, color="orange", linestyle="--")
+   ax2.axhline(-45, color="gray", linestyle=":")
+   ax2.set_ylabel("Phase (°)")
+   ax2.set_xlabel("Frequency (Hz)")
+   plt.tight_layout()
+   plt.show()
+   ```
 
-- With $R=1\,\mathrm{k}\Omega$, $C=100\,\mathrm{nF}$: $f_c \approx 1592$ Hz
-- At the marker $f=f_c$: $\lvert H\rvert\approx 0.707$ (−3 dB), phase ≈ −45°
-- Raising C on F14 visibly softens square edges and attenuates harmonics 5, 7, 9
+   You should see `cutoff fc ≈ 1592 Hz` printed, and a two-panel Bode plot where the magnitude crosses the dotted −3 dB line and the phase crosses the dotted −45° line, both at the orange dashed $f_c$ line.
 
-## Links
+6. Change `R` and `C`, predict the new cutoff from $f_c = 1/(2\pi RC)$, and re-run.
 
-- [Lab package](https://github.com/uoftasic/ad101/tree/main/labs/lab-04-rc-bode)
-- Course home: [AD101](README.md)
-- Next course: [**AD102** — Linear Circuits & Fabrication](https://uoftasic.com/ad102/)
+   You should see the printed cutoff match your prediction, with the −3 dB crossing still on the orange line.
+
+## Part 2: One Bode point in time (F13)
+
+1. Open the marker explorer:
+
+   ```bash
+   python3 src/explore.py --figure f13
+   ```
+
+   The left panel is the Bode magnitude for R = 1 kΩ, C = 100 nF. The right panel shows the input and output sines at the marker's frequency. The marker starts at $f_c$: the slider reads 3.2 and the box reads `f = 1585 Hz   |H| = 0.709 (-3.0 dB)   phase = -45°`.
+
+2. With the marker at $f_c$, compare the two sines.
+
+   You should see the output at about 0.707× the input, lagging by about 45° (an eighth of a cycle).
+
+3. Move the `log10(f)` slider down by 1, to 2.2 (a decade below $f_c$), then up to 4.2 (a decade above).
+
+   You should see the output almost identical to the input a decade below ($\lvert H\rvert \approx 0.995$, phase about −6°), and tiny with nearly −90° of lag a decade above ($\lvert H\rvert \approx 0.100$, −20 dB, phase about −84°). Close the window.
+
+4. Save this as `bode_point.py` and run it. For three frequencies it drives the filter with a sine and draws the output the Bode formulas predict:
+
+   ```python
+   import numpy as np
+   import matplotlib.pyplot as plt
+
+   R, C = 1_000.0, 100e-9
+   fc = 1 / (2 * np.pi * R * C)
+
+   fs = 200_000.0
+   t = np.arange(0, 0.02, 1 / fs)
+
+   for test_freq, label in [(fc / 10, "a decade below fc"), (fc, "at fc"), (fc * 10, "a decade above fc")]:
+       drive = np.sin(2 * np.pi * test_freq * t)
+       mag = 1 / np.sqrt(1 + (test_freq / fc) ** 2)
+       phase_rad = -np.arctan(test_freq / fc)
+       output = mag * np.sin(2 * np.pi * test_freq * t + phase_rad)
+
+       plt.figure(figsize=(6, 2.5))
+       plt.plot(t * 1e3, drive, label="input", alpha=0.6)
+       plt.plot(t * 1e3, output, label="output", linewidth=2)
+       plt.title(f"{label}: gain={mag:.3f}, phase={np.rad2deg(phase_rad):.1f}°")
+       plt.xlabel("Time (ms)")
+       plt.legend(fontsize=8)
+       plt.xlim(0, 3 / test_freq * 1e3)
+       plt.tight_layout()
+       plt.show()
+   ```
+
+   The three plots open one at a time; close each to see the next. You should see three points on the same Bode curve, matching what F13 showed. The middle one is titled `at fc: gain=0.707, phase=-45.0°`.
+
+## Part 3: A square wave through the RC (F14)
+
+1. Open the square-wave explorer:
+
+   ```bash
+   python3 src/explore.py --figure f14
+   ```
+
+   A 200 Hz square goes through an RC low-pass with R = 1 kΩ and C = 200 nF. The box reads `fc = 796 Hz`. The stem plot on the right compares harmonics 1, 3, 5, 7 and 9 of the input (gray) and the output.
+
+2. Raise C, which lowers $f_c$, and compare input and output on both panels.
+
+   You should see the edges round off, and the output stems for the high odd harmonics (5, 7, 9) shrink first. Close the window.
+
+3. Save this as `filter_square.py` and run it. It filters a 500 Hz square by scaling its spectrum by $H(f)$ and transforming back, for three values of C:
+
+   ```python
+   import numpy as np
+   import matplotlib.pyplot as plt
+
+   fs = 50_000.0
+   t = np.arange(0, 0.01, 1 / fs)
+   f0 = 500.0
+   square = np.sign(np.sin(2 * np.pi * f0 * t))
+
+   def rc_lowpass_filter(x, fs, R, C):
+       """Apply an RC low-pass by scaling the spectrum, then transforming back."""
+       n = len(x)
+       freqs = np.fft.rfftfreq(n, d=1 / fs)
+       fc = 1 / (2 * np.pi * R * C)
+       mag = 1 / np.sqrt(1 + (freqs / fc) ** 2)
+       phase = -np.arctan(freqs / fc)
+       H = mag * np.exp(1j * phase)
+       X = np.fft.rfft(x)
+       return np.fft.irfft(X * H, n=n)
+
+   for C in (10e-9, 100e-9, 1e-6):          # progressively lower cutoff
+       filtered = rc_lowpass_filter(square, fs, R=1_000.0, C=C)
+       fc = 1 / (2 * np.pi * 1_000.0 * C)
+       plt.plot(t * 1e3, filtered, label=f"C={C*1e9:.0f} nF (fc≈{fc:.0f} Hz)")
+
+   plt.plot(t * 1e3, square, color="gray", linestyle="--", label="input square", alpha=0.5)
+   plt.xlabel("Time (ms)")
+   plt.ylabel("Voltage (V)")
+   plt.legend(fontsize=8)
+   plt.show()
+   ```
+
+You should see three filtered versions of the dashed input square, labelled `C=10 nF (fc≈15915 Hz)`, `C=100 nF (fc≈1592 Hz)` and `C=1000 nF (fc≈159 Hz)`. The edges get softer with each step up in C, from nearly square at 10 nF to a small, rounded wave at 1000 nF. It's the same knob as Part 1, applied to a richer signal than a lone sine.
+
+## Part 4: Three filter shapes (F15)
+
+1. Open the filter-type comparison:
+
+   ```bash
+   python3 src/explore.py --figure f15
+   ```
+
+2. Look at the low-pass, high-pass and band-pass curves together, then move R and C to shift $f_c$.
+
+   You should see three different pass/stop patterns around the same $f_c$, all moving together when $f_c$ moves. Close the window.
+
+3. Save this as `filter_shapes.py` and run it. All three curves use the same `fc`:
+
+   ```python
+   import numpy as np
+   import matplotlib.pyplot as plt
+
+   R, C = 1_000.0, 100e-9
+   fc = 1 / (2 * np.pi * R * C)
+   f = np.logspace(1, 5, 400)
+   u = f / fc
+
+   lowpass = 1 / np.sqrt(1 + u**2)
+   highpass = u / np.sqrt(1 + u**2)
+   Q = 2.0
+   bandpass = (u / Q) / np.sqrt((1 - u**2) ** 2 + (u / Q) ** 2)
+
+   plt.semilogx(f, 20 * np.log10(lowpass), label="low-pass")
+   plt.semilogx(f, 20 * np.log10(highpass), label="high-pass")
+   plt.semilogx(f, 20 * np.log10(bandpass), label="band-pass")
+   plt.axvline(fc, color="gray", linestyle="--", label="fc")
+   plt.ylim(-40, 5)
+   plt.xlabel("Frequency (Hz)")
+   plt.ylabel("Magnitude (dB)")
+   plt.legend()
+   plt.show()
+   ```
+
+You should see the three curves meet the dashed `fc` line from different sides: the low-pass keeps what's below it, the high-pass keeps what's above it, and the band-pass peaks there. Only the shape of the formula changes which side gets kept.
+
+## Finishing
+
+You're done when all of these hold:
+
+- With $R = 1\,\mathrm{k}\Omega$ and $C = 100\,\mathrm{nF}$, F12 and your script both give $f_c \approx 1592$ Hz.
+- With the F13 marker at $f_c$, $\lvert H\rvert \approx 0.707$ (−3 dB) and the phase is about −45°.
+- Raising C on F14 visibly softens the square's edges and shrinks harmonics 5, 7 and 9.
+- Your four snippets run and plot what the steps describe.
+
+Next: [Lab 05: Signal workshop](labs/lab-05-signal-workshop-overview.md), where you write a script that synthesizes, analyzes and filters a signal on its own.
