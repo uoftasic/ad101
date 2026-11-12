@@ -1,8 +1,8 @@
-# Music and signals — glossary
+# Music and signals
 
-Every idea in this course has a musical twin. Use this page as a translation table whenever a guide page's analogy doesn't click on the first read.
+Every idea in this course has a musical twin. Use this page as a translation table when a guide page's analogy doesn't click on the first read.
 
-## Term-for-term glossary
+## Glossary
 
 | Musical term | Signal-processing term | Where it's covered |
 |---------------|-------------------------|----------------------|
@@ -22,11 +22,11 @@ Every idea in this course has a musical twin. Use this page as a translation tab
 
 ## Octaves and doubling
 
-Going up one **octave** doubles the frequency: A3 (220 Hz) and A4 (440 Hz) are "the same note," an octave apart, because 440 is exactly double 220. This is why frequency axes in this course are often drawn on a **log** scale (as in a Bode plot) — equal *musical* steps are equal *ratios*, not equal differences in Hz.
+Going up one **octave** doubles the frequency. A3 (220 Hz) and A4 (440 Hz) are "the same note" an octave apart, because 440 is exactly double 220. That's why frequency axes in this course are often drawn on a log scale, as in a Bode plot: equal musical steps are equal ratios, not equal differences in Hz.
 
 ## Note-name to frequency table
 
-Standard concert pitch: A4 = 440 Hz. These are the notes used in the "write it yourself" snippets throughout the guide.
+Standard concert pitch is A4 = 440 Hz. These are the notes used in the lab snippets and in Lab 05.
 
 | Note | Frequency (Hz) |
 |------|-----------------|
@@ -42,9 +42,9 @@ Standard concert pitch: A4 = 440 Hz. These are the notes used in the "write it y
 | E5 | 659.3 |
 | A5 | 880.0 |
 
-A C-major triad (C4, E4, G4) is the chord used in [Adding signals](guide/adding-signals.md).
+A C-major triad (C4, E4, G4) is the chord in [Adding signals](guide/adding-signals.md), Lab 02 and Lab 05.
 
 ## Related
 
-- [Reading plots](reference/reading-plots.md) — the three plots themselves
-- [Getting started](guide/getting-started.md) — the two-track path through the course
+- [Reading plots](reference/reading-plots.md): the three plots themselves
+- [Getting started](guide/getting-started.md): how the course is organized
