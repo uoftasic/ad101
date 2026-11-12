@@ -1,6 +1,6 @@
 # The FFT as an equalizer
 
-For two movements you've built waveforms out of sines by hand, picking the harmonics and their amplitudes. The **Fast Fourier Transform (FFT)** runs that process backwards: give it a time waveform and it gives you back the recipe. It's the math behind every equalizer display you've seen bounce along to a song.
+In Movement II you built waveforms out of sines by hand, picking the harmonics and their amplitudes. The **Fast Fourier Transform (FFT)** runs that process backwards: give it a time waveform and it gives you back the recipe. It's the math behind every equalizer display you've seen bounce along to a song.
 
 ## The FFT as a machine
 
@@ -10,7 +10,7 @@ Treat the FFT as a black box for now:
   time waveform  ──FFT──►  spectrum (amplitudes vs frequency)
 ```
 
-You don't need the derivation to use it. `numpy.fft.rfft` does the work in one line, and the Lab 03 explorers run it for you and plot the result.
+You don't need the derivation to use it. `numpy.fft.rfft` does the work in one line, and the Lab 03 explorers run it for you and plot the result. F7 below shows a signal's time plot on top and its spectrum underneath.
 
 ![F7 — Twin panel](../assets/img/f07-twin-panel.png)
 
@@ -29,7 +29,7 @@ You'll compute this chord's spectrum yourself, then flip between test signals on
 
 ## Decibels
 
-Human ears (and RF engineers) both respond to ratios, not differences. Going from a whisper to a normal voice feels like as big a jump as going from a normal voice to a shout, even though the second jump is a much bigger change in raw voltage. The **decibel** captures that with a logarithm:
+Human ears and radio-frequency (RF) engineers both care about ratios, not differences. Going from a whisper to a normal voice feels like as big a jump as going from a normal voice to a shout, even though the second jump is a much bigger change in raw voltage. The **decibel** captures that with a logarithm:
 
 $$
 \mathrm{dB} = 20\log_{10}\!\left(\frac{A}{A_{\mathrm{ref}}}\right)

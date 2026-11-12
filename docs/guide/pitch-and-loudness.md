@@ -2,7 +2,7 @@
 
 The held note from the last page, a sine wave, is the simplest interesting signal there is. Almost everything else in this course is built out of sines, so it's worth getting comfortable with its four knobs before moving on.
 
-## The sine wave, one knob at a time
+## The sine wave's knobs
 
 $$
 v(t) = A \sin(2\pi f t + \phi) + V_{\mathrm{DC}}

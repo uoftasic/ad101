@@ -12,7 +12,7 @@ The knob is the same one as on [Filters are tone knobs](guide/filters-are-tone-k
 
 You'll raise C on the F14 explorer and compare input and output harmonics, then filter a square wave in your own script, in [Lab 04](labs/lab-04-rc-bode-overview.md), Part 3.
 
-## Parasitic RC on every node
+## Parasitic RC
 
 Every node on a chip has **parasitic** resistance and capacitance: R and C that nobody drew on the schematic. So every node is one of these filters, whether you designed it in or not. That's why clock speeds have a ceiling, and it's a preview of the parasitic-extraction work in AD104.
 

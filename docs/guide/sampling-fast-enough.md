@@ -11,6 +11,8 @@ f_{\mathrm{sample}} > 2\, f_{\mathrm{max}}
 \qquad\text{(Nyquist)}
 $$
 
+Two related numbers both get called "Nyquist". The Nyquist rate is $2 f_{\mathrm{max}}$, the rate your sample rate has to beat. Half the sample rate, $f_s/2$, is the highest frequency a given sample rate can represent; the F11 explorer labels that one Nyquist.
+
 ![F11 — Aliasing](../assets/img/f11-aliasing.png)
 
 ## Worked example: a 900 Hz tone

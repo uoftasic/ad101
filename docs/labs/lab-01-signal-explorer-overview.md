@@ -6,7 +6,7 @@ Lab package: [`labs/lab-01-signal-explorer/`](https://github.com/uoftasic/ad101/
 
 ## Before you start
 
-- Finish [IC101](https://uoftasic.com/ic101/): the noVNC desktop works and your `workspace` clone is set up. If the IC101 smoke test still passes, you're ready.
+- Finish [IC101](https://uoftasic.com/ic101/): the noVNC desktop works and your `workspace` clone is set up. If IC101's smoke test (`/foss/designs/scripts/smoke_test.sh`) passes, you're ready.
 - Read [Getting started](guide/getting-started.md) and Movement I: [What is a signal?](guide/what-is-a-signal.md), [Pitch and loudness](guide/pitch-and-loudness.md), [A family of waveforms](guide/a-family-of-waveforms.md) and [Two voices in time](guide/two-voices-in-time.md).
 - Keep [Reading plots](reference/reading-plots.md) open as a cheat sheet.
 
@@ -18,6 +18,8 @@ Each part pairs an explorer with a snippet.
 
 - An **explorer** is a plot window with sliders. You open one with `python3 src/explore.py --figure <id>`. The terminal stays busy until you close the window.
 - A **snippet** is a short Python script. Save it as a new `.py` file in the lab folder and run it with `python3 <file>.py`. The steps suggest a file name, but any name works. Snippets only use numpy and matplotlib. The desktop has `gedit`, `nano` and `vim` for editing.
+
+Run explorers and snippets from the lab folder (Part 2 takes you there). If you open a new terminal, run `. /foss/designs/common/.designinit`, `mod ad101` and `cd labs/lab-01-signal-explorer` again first.
 
 Everything under `/foss/designs` lives in your `workspace` folder on the host, so your snippet files survive a container restart.
 
@@ -33,7 +35,7 @@ Everything under `/foss/designs` lives in your `workspace` folder on the host, s
    mod ad101        # cd into /foss/designs/modules/ad101
    ```
 
-   You can also clone it from the host instead of running `mod add`. It ends up in the same folder:
+   If you'd rather clone on the host, run this from the folder that contains your `workspace` clone instead of `mod add ad101`, then run `mod ad101` in the desktop terminal as above. It ends up in the same folder:
 
    ```bash
    cd workspace/modules
@@ -46,7 +48,7 @@ Everything under `/foss/designs` lives in your `workspace` folder on the host, s
    python3 scripts/check_env.py
    ```
 
-You should see `OK` lines for numpy, matplotlib and the GUI backend, then `OK   adsig smoke: peak ≈ 100 Hz (expect ~100)` and `=== All checks passed ===`.
+You should see `OK` lines for numpy, matplotlib and the GUI backend, then `OK   adsig smoke: peak ≈ 100 Hz (expect ~100)` and `=== All checks passed ===`. (`adsig` is the course's small signal library in `labs/common/`; the explorers use it.)
 
 If it prints `WARN no interactive GUI backend`, the explorers won't be able to open windows. Make sure you ran it in the noVNC desktop terminal, not a terminal on your host, then see "If the GUI won't open" in [Python in the workbench](reference/python-in-the-workbench.md).
 
@@ -89,7 +91,7 @@ You should see a sine wave between −1 V and +1 V across 0 to 50 ms: one held n
 
 3. Drag Amplitude, Freq (Hz), Phase (°) and DC offset one at a time. Before each drag, predict what the readout will do from $T = 1/f$, peak-to-peak $= 2A$ and $\mathrm{RMS} = A/\sqrt{2}$.
 
-   You should see the period marker track $T = 1/f$, RMS stay at about 0.707× the amplitude while DC is 0, and the DC slider lift the whole wave without changing the size of the wiggle. Close the window.
+   You should see the period marker track $T = 1/f$, RMS stay at about 0.707× the amplitude while DC is 0, Phase slide the wave sideways, and the DC slider lift the whole wave without changing the size of the wiggle. Close the window.
 
 4. Save this as `measure_sine.py` and run it. It builds a sine at a chosen amplitude and frequency, then computes period, peak-to-peak and RMS straight from the array, the way you'd measure a scope trace by eye, except exact:
 
@@ -135,7 +137,7 @@ You should see a sine wave between −1 V and +1 V across 0 to 50 ms: one held n
 
    You should see five very different shapes from the same Amplitude setting. Noise never repeats. The pulse at 25% duty looks clearly lopsided next to the pulse at 50%. Close the window.
 
-3. Save this as `waveform_zoo.py` and run it. It builds the other shapes from the same time array `t`. The `phase` variable counts from 0 to 1 once per cycle, and comparing it to a threshold gives you a square, a pulse or a triangle without any new math:
+3. Save this as `waveform_zoo.py` and run it. It builds the other shapes from the same time array `t`, using a `phase` variable that counts from 0 to 1 once per cycle:
 
    ```python
    import numpy as np
@@ -165,7 +167,7 @@ You should see a sine wave between −1 V and +1 V across 0 to 50 ms: one held n
    plt.show()
    ```
 
-   You should see four stacked plots (square, pulse at 25%, triangle and noise) over a 20 ms window.
+   You should see four stacked plots (square, pulse at 25%, triangle and noise) over a 20 ms window. The script also builds `sine` but doesn't plot it.
 
 4. Change the `0.25` in the `pulse` line to `0.5`, then to `0.75`, re-running each time.
 
@@ -179,9 +181,9 @@ You should see a sine wave between −1 V and +1 V across 0 to 50 ms: one held n
    python3 src/explore.py --figure f3
    ```
 
-   It starts at Phase Δ = 60° and 100 Hz.
+   It starts at Phase Δ = 60° and 100 Hz. Signal B is $\sin(2\pi f t + \phi)$, so it's offset from signal A in time by $t_{\mathrm{delay}} = \frac{\phi}{360^\circ}\,T$. With a positive $\phi$, B runs ahead of A; the readout calls the size of that offset the delay.
 
-2. Before you move anything, use $t_{\mathrm{delay}} = \frac{\phi}{360^\circ}\,T$ to predict the delay for a 90° phase difference at 100 Hz.
+2. Before you move anything, use the formula to predict the delay for a 90° phase difference at 100 Hz.
 
 3. Set Phase Δ to 90° and read the delay in the box.
 
@@ -231,7 +233,7 @@ You're done when all of these hold:
 - F1 at amplitude 1, 100 Hz, DC 0 reads $T \approx 10$ ms, pk-pk ≈ 2 V, RMS ≈ 0.707 V.
 - F3 at $\Delta\phi = 90^\circ$ and 100 Hz reads a delay of about 2.5 ms.
 - The F2 pulse at 25% duty looks clearly asymmetric next to 50%.
-- Your four snippet files run and print the values above.
+- Your four snippet files run, and `measure_sine.py` and `two_voices.py` print the values above.
 
 Keep your snippet files. Lab 05 asks you to write the same kinds of pieces again, assembled into one script.
 

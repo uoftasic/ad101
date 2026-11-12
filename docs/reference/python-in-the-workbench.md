@@ -74,7 +74,7 @@ Lab 05 exports and plays audio so you can hear a filter change a chord. Live pla
 1. Try live playback with `sounddevice`. It isn't installed in the course image, and neither is `soundfile`; both are listed as optional in `labs/lab-05-signal-workshop/requirements.txt`. Install them with `pip install --user sounddevice soundfile`.
 2. If playback fails, the script still writes `.wav` files into `results/` and prints their paths. Open them from your host machine's file manager or media player.
 
-Either way you can compare the filtered and unfiltered chord; only how you listen changes.
+Either way you can compare the filtered and unfiltered chord.
 
 ## Regenerating the docs figures (maintainers)
 
