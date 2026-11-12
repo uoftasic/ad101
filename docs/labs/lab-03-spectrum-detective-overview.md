@@ -64,6 +64,8 @@ As before, each part pairs an explorer (`python3 src/explore.py --figure <id>`) 
    python3 src/explore.py --figure f7
    ```
 
+   ![F7](../assets/img/f07-twin-panel.png)
+
 3. Click through the signals on the left: pure tone, two tones, tone + noise, AM and square. AM (amplitude modulation) is a 500 Hz tone, the carrier, whose loudness wobbles at 40 Hz. Then switch the "dB scale" and "log freq" boxes on and off.
 
    You should see one spike for the pure tone, two spikes for two tones, a carrier with a sideband on each side for AM, and a comb of odd harmonics for the square. With dB on, small peaks show up that the linear axis hides. Close the window.
@@ -75,6 +77,8 @@ As before, each part pairs an explorer (`python3 src/explore.py --figure <id>`) 
    ```bash
    python3 src/explore.py --figure f8
    ```
+
+   ![F8](../assets/img/f08-hidden-tone.png)
 
 2. Raise "Noise amp" until the time plot (top) is garbage. Then look for a narrow peak above the noise floor in the spectrum (bottom), and write down its frequency. To read it precisely, hover over the peak: the window's toolbar shows the cursor's x and y coordinates. Lowering the noise again makes both views clearer.
 
@@ -130,6 +134,8 @@ You should see pure noise in the time plot and one obvious spike in the spectrum
    python3 src/explore.py --figure f10
    ```
 
+   ![F10](../assets/img/f10-leakage.png)
+
 2. Set "Cycles in window" to 5.0, then to 5.3.
 
    You should see a clean spike at 5.0 (the label reads `clean spike (integer cycles)`) and a smeared peak at 5.3 (`smeared peak (leakage!)`).
@@ -145,6 +151,8 @@ You should see the skirts (the smeared energy on either side of the peak) drop. 
    ```bash
    python3 src/explore.py --figure f9
    ```
+
+   ![F9](../assets/img/f09-thd.png)
 
 2. Raise "Gain (into tanh)" and watch the waveform, the harmonic stems and the THD readout. $\tanh$ is the smooth clipping curve from [Distortion and THD](guide/distortion-and-thd.md); more gain drives the sine harder into it.
 
@@ -194,6 +202,8 @@ You should see the skirts (the smeared energy on either side of the peak) drop. 
    ```bash
    python3 src/explore.py --figure f11
    ```
+
+   ![F11](../assets/img/f11-aliasing.png)
 
    The tone is 200 Hz and the sample rate starts at 1000 Hz. The box at the bottom ends in `OK (fs > 2f)`. Its `Nyquist` value is half the sample rate.
 

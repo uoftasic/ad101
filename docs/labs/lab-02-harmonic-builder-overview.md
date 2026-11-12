@@ -62,6 +62,8 @@ You should see the three notes in the top panel and their sum in black in the bo
    python3 src/explore.py --figure f4
    ```
 
+   ![F4/F5](../assets/img/f04-f05-harmonic-builder.png)
+
 2. All five harmonics (n=1, 3, 5, 7, 9) start ticked, with amplitudes set to $4/(n\pi)$. Untick 3, 5, 7 and 9 so only n=1 is left.
 
    You should see a plain sine in F4 and a single stem in F5.
@@ -115,6 +117,8 @@ You should see the three notes in the top panel and their sum in black in the bo
    ```bash
    python3 src/explore.py --figure f6
    ```
+
+   ![F6](../assets/img/f06-duty-spectrum.png)
 
    It starts at 50% duty. The box under the plots reads `duty = 50%   →   even harmonics GONE (50% duty)`.
 

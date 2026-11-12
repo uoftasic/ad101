@@ -85,6 +85,8 @@ You should see a sine wave between −1 V and +1 V across 0 to 50 ms: one held n
    python3 src/explore.py --figure f1
    ```
 
+   ![F1](../assets/img/f01-sine-explorer.png)
+
 2. Leave the sliders at their starting values (amplitude 1, 100 Hz, phase 0°, DC offset 0) and read the box in the top-left corner of the plot.
 
    You should see `T = 10.00 ms   f = 100 Hz` and `pk-pk = 2.00 V   RMS = 0.707 V`. The dashed vertical line marks one period.
@@ -133,6 +135,8 @@ You should see a sine wave between −1 V and +1 V across 0 to 50 ms: one held n
    python3 src/explore.py --figure f2
    ```
 
+   ![F2](../assets/img/f02-signal-zoo.png)
+
 2. Click through sine, square, triangle, pulse and noise on the left. With pulse selected, sweep the Duty slider (it starts at 0.25).
 
    You should see five very different shapes from the same Amplitude setting. Noise never repeats. The pulse at 25% duty looks clearly lopsided next to the pulse at 50%. Close the window.
@@ -180,6 +184,8 @@ You should see a sine wave between −1 V and +1 V across 0 to 50 ms: one held n
    ```bash
    python3 src/explore.py --figure f3
    ```
+
+   ![F3](../assets/img/f03-two-signal.png)
 
    It starts at Phase Δ = 60° and 100 Hz. Signal B is $\sin(2\pi f t + \phi)$, so it's offset from signal A in time by $t_{\mathrm{delay}} = \frac{\phi}{360^\circ}\,T$. With a positive $\phi$, B runs ahead of A; the readout calls the size of that offset the delay.
 
