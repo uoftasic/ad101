@@ -1,73 +1,32 @@
 # Getting started
 
-AD101 is a primer on **signals** — the voltages that move through every analog circuit. You will learn to read three plots an analog engineer lives in: the **waveform** (time), the **spectrum** (frequency), and the **Bode plot** (what a circuit does to a signal).
+AD101 is a primer on **signals**, the voltages that move through every analog circuit. You'll learn to read the three plots an analog engineer works with: the **waveform** (voltage against time), the **spectrum** (how strong each frequency is) and the **Bode plot** (what a circuit does to a signal).
 
-The fastest way in is one you already know: **music**. A signal is a voltage that wiggles the same way sound pressure wiggles when you hum a note. A chord is signals added together. An instrument's timbre is a recipe of extra harmonics riding on top of the main pitch. A filter is a tone knob. Every idea in this course has a musical twin, and we'll use it on purpose.
+The way in is something you already know: music. A signal is a voltage that wiggles the same way sound pressure wiggles when you hum a note. A chord is signals added together. An instrument's timbre is a recipe of extra harmonics on top of the main pitch. A filter is a tone knob. Every idea in this course has a musical twin, and the guide uses it on purpose.
 
-## Prerequisites
+You don't need a musical background. Each analogy is explained the first time it's used, and [Music and signals](reference/music-and-signals.md) collects them in one table. The math is high-school level: sine, logarithm and basic algebra, with no calculus.
 
-| Requirement | Notes |
-|-------------|--------|
-| **IC101** completed | Docker + IIC-OSIC-TOOLS noVNC desktop working |
-| Shared **workspace** cloned | Same clone you used for IC101 |
-| High-school math | Sine, logarithm, basic algebra — no calculus |
+## How the course is organized
 
-No musical background needed either — every analogy is explained the first time it's used. If the smoke test from IC101 still passes, you are ready.
+The course has four movements followed by a capstone. Each movement is a few short guide pages and then a lab. The Course path table on the [home page](README.md) lists every step in order with a time estimate.
 
-## Two ways you'll learn each idea
+Guide pages are for reading: concepts, figures and worked examples. You don't need a terminal open. Labs are where you run things, and they teach each idea two ways:
 
-1. **Drag it.** Every guide page links to a GUI lab (Lab 01–04) with sliders you drag while watching a live plot — the fastest way to build intuition for how a knob changes a curve.
-2. **Write it.** Every guide page also has a short "write it yourself" Python snippet — five to fifteen lines you run and modify yourself. Labs 01–04 are pre-built for you to explore; [Lab 05 — Signal workshop](labs/lab-05-signal-workshop-overview.md) is where you assemble those snippets into your own signal-analysis script, end to end, and even listen to what a filter does to a chord.
+1. **Drag it.** Labs 01–04 each come with an interactive explorer: plot windows with sliders, numbered F1 to F15. Dragging a slider while a plot updates is the fastest way to build intuition for how a knob changes a curve.
+2. **Write it.** The same labs give you short Python snippets that you save, run and change yourself. [Lab 05: Signal workshop](labs/lab-05-signal-workshop-overview.md) has no sliders at all. There you assemble those ideas into your own signal-analysis script, end to end, and listen to what a filter does to a chord.
 
-Neither track is optional homework for the other — dragging a slider builds intuition fast, and writing the script is what makes that intuition something you can reuse on a signal nobody built a slider for.
+Do both. Dragging a slider builds intuition quickly, and writing the script is what lets you use that intuition on a signal nobody built a slider for.
 
-## Path through this course
+The figures on these guide pages come from the same explorer scripts you run in the labs (`scripts/build_figures.py` exports them), so what you read matches what you'll see.
 
-| Movement | Guide | Lab |
-|------|--------|-----|
-| I — A single note | [Signals in time](guide/what-is-a-signal.md) | [Lab 01 — Signal explorer](labs/lab-01-signal-explorer-overview.md) |
-| II — Chords & timbre | [Building signals](guide/adding-signals.md) | [Lab 02 — Harmonic builder](labs/lab-02-harmonic-builder-overview.md) |
-| III — The mixing board | [The frequency domain](guide/the-fft-as-an-equalizer.md) | [Lab 03 — Spectrum detective](labs/lab-03-spectrum-detective-overview.md) |
-| IV — Tone controls | [Filters & Bode](guide/filters-are-tone-knobs.md) | [Lab 04 — RC filter & Bode](labs/lab-04-rc-bode-overview.md) |
-| Capstone | [More filter shapes](guide/more-filter-shapes.md) | [Lab 05 — Signal workshop](labs/lab-05-signal-workshop-overview.md) |
-
-Keep [Reading plots](reference/reading-plots.md) and [Music and signals](reference/music-and-signals.md) open as cheat sheets. If a plot window won't open, see [Python in the workbench](reference/python-in-the-workbench.md).
-
-## Clone AD101 into the workbench
-
-From your host machine (next to the `workspace` folder, or inside it under `modules/`):
-
-```bash
-cd workspace/modules
-git clone https://github.com/uoftasic/ad101.git
-```
-
-Inside the noVNC desktop:
-
-```bash
-. /foss/designs/common/.designinit
-mod ad101
-python3 scripts/check_env.py
-```
-
-You should see `OK` lines for numpy, matplotlib, and the `adsig` smoke test.
-
-## How labs work
-
-Every drag-it lab has an interactive explorer and a headless export mode:
-
-```bash
-cd labs/lab-01-signal-explorer
-python3 src/explore.py              # drag sliders
-python3 src/explore.py --headless   # write PNGs if no GUI
-```
-
-The figures on this docs site were generated by the same scripts (`scripts/build_figures.py`), so what you read matches what you run. The write-it-yourself snippets in the guide pages, by contrast, are meant to be copy-pasted into a scratch file and run anywhere Python is installed — no repo path tricks needed until you get to Lab 05.
+If an explorer window won't open, each explorer can also write its figures to PNG files. [Python in the workbench](reference/python-in-the-workbench.md) covers that and the other common problems. [Reading plots](reference/reading-plots.md) is a one-page cheat sheet for all three plots.
 
 ## What this course is not
 
-- Not a replacement for ECE signals courses
-- Not a deep dive into Fourier proofs or complex numbers
-- Not XSchem / ngspice yet — that starts in AD102 / AD103
+- It isn't a replacement for the ECE signals courses.
+- It doesn't go deep into Fourier proofs or complex numbers.
+- It doesn't use XSchem or ngspice yet. Those start in AD102 and AD103.
 
-Next: [What is a signal?](guide/what-is-a-signal.md).
+You'll set up AD101 inside your IC101 workspace at the start of [Lab 01](labs/lab-01-signal-explorer-overview.md), Part 1.
+
+Next: [What is a signal?](guide/what-is-a-signal.md)
