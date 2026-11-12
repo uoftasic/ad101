@@ -38,6 +38,8 @@ As before, each part pairs an explorer (`python3 src/explore.py --figure <id>`) 
    python3 src/explore.py --figure f12
    ```
 
+   ![F12](../assets/img/f12-bode-explorer.png)
+
    It starts at R = 1000 Ω and C = 100 nF. The box at the bottom reads `fc = 1592 Hz`.
 
 2. Check that number against $f_c = 1/(2\pi RC)$ by hand.
@@ -94,6 +96,8 @@ As before, each part pairs an explorer (`python3 src/explore.py --figure <id>`) 
    python3 src/explore.py --figure f13
    ```
 
+   ![F13](../assets/img/f13-bode-time.png)
+
    The left panel is the Bode magnitude for R = 1 kΩ, C = 100 nF. The right panel shows the input and output sines at the marker's frequency. The marker starts at $f_c$: the slider reads 3.2 and the box reads `f = 1585 Hz   |H| = 0.709 (-3.0 dB)   phase = -45°`.
 
 2. With the marker at $f_c$, compare the two sines.
@@ -142,6 +146,8 @@ As before, each part pairs an explorer (`python3 src/explore.py --figure <id>`) 
    ```bash
    python3 src/explore.py --figure f14
    ```
+
+   ![F14](../assets/img/f14-square-through-rc.png)
 
    A 200 Hz square goes through an RC low-pass with R = 1 kΩ and C = 200 nF. The box reads `fc = 796 Hz`. The stem plot on the right compares harmonics 1, 3, 5, 7 and 9 of the input (gray) and the output.
 
@@ -192,6 +198,8 @@ You should see three filtered versions of the dashed input square, labelled `C=1
    ```bash
    python3 src/explore.py --figure f15
    ```
+
+   ![F15](../assets/img/f15-filter-types.png)
 
 2. Look at the low-pass, high-pass and band-pass curves together, then move R and C to shift $f_c$.
 
