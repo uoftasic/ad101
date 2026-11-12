@@ -1,34 +1,32 @@
-# Lab 05 — Signal workshop
+# Lab 05: Signal workshop
 
-A code-along capstone, not a slider explorer: you write the script instead of dragging one someone else built. By the end you'll have your own scope, spectrum analyzer, and filter — and you'll hear what the filter does to a chord, not just see it on a plot.
+A code-along capstone with no slider explorers. You fill in the functions in `src/workshop.py` to synthesize a chord, plot its waveform and spectrum, filter it with an RC low-pass, and export the chord before and after filtering as WAV files.
 
-## Docs writeup
+Follow the lab writeup, [`docs/labs/lab-05-signal-workshop-overview.md`](../../docs/labs/lab-05-signal-workshop-overview.md), published at https://uoftasic.com/ad101/#/labs/lab-05-signal-workshop-overview. This README is a command reference.
 
-- Site path: `/#/labs/lab-05-signal-workshop-overview`
-- Source: [`docs/labs/lab-05-signal-workshop-overview.md`](../../docs/labs/lab-05-signal-workshop-overview.md)
+## How to run
 
-## Quick start (inside IIC-OSIC-TOOLS)
+In a terminal in the IIC-OSIC-TOOLS noVNC desktop:
 
 ```bash
 mod ad101
 cd labs/lab-05-signal-workshop
-python3 src/workshop.py             # fill in the TODOs in src/workshop.py first
-python3 src/workshop.py --headless  # save PNGs + WAVs, skip live playback
 ```
 
-`src/workshop.py` has six `TODO`-marked functions; each one is documented with exactly what to write. Stuck? `solutions/workshop_solution.py` has the filled-in reference version — try not to open it until you've had a real attempt.
+| Command | What it does |
+|---|---|
+| `python3 src/workshop.py --headless` | Runs your script; saves PNGs and WAVs into `results/` and skips live playback |
+| `python3 src/workshop.py` | Full run: plot windows, then live audio if a sound device is available |
+| `python3 solutions/workshop_solution.py --headless --out results/solution` | Runs the reference solution into its own folder, so it doesn't overwrite your results |
 
-## What you'll build
+Until every function is filled in, `src/workshop.py` stops with `NotImplementedError` at the first unfinished one.
 
-| Part | Function | Guide page it echoes |
-|------|----------|------------------------|
-| 1 | `synthesize_chord`, `plot_waveform` | [Adding signals](../../docs/guide/adding-signals.md), [Timbre and harmonics](../../docs/guide/timbre-and-harmonics.md) |
-| 2 | `compute_spectrum`, `plot_spectrum` | [The FFT as an equalizer](../../docs/guide/the-fft-as-an-equalizer.md) |
-| 3 | `apply_lowpass` | [Filtering a beat](../../docs/guide/filtering-a-beat.md) |
-| 4 | `export_wav`, `play_audio` | — new for this lab |
+## Files
 
-## Expected results
-
-- The unfiltered chord's spectrum shows three fundamentals (C4 ≈ 262 Hz, E4 ≈ 330 Hz, G4 ≈ 392 Hz) plus their odd harmonics.
-- After filtering, the fundamentals are still there — same notes — but the higher harmonics are visibly smaller in the "after" spectrum panel.
-- `chord-unfiltered.wav` and `chord-filtered.wav` land in `results/`; the filtered one should sound duller/muffled, not different in pitch.
+| Path | Contents |
+|---|---|
+| `src/workshop.py` | The scaffold: seven functions marked TODO, each with a docstring saying what to write |
+| `src/_path.py` | Adds `labs/` to `sys.path` so `from common.adsig import ...` works |
+| `solutions/workshop_solution.py` | Filled-in reference. Try the exercise yourself first |
+| `requirements.txt` | numpy and matplotlib; `sounddevice` and `soundfile` are optional, for live playback |
+| `results/` | Output folder: `workshop-waveform.png`, `workshop-spectrum.png`, `workshop-before-after.png`, `chord-unfiltered.wav`, `chord-filtered.wav` (ignored by git) |

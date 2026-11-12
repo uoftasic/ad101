@@ -1,26 +1,39 @@
-# Lab 04 — RC filter & Bode
+# Lab 04: RC filter and Bode
 
-Meet the Bode plot: the most-used graph in analog design.
+Bode plots of an RC low-pass, linked to what the filter does in time (F12–F15).
 
-## Docs writeup
+Follow the lab writeup, [`docs/labs/lab-04-rc-bode-overview.md`](../../docs/labs/lab-04-rc-bode-overview.md), published at https://uoftasic.com/ad101/#/labs/lab-04-rc-bode-overview. This README is a command reference.
 
-- Site: `/#/labs/lab-04-rc-bode-overview`
+## How to run
 
-## Quick start
+In a terminal in the IIC-OSIC-TOOLS noVNC desktop:
 
 ```bash
 mod ad101
 cd labs/lab-04-rc-bode
-python3 src/explore.py
-python3 src/explore.py --figure f12
-python3 src/explore.py --headless
 ```
 
-## Figures
+| Command | What it does |
+|---|---|
+| `python3 src/explore.py` | Opens F12 to F15 |
+| `python3 src/explore.py --figure f12` | Opens one explorer: `f12`, `f13`, `f14` or `f15` |
+| `python3 src/explore.py --headless` | Writes the figures as PNGs into `results/` instead of opening windows (`--out DIR` to change the folder) |
+
+## Explorers
 
 | ID | Explorer |
 |----|----------|
-| F12 | Bode explorer (R, C → magnitude & phase) |
-| F13 | Marker linked to time-domain I/O |
+| F12 | Bode explorer (R, C → magnitude and phase) |
+| F13 | Bode marker linked to the input and output sines |
 | F14 | Square wave through the RC |
 | F15 | Low-pass / high-pass / band-pass overlay |
+
+## Files
+
+| Path | Contents |
+|---|---|
+| `src/explore.py` | Interactive explorers; `--headless` exports PNGs |
+| `src/export_figures.py` | Exports F12 to F15 as PNGs; used by `--headless` and `scripts/build_figures.py` |
+| `src/_path.py` | Adds `labs/` to `sys.path` so `from common.adsig import ...` works |
+| `requirements.txt` | numpy and matplotlib, already inside IIC-OSIC-TOOLS |
+| `results/` | Output folder for `--headless` (ignored by git) |
