@@ -14,7 +14,7 @@ Time: about 1.5 hours.
 
 ### How the labs work
 
-Part 1 sets up AD101 and Part 2 is a first snippet. After that, each part pairs an explorer with a snippet.
+Parts 3 to 5 each pair an explorer with a snippet. Part 1 is setup, and Part 2 is a snippet on its own.
 
 - An **explorer** is a plot window with sliders. You open one with `python3 src/explore.py --figure <id>`. The terminal stays busy until you close the window.
 - A **snippet** is a short Python script. Save it as a new `.py` file in the lab folder and run it with `python3 <file>.py`. The steps suggest a file name, but any name works. Snippets only use numpy and matplotlib. The desktop has `gedit`, `nano` and `vim` for editing.
@@ -93,7 +93,7 @@ You should see a sine wave between −1 V and +1 V across 0 to 50 ms: one held n
 
 3. Drag Amplitude, Freq (Hz), Phase (°) and DC offset one at a time. Before each drag, predict what the readout will do from $T = 1/f$, peak-to-peak $= 2A$ and $\mathrm{RMS} = A/\sqrt{2}$.
 
-   You should see the period marker track $T = 1/f$, RMS stay at about 0.707× the amplitude while DC is 0, Phase slide the wave sideways, and the DC slider lift the whole wave without changing the size of the wiggle. Close the window.
+   You should see the period marker track $T = 1/f$, RMS stay at about 0.707× the amplitude while DC is 0, Phase slide the wave sideways, and the DC slider lift the whole wave without changing the size of the wiggle. The RMS readout does go up when you add DC, because RMS counts the offset too. Close the window.
 
 4. Save this as `measure_sine.py` and run it. It builds a sine at a chosen amplitude and frequency, computes the period from $T = 1/f$, and measures peak-to-peak and RMS straight from the array, the way you'd measure a scope trace by eye, except exact:
 
@@ -141,7 +141,7 @@ You should see a sine wave between −1 V and +1 V across 0 to 50 ms: one held n
 
    You should see five very different shapes from the same Amplitude setting. Noise never repeats. The pulse at 25% duty looks clearly lopsided next to the pulse at 50%. Close the window.
 
-3. Save this as `waveform_zoo.py` and run it. Besides a sine, it builds square, pulse and triangle from the same time array `t`, using a `phase` variable that counts from 0 to 1 once per cycle, and adds a noise trace:
+3. Save this as `waveform_zoo.py` and run it. Besides a sine (which it doesn't plot), it builds square, pulse and triangle from the same time array `t`, using a `phase` variable that counts from 0 to 1 once per cycle, and adds a noise trace:
 
    ```python
    import numpy as np
@@ -171,7 +171,7 @@ You should see a sine wave between −1 V and +1 V across 0 to 50 ms: one held n
    plt.show()
    ```
 
-   You should see four stacked plots (square, pulse at 25%, triangle and noise) over a 20 ms window. The script also builds `sine` but doesn't plot it.
+   You should see four stacked plots (square, pulse at 25%, triangle and noise) over a 20 ms window.
 
 4. Change the `0.25` in the `pulse` line to `0.5`, then to `0.75`, re-running each time.
 
@@ -187,7 +187,7 @@ You should see a sine wave between −1 V and +1 V across 0 to 50 ms: one held n
 
    ![F3](../assets/img/f03-two-signal.png)
 
-   It starts at Phase Δ = 60° and 100 Hz. Phase Δ is the phase difference $\phi$ between the two signals. Signal B is $\sin(2\pi f t + \phi)$, so it's offset from signal A in time by $t_{\mathrm{delay}} = \frac{\phi}{360^\circ}\,T$. With a positive $\phi$, B runs ahead of A; the readout calls the size of that offset the delay.
+   It starts at Phase Δ = 60° and 100 Hz. Phase Δ is the phase difference $\phi$ between the two signals; the readout shows it as Δφ. Signal A is $\sin(2\pi f t)$ and signal B is $\sin(2\pi f t + \phi)$, so it's offset from signal A in time by $t_{\mathrm{delay}} = \frac{\phi}{360^\circ}\,T$. With a positive $\phi$, B runs ahead of A; the readout calls the size of that offset the delay.
 
 2. Before you move anything, use the formula to predict the delay for a 90° phase difference at 100 Hz.
 

@@ -25,7 +25,7 @@ The course uses music as its running example. A signal is a note, a chord is sig
 
 ## Course path
 
-The guide is split into four movements, the course's name for its units, each followed by a lab; a capstone lab comes last. Work down this table in order. **Read** rows are guide pages: concepts, figures and worked examples, with nothing to run. **Do** rows are labs, where you run everything. The times are estimates.
+The guide pages are split into four movements, the course's name for its units, each followed by a lab; a capstone lab comes last. Work down this table in order. **Read** rows are guide pages: concepts, figures and worked examples, with nothing to run. **Do** rows are labs, where you run everything. The times are estimates.
 
 | # | | What | Time |
 |---|---|---|---|
