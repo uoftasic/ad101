@@ -1,6 +1,6 @@
 # Adding signals
 
-Play three notes on a piano at once and you hear a **chord**: one sound, richer than any single note, built from nothing more exotic than three notes added together. Signals in a circuit combine the same way.
+Play three notes on a piano at once and you hear a **chord**: one sound, richer than any single note, made by adding three notes together. Signals in a circuit combine the same way.
 
 ## Superposition
 

@@ -35,7 +35,9 @@ Open `src/workshop.py` in an editor. Seven functions are stubbed out with `raise
 | 5 | `export_wav` | Writes a signal to a `.wav` file |
 | 5 | `play_audio` | Plays a `.wav` file, with a fallback if there's no audio device |
 
-The script's `run()` function calls them in that order. You'll run it two ways:
+The helpers the docstrings mention (`harmonic_sum`, `house_style`, `spectrum`, `to_db`, `rc_lowpass`) are already imported at the top of the file from `labs/common/adsig.py`, the course's signal library.
+
+The script's `run()` function is already written. It calls your functions in that order and builds three figures from them: the waveform, the spectrum, and a before/after comparison that uses `plot_spectrum` twice. You'll run it two ways:
 
 ```bash
 python3 src/workshop.py --headless   # save PNGs + WAVs into results/, skip live playback
@@ -66,7 +68,7 @@ You should see a traceback ending in `NotImplementedError: TODO: synthesize the 
 
 3. Run `python3 src/workshop.py --headless` again.
 
-You should see the traceback move on and end in `NotImplementedError: TODO: compute the spectrum — see the docstring above`.
+You should see the traceback move on and end in `NotImplementedError: TODO: compute the spectrum — see the docstring above`. The script only saves its plots once the filter in Part 4 works, so you'll check your waveform plot then.
 
 ## Part 3: Compute and plot the spectrum
 
@@ -88,7 +90,7 @@ H(f) = \frac{1}{\sqrt{1+(f/f_c)^2}}\,e^{-j\arctan(f/f_c)}
 f_c = \frac{1}{2\pi RC}
 $$
 
-The first factor is the magnitude and the exponential carries the phase, the same two curves as the Bode plot in Lab 04.
+The first factor is the magnitude and the exponential carries the phase, the same two curves as the Bode plot in Lab 04. $j$ is the imaginary unit ($j^2 = -1$; electrical engineers write $j$ instead of $i$). You don't need to work with complex numbers by hand here: numpy does the arithmetic once you build `H`.
 
 1. Fill in `apply_lowpass`, following the four numbered steps in its docstring: get `freqs`, get the magnitude and phase from `rc_lowpass`, build the complex `H`, then multiply in the frequency domain and transform back with `np.fft.irfft`. It's the same method as the `rc_lowpass_filter` snippet in Lab 04, Part 3.
 
@@ -106,9 +108,9 @@ The first factor is the magnitude and the exponential carries the phase, the sam
 
 1. Fill in `export_wav`. Its docstring gives the normalization to 16-bit integers and the standard-library `wave` calls.
 
-2. Fill in `play_audio`. Try `sounddevice` first, wrapped in `try/except Exception`. If it fails, print the file's path and tell the user to open it from their host's file manager. Playback failing must never crash the script.
+2. Fill in `play_audio`. Try `sounddevice` first, with the imports and the playback all inside one `try/except Exception`. If it fails, print the file's path and tell the user to open it from their host's file manager. Playback failing must never crash the script.
 
-   Neither `sounddevice` nor `soundfile` is installed in the course image. Both are listed as optional in `requirements.txt`; install them with `pip install --user sounddevice soundfile` if you want to try live playback. Without them your fallback runs, and that's fine.
+   Neither `sounddevice` nor `soundfile` (which the docstring uses to read the WAV back) is installed in the course image. Both are listed as optional in `requirements.txt`; install them with `pip install --user sounddevice soundfile` if you want to try live playback. That install goes into the container, not your `workspace` folder, so you'd have to repeat it if you remove the container. Without them your fallback runs, and that's fine. The noVNC desktop may not have a sound device anyway; see [Python in the workbench](reference/python-in-the-workbench.md).
 
 3. Run the headless version:
 
@@ -135,7 +137,7 @@ You should hear the same notes in both files, with the filtered one duller and m
 You're done when:
 
 - `python3 src/workshop.py --headless` runs to the end without a traceback and writes three PNGs and two WAVs into `results/`.
-- The before/after spectrum shows the fundamentals unchanged and the higher harmonics shorter.
+- The before/after spectrum shows the three fundamentals surviving filtering and the higher harmonics shorter.
 - You've heard (or opened) both WAV files and can hear the filter change the chord's timbre but not its pitch.
 
 To compare your work with the reference, run the solution with its own output folder so it doesn't overwrite your files:

@@ -6,9 +6,7 @@ That line is a **signal**. On a chip, the thing that wiggles is a voltage instea
 
 ## The oscilloscope
 
-A microphone turns your hummed note into a voltage that wiggles the same way the air did. An **oscilloscope** is the instrument that draws that voltage against time, the way sheet music lays pitches out along a timeline. When you look at a scope trace, you're reading the "score" of whatever voltage the probe is touching.
-
-This course is about getting fluent at reading that score, and later at writing it.
+A microphone turns your hummed note into a voltage that wiggles the same way the air did. An **oscilloscope** is the instrument that draws that voltage against time, the way sheet music lays pitches out along a timeline. When you look at a scope trace, you're reading the "score" of whatever voltage the probe is touching. This course is about getting fluent at reading that score, and later at writing it.
 
 ## A signal as two lists of numbers
 

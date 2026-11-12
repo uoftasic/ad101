@@ -2,7 +2,7 @@
 
 A metronome that ticks 50/50, on exactly as long as it's off, has a different rhythm from one that snaps and then rests. A pulse train is the same idea: a square wave that isn't 50% on and 50% off. The fraction of each cycle it spends on is its **duty cycle**, and changing the duty cycle changes which harmonics show up in its recipe.
 
-## Duty cycle reshapes the recipe
+## Duty cycle and the recipe
 
 At exactly 50% duty, the recipe from [Timbre and harmonics](guide/timbre-and-harmonics.md) holds: only odd harmonics are present. Move away from 50% in either direction and the **even** harmonics ($n = 2, 4, 6, \ldots$) come back into the spectrum.
 

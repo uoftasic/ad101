@@ -54,7 +54,9 @@ As before, each part pairs an explorer (`python3 src/explore.py --figure <id>`) 
    plt.show()
    ```
 
-   You should see a tangle of two overlapping wiggles in the top plot, and two clear peaks at 440 Hz and 659 Hz in the bottom one. Close the window.
+   `v - v.mean()` removes any DC offset before the FFT, and `np.maximum(..., 1e-6)` keeps `log10` away from zero.
+
+   You should see a tangle of two overlapping wiggles in the top plot, and two clear peaks at 440 Hz and 659 Hz in the bottom one. The dB values are raw FFT magnitudes, so the peaks sit far above 0 dB (60.0 dB and 53.4 dB in the course image). Only the gap matters: E5 has half A4's amplitude, so its peak is about 6 dB lower, as the dB table predicts. Close the window.
 
 2. Open the twin-panel explorer:
 
@@ -62,7 +64,7 @@ As before, each part pairs an explorer (`python3 src/explore.py --figure <id>`) 
    python3 src/explore.py --figure f7
    ```
 
-3. Click through the signals on the left: pure tone, two tones, tone + noise, AM and square. Then switch the "dB scale" and "log freq" boxes on and off.
+3. Click through the signals on the left: pure tone, two tones, tone + noise, AM and square. AM (amplitude modulation) is a 500 Hz tone, the carrier, whose loudness wobbles at 40 Hz. Then switch the "dB scale" and "log freq" boxes on and off.
 
    You should see one spike for the pure tone, two spikes for two tones, a carrier with a sideband on each side for AM, and a comb of odd harmonics for the square. With dB on, small peaks show up that the linear axis hides. Close the window.
 
@@ -74,7 +76,7 @@ As before, each part pairs an explorer (`python3 src/explore.py --figure <id>`) 
    python3 src/explore.py --figure f8
    ```
 
-2. Raise "Noise amp" until the time plot (top) is garbage. Then look for a narrow peak above the noise floor in the spectrum (bottom), and write down its frequency. Lowering the noise again makes both views clearer.
+2. Raise "Noise amp" until the time plot (top) is garbage. Then look for a narrow peak above the noise floor in the spectrum (bottom), and write down its frequency. To read it precisely, hover over the peak: the window's toolbar shows the cursor's x and y coordinates. Lowering the noise again makes both views clearer.
 
 3. Close the window and check your answer, putting your frequency in place of `<Hz>`:
 
@@ -84,7 +86,7 @@ As before, each part pairs an explorer (`python3 src/explore.py --figure <id>`) 
 
    You should see a line starting `Correct! Hidden tone is`. If you see `Not quite`, the message says how far off you were. Read the spike again: the checker accepts anything within 5 Hz.
 
-4. Save this as `hidden_tone.py` and run it. It hunts for a tone the same way, but reads the peak's frequency off the data with `np.argmax` instead of by eye. It also gives the answer away, so do steps 1–3 first:
+4. Save this as `hidden_tone.py` and run it. It hides the same 237 Hz tone as F8 under different noise and reads the peak's frequency off the data with `np.argmax` instead of by eye. That gives the answer away, so do steps 1–3 first:
 
    ```python
    import numpy as np
@@ -134,7 +136,7 @@ You should see pure noise in the time plot and one obvious spike in the spectrum
 
 3. Leave it at 5.3 and tick "Hann window".
 
-You should see the skirts on either side of the peak drop. This is why real measured spectra look soft instead of like textbook sticks. Close the window.
+You should see the skirts (the smeared energy on either side of the peak) drop. This is why real measured spectra look soft instead of like textbook sticks. Close the window.
 
 ## Part 4: Distortion and THD (F9)
 
@@ -144,7 +146,7 @@ You should see the skirts on either side of the peak drop. This is why real meas
    python3 src/explore.py --figure f9
    ```
 
-2. Raise "Gain (into tanh)" and watch the waveform, the harmonic stems and the THD readout.
+2. Raise "Gain (into tanh)" and watch the waveform, the harmonic stems and the THD readout. $\tanh$ is the smooth clipping curve from [Distortion and THD](guide/distortion-and-thd.md); more gain drives the sine harder into it.
 
    You should see soft clipping flatten the peaks, the odd harmonics grow, and THD climb: about 2% at the lowest gain (0.5), about 7% at gain 1, and about 35% at gain 6. Close the window.
 
@@ -193,13 +195,13 @@ You should see the skirts on either side of the peak drop. This is why real meas
    python3 src/explore.py --figure f11
    ```
 
-   The tone is 200 Hz and the sample rate starts at 1000 Hz. The box at the bottom ends in `OK (fs > 2f)`.
+   The tone is 200 Hz and the sample rate starts at 1000 Hz. The box at the bottom ends in `OK (fs > 2f)`. Its `Nyquist` value is half the sample rate.
 
 2. Before you move anything, work out the sample rate below which a 200 Hz tone aliases.
 
-3. Drag "Sample rate (Hz)" below 400 Hz, then set it to 250 Hz.
+3. Drag "Sample rate (Hz)" down slowly until the box changes, then set it to 250 Hz.
 
-   You should see the box switch to `ALIASED → appears as … Hz`, a bogus slow sine appear over the samples, and the spectrum peak fold below Nyquist. At 250 Hz the box reads `ALIASED → appears as 50 Hz`. Close the window.
+   You should see the box switch to `ALIASED → appears as … Hz` once the sample rate drops below 400 Hz, a bogus slow sine appear over the samples, and the spectrum peak fold below Nyquist. At 250 Hz the box reads `ALIASED → appears as 50 Hz`. Close the window.
 
 4. Save this as `aliasing.py` and run it. It samples a 900 Hz tone twice, once above Nyquist and once below:
 
@@ -225,7 +227,7 @@ You should see the skirts on either side of the peak drop. This is why real meas
    plt.show()
    ```
 
-You should see the `fs=5000` points trace a recognizable 900 Hz wiggle, while the `fs=1000` points join into a slow, wrong-looking wave, like the backwards-spinning wheel in [Sampling fast enough](guide/sampling-fast-enough.md).
+You should see the `fs=5000` points trace a recognizable 900 Hz wiggle, while the `fs=1000` points join into a slow, wrong-looking wave with a period of about 10 ms (100 Hz, which is 1000 − 900), like the backwards-spinning wheel in [Sampling fast enough](guide/sampling-fast-enough.md).
 
 ## Finishing
 

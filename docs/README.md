@@ -10,10 +10,10 @@ The course uses music as its running example. A signal is a note, a chord is sig
 
 | | |
 |---|---|
-| Prerequisite | [IC101](https://uoftasic.com/ic101/): Docker and the IIC-OSIC-TOOLS noVNC desktop working, with the shared `workspace` cloned. The labs run inside that workspace. |
+| Prerequisite | [IC101](https://uoftasic.com/ic101/): Docker and the IIC-OSIC-TOOLS noVNC desktop working, with the shared `workspace` repo from IC101 cloned. The labs run inside that workspace. |
 | Math | High-school level: sine, logarithm, basic algebra. No calculus. |
 | Tools | Python, numpy and matplotlib, already inside IIC-OSIC-TOOLS |
-| Time | About 10 hours: roughly 3 hours of reading and 7.5 hours of labs |
+| Time | About 10.5 hours: roughly 3 hours of reading and 7.5 hours of labs |
 
 ## What you'll learn
 
@@ -25,7 +25,7 @@ The course uses music as its running example. A signal is a note, a chord is sig
 
 ## Course path
 
-Work down this table in order. **Read** rows are guide pages: concepts, figures and worked examples, with nothing to run. **Do** rows are labs, where you run everything. The times are estimates.
+The guide is split into four movements, the course's name for its units, each followed by a lab; a capstone lab comes last. Work down this table in order. **Read** rows are guide pages: concepts, figures and worked examples, with nothing to run. **Do** rows are labs, where you run everything. The times are estimates.
 
 | # | | What | Time |
 |---|---|---|---|
@@ -44,5 +44,5 @@ Three reference pages are worth keeping open while you work: [Reading plots](ref
 ## After AD101
 
 - [AD102](https://uoftasic.com/ad102/): Linear Circuits & Fabrication
-- AD103: Nonlinear Circuits (XSchem)
-- AD104: Layout (Magic / Netgen)
+- [AD103](https://uoftasic.com/ad103/): Nonlinear Circuits (XSchem)
+- [AD104](https://uoftasic.com/ad104/): Layout (Magic / Netgen)
