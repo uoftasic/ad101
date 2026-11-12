@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for improving materials for the **UofT ASIC Team**.
+Thanks for improving materials for the UofT ASIC Team.
 
 ## After creating a course from this template
 
@@ -10,11 +10,11 @@ Thanks for improving materials for the **UofT ASIC Team**.
 
 See [TEMPLATE.md](TEMPLATE.md).
 
-## Placeholders
+## Course fields
 
-Only these three are fillable:
+The init script fills only these three fields. This repo's values, with an example from another course:
 
-| Token | Example |
+| This repo | Example |
 |-------|---------|
 | `ad101` | `dd103` |
 | `AD101 — Signals` | `DD103 — RTL on FPGAs & ASICs` |
@@ -29,14 +29,14 @@ Only these three are fillable:
 | Docs pages | kebab-case `.md` under `docs/` |
 | Lab IDs | `lab-NN-short-name` |
 | Adding a doc page | add `.md` under `docs/`, link in `docs/_sidebar.md` |
-| Adding a lab | `labs/<id>/` + `docs/labs/<id>-overview.md` + sidebar entry |
+| Adding a lab | `labs/<id>/` + `docs/labs/<id>-overview.md` + sidebar entry + a row in the Course path on `docs/README.md` |
 | Binaries | small images in `docs/assets/`; large data → Git LFS or external |
 
 ## Docs vs labs
 
-- **`docs/`** — published site. Lab *writeups* in `docs/labs/`.
-- **`labs/`** — runnable HDL / Python / data. Each `labs/<id>/README.md` links to its Docsify writeup.
-- **`scripts/`** — utilities; list entry points in `scripts/README.md`.
+- `docs/` is the published site. Guide pages in `docs/guide/` are for reading only; every command a student runs belongs in a lab writeup in `docs/labs/`.
+- `labs/` holds runnable HDL, Python and data. Each `labs/<id>/README.md` links to its Docsify writeup.
+- `scripts/` holds utilities; list entry points in `scripts/README.md`.
 
 Do not put grades, solution keys, or PII under `docs/`. Prefer `labs/**/solutions/` and gitignore them on student forks when needed.
 
