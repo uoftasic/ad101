@@ -40,7 +40,7 @@ As before, each part pairs an explorer (`python3 src/explore.py --figure <id>`) 
 
    ![F12](../assets/img/f12-bode-explorer.png)
 
-   It starts at R = 1000 Ω and C = 100 nF. The box at the bottom reads `fc = 1592 Hz`.
+   It starts at R = 1000 Ω and C = 100 nF. The box at the bottom starts with `fc = 1592 Hz`.
 
 2. Check that number against $f_c = 1/(2\pi RC)$ by hand.
 
@@ -50,7 +50,7 @@ As before, each part pairs an explorer (`python3 src/explore.py --figure <id>`) 
 
 4. Move R and C and watch $f_c$ follow $1/(2\pi RC)$. Then set R = 2000 Ω and C = 50 nF (double R, halve C).
 
-   You should see `fc = 1592 Hz` again: only the product $RC$ sets the cutoff. Close the window.
+   You should see the box start with `fc = 1592 Hz` again: only the product $RC$ sets the cutoff. Close the window.
 
 5. Save this as `bode.py` and run it. It draws a Bode plot from nothing but the two formulas:
 
