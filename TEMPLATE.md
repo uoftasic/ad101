@@ -1,12 +1,12 @@
 # Template bootstrap (UofT ASIC)
 
-Create a course or lab-notes repo from this template under **`uoftasic`**, fill the three course fields, enable Pages.
+Create a course or lab-notes repo from this template under `uoftasic`, fill in the three course fields, and enable Pages.
 
 ## Fixed vs fillable
 
 | Item | Value |
 |------|--------|
-| GitHub org | `uoftasic` (hardcoded — do not change) |
+| GitHub org | `uoftasic` (hardcoded; do not change) |
 | Team | UofT ASIC Team |
 
 | Token | Meaning | Example |
@@ -31,11 +31,11 @@ Dry run: add `--dry-run`.
 - [ ] Repo created under `uoftasic` with id matching `ad101`
 - [ ] `scripts/init-template.py` run (or manual replace of the three tokens)
 - [ ] Pushed to `main`
-- [ ] Pages: **Settings → Pages → `main` / `/docs`**
+- [ ] Pages: Settings → Pages → `main` / `/docs`
 - [ ] Live: `https://uoftasic.com/<course-id>/` (org Pages; hub: https://edu.uoftasic.com/)
-- [ ] Sidebar navigates Home → Getting started → Lab 01
+- [ ] Sidebar starts Home → Getting started, and follows the Course path order
 - [ ] Math + sample figure render on the home page
-- [ ] (Maintainers of this template) **Settings → Template repository** enabled
+- [ ] (Maintainers of this template) Settings → Template repository enabled
 
 ## Naming
 
