@@ -19,7 +19,7 @@ Lab package: [`labs/lab-03-spectrum-detective/`](https://github.com/uoftasic/ad1
 
 Time: about 1.5 hours, not counting the optional Part 5.
 
-As before, each part pairs an explorer (`python3 src/explore.py --figure <id>`) with a snippet you save as a new `.py` file in this folder and run with `python3 <file>.py`.
+As before, most parts pair an explorer (`python3 src/explore.py --figure <id>`) with a snippet you save as a new `.py` file in this folder and run with `python3 <file>.py`.
 
 ## Part 1: Your first FFT (F7)
 
@@ -65,7 +65,7 @@ How does the same signal look in time and in frequency?
    <details>
    <summary>Answer</summary>
 
-   A ratio of ×0.5 is about −6 dB, so E5 should sit about 6 dB below A4. The plot shows 60.0 − 53.4 = 6.6 dB. The extra 0.6 dB is leakage, which the optional Part 5 shows: in the 0.2 s window, 440 Hz fits a whole number of cycles (88) and 659 Hz doesn't (131.8). Change `659` to `660` in the script and the gap comes out at 6.0 dB.
+   A ratio of ×0.5 is about −6 dB, so E5 should sit about 6 dB below A4. The plot shows 60.0 − 53.4 = 6.6 dB. The extra 0.6 dB is leakage, from [Finding a quiet note](guide/finding-a-quiet-note.md) (the optional Part 5 shows it on F10): in the 0.2 s window, 440 Hz fits a whole number of cycles (88) and 659 Hz doesn't (131.8). Change `659` to `660` in the script and the gap comes out at 6.0 dB.
 
    </details>
 
@@ -153,7 +153,7 @@ How much new energy does clipping put into the harmonics?
 
 2. Raise "Gain (into tanh)" and watch the waveform, the harmonic stems and the THD readout. $\tanh$ is the smooth clipping curve from [Distortion and THD](guide/distortion-and-thd.md); more gain drives the sine harder into it.
 
-   You should see soft clipping flatten the peaks, the odd harmonics grow, and THD climb: about 2% at the lowest gain (0.5), about 7% at gain 1, and about 35% at gain 6. Close the window.
+   You should see soft clipping flatten the peaks, the odd harmonics grow, and THD climb: about 2% at the lowest gain (0.5) and about 35% at gain 6. Set the gain to 1 and write down the THD it reads. Close the window.
 
 3. Save this as `clip_thd.py`, but don't run it yet. It clips a sine at three gains, 1, 3 and 8, and measures THD from the spectrum:
 
@@ -182,7 +182,7 @@ How much new energy does clipping put into the harmonics?
        print(f"gain={gain:>4.1f}   THD = {thd*100:5.1f}%")
    ```
 
-   Before you run it, use what F9 showed you in step 2 to predict the THD it will print at gain 1, and whether gain 3 and gain 8 will print more or less. Write it down, then run it.
+   Before you run it, predict the THD it will print at gain 1 from your F9 reading, and whether gain 3 and gain 8 will print more or less. Write it down, then run it.
 
    You should see:
 
@@ -192,7 +192,7 @@ How much new energy does clipping put into the harmonics?
    gain= 8.0   THD =  36.0%
    ```
 
-   The script sums harmonics 2 to 5 and F9 sums harmonics 2 to 7, so the two can differ slightly at high gain.
+   F9 at gain 1 reads `THD = 6.7%`, the same as the script. The script sums harmonics 2 to 5 and F9 sums harmonics 2 to 7, so the two can differ slightly at high gain.
 
 ## Part 4: Sampling and aliasing (F11)
 
@@ -238,7 +238,7 @@ How slowly can you sample a tone before it shows up at the wrong frequency, and 
    plt.show()
    ```
 
-   At 250 Hz, F11 showed the 200 Hz tone as 50 Hz, which is 250 − 200. Use the same pattern to predict the frequency the `fs=1000` points will appear to have, and write it down. Then run the script.
+   At 250 Hz, F11 showed the 200 Hz tone as 50 Hz, which is 250 − 200. A tone between half the sample rate and the sample rate shows up at the sample rate minus the tone. Use that to predict the frequency the `fs=1000` points will appear to have, and write it down. Then run the script.
 
 You should see the `fs=5000` points trace a recognizable 900 Hz wiggle, while the `fs=1000` points join into a slow, wrong-looking wave with a period of about 10 ms (100 Hz, which is 1000 − 900), like the backwards-spinning wheel in [Sampling fast enough](guide/sampling-fast-enough.md).
 
