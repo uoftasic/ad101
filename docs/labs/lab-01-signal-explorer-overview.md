@@ -1,39 +1,41 @@
 # Lab 01: Signal explorer
 
-You'll set up AD101 in your workspace, write your first signal scripts, and use three slider explorers (F1–F3) to measure a sine's period, peak-to-peak and RMS, compare common waveform shapes, and turn a phase difference into a time delay.
+You'll load AD101 into your workspace, write your first signal scripts, and use three slider explorers (F1–F3) to measure a sine's period, peak-to-peak and RMS, compare common waveform shapes, and turn a phase difference into a time delay. Before each script runs, you'll write down the numbers you expect it to print.
 
 Lab package: [`labs/lab-01-signal-explorer/`](https://github.com/uoftasic/ad101/tree/main/labs/lab-01-signal-explorer)
 
 ## Before you start
 
-- Finish [IC101](https://uoftasic.com/ic101/): the noVNC desktop works and your `workspace` clone is set up. If IC101's smoke test (`/foss/designs/scripts/smoke_test.sh`, run in a terminal in the desktop) still passes, you're ready.
 - Read [Getting started](guide/getting-started.md) and Movement I: [What is a signal?](guide/what-is-a-signal.md), [Pitch and loudness](guide/pitch-and-loudness.md), [A family of waveforms](guide/a-family-of-waveforms.md) and [Two voices in time](guide/two-voices-in-time.md).
 - Keep [Reading plots](reference/reading-plots.md) open as a cheat sheet.
+- Have a sheet of paper or a text file for your predictions.
 
 Time: about 1.5 hours.
 
 ### How the labs work
 
-Parts 3 to 5 each pair an explorer with a snippet. Part 1 is setup, and Part 2 is a snippet on its own.
+Parts 3 to 5 each pair an explorer with a snippet. Part 1 loads the course, and Part 2 is a snippet on its own.
 
 - An **explorer** is a plot window with sliders. You open one with `python3 src/explore.py --figure <id>`. The terminal stays busy until you close the window.
 - A **snippet** is a short Python script. Save it as a new `.py` file in the lab folder and run it with `python3 <file>.py`. The steps suggest a file name, but any name works. Snippets only use numpy and matplotlib. The desktop has `gedit`, `nano` and `vim` for editing.
 
-Run explorers and snippets from the lab folder (Part 2 takes you there). If you open a new terminal partway through, run `. /foss/designs/common/.designinit`, `mod ad101` and `cd labs/lab-01-signal-explorer` first. Part 1 explains the first two.
+Run explorers and snippets from the lab folder (Part 2 takes you there). If you open a new terminal partway through, run `. /foss/designs/common/.designinit`, `mod ad101` and `cd labs/lab-01-signal-explorer` first. Your snippet files are under `/foss/designs`, so they're in your `workspace` folder on the host and survive a container restart.
 
-Everything under `/foss/designs` lives in your `workspace` folder on the host, so your snippet files survive a container restart.
+## Part 1: Load the course
 
-## Part 1: Set up AD101
+If you haven't set up the workbench, do [IC101 Lab 03](https://uoftasic.com/ic101/#/labs/lab-03-launch-the-workbench-overview) first.
 
-1. Start the noVNC desktop as you did in IC101 (`./scripts/start_vnc.sh` from your `workspace` folder on the host), and open a terminal in the desktop.
+1. Start the desktop from your `workspace` folder on the host (`./scripts/start_vnc.sh`, or `scripts\start_vnc.bat` on Windows), open it in your browser as in IC101, and open a terminal in the desktop.
 
-2. Load the workspace environment and get AD101. As in IC101, `.designinit` sets up the shell and defines the `mod` command:
+2. Load the workspace environment and get AD101:
 
    ```bash
    . /foss/designs/common/.designinit
    mod add ad101    # first time only: clones github.com/uoftasic/ad101 into modules/ad101
-   mod ad101        # cd into /foss/designs/modules/ad101
+   mod ad101        # every time after that
    ```
+
+   You should see `cwd: /foss/designs/modules/ad101` after `mod ad101`.
 
    If you'd rather clone on the host, run this from the folder that contains your `workspace` clone instead of `mod add ad101`, then run `mod ad101` in the desktop terminal as above. It ends up in the same folder:
 
@@ -42,15 +44,34 @@ Everything under `/foss/designs` lives in your `workspace` folder on the host, s
    git clone https://github.com/uoftasic/ad101.git
    ```
 
-3. Check the Python environment:
+3. Check the Python environment, including the numpy and matplotlib versions:
 
    ```bash
    python3 scripts/check_env.py
    ```
 
-You should see `OK` lines for numpy, matplotlib and the GUI backend (the part of matplotlib that opens plot windows), then `OK   adsig smoke: peak ≈ 100 Hz (expect ~100)` and `=== All checks passed ===`. (`adsig` is the course's small signal library in `labs/common/`; the explorers use it.)
+   You should see:
 
-If it prints `WARN no interactive GUI backend`, the explorers won't be able to open windows. Make sure you ran it in the noVNC desktop terminal, not a terminal on your host, then see "If the GUI won't open" in [Python in the workbench](reference/python-in-the-workbench.md).
+   ```text
+   === AD101 environment check ===
+   Python: 3.12.3  (/usr/bin/python3)
+   OK   numpy 2.5.2
+   OK   matplotlib 3.11.1
+   OK   matplotlib backend: qtagg
+   OK   interactive GUI backend available
+   OK   adsig smoke: peak ≈ 100 Hz (expect ~100)
+
+   === All checks passed ===
+   ```
+
+   The outputs printed in Labs 01–05 were checked with these numpy and matplotlib versions in the course image. The backend line names the GUI toolkit matplotlib found, the part of matplotlib that opens plot windows. `adsig` is the course's small signal library in `labs/common/`; the explorers use it.
+
+| What you see | What to do |
+|---|---|
+| `WARN no interactive GUI backend (Agg / headless)` | The explorers can't open windows. Check that you ran it in a terminal in the noVNC desktop, not on your host, then see "If the GUI won't open" in [Python in the workbench](reference/python-in-the-workbench.md). |
+| `FAIL numpy` or `FAIL matplotlib` | Run `pip install --user numpy matplotlib` in the desktop terminal, then run `check_env.py` again. |
+
+For anything else about the desktop, Docker or `mod`, see IC101's [Troubleshooting](https://uoftasic.com/ic101/#/reference/troubleshooting) page.
 
 ## Part 2: Plot your first signal
 
