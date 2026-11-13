@@ -64,7 +64,7 @@ If you haven't set up the workbench, do [IC101 Lab 03](https://uoftasic.com/ic10
    === All checks passed ===
    ```
 
-   The outputs printed in Labs 01–05 were checked with these numpy and matplotlib versions in the course image. The backend line names the GUI toolkit matplotlib found, the part of matplotlib that opens plot windows. `adsig` is the course's small signal library in `labs/common/`; the explorers use it.
+   The outputs printed in Labs 01–05 were checked with these numpy and matplotlib versions, in the IIC-OSIC-TOOLS 2026.08 image the workbench runs. If yours differ, a printed number that disagrees with these pages may come from the version rather than your code. The backend line names the GUI toolkit matplotlib found, the part of matplotlib that opens plot windows. `adsig` is the course's small signal library in `labs/common/`; the explorers use it.
 
 | What you see | What to do |
 |---|---|
@@ -118,7 +118,7 @@ How do a sine's four knobs, amplitude, frequency, phase and DC offset, change it
 
    You should see `T = 10.00 ms   f = 100 Hz` and `pk-pk = 2.00 V   RMS = 0.707 V`. The dashed vertical line marks one period.
 
-3. Drag Amplitude, Freq (Hz), Phase (°) and DC offset one at a time. Before each drag, predict what the readout will do from $T = 1/f$, peak-to-peak $= 2A$ and $\mathrm{RMS} = A/\sqrt{2}$.
+3. Drag Amplitude, Freq (Hz), Phase (°) and DC offset one at a time. Before each drag, say what you expect the readout to do. $T = 1/f$, peak-to-peak $= 2A$ and $\mathrm{RMS} = A/\sqrt{2}$ cover Amplitude and Freq; for Phase and DC offset, make a guess.
 
    You should see the period marker track $T = 1/f$, RMS stay at about 0.707× the amplitude while DC is 0, Phase slide the wave sideways, and the DC slider lift the whole wave without changing the size of the wiggle. With DC offset at 0.5 and the other sliders at their starting values, the box reads `pk-pk = 2.00 V   RMS = 0.866 V`.
 
@@ -127,7 +127,7 @@ How do a sine's four knobs, amplitude, frequency, phase and DC offset, change it
    <details>
    <summary>Answer</summary>
 
-   RMS is the square root of the mean of $v^2$ (the `rms` line in the script in step 4). A DC offset shifts every sample by the same amount, which changes $v^2$, so RMS counts the offset. Peak-to-peak is the maximum minus the minimum, and the same shift cancels out of that.
+   RMS is the square root of the mean of $v^2$ over the window. A DC offset shifts every sample by the same amount, which changes $v^2$, so RMS counts the offset. Peak-to-peak is the maximum minus the minimum, and the same shift cancels out of that.
 
    </details>
 
@@ -165,7 +165,7 @@ How do a sine's four knobs, amplitude, frequency, phase and DC offset, change it
 
 5. Pick your own values of `A` and `f`. Write down the T, pk-pk and RMS you expect, then change the two values in the script and re-run. Keep your numbers and the printout for Finishing.
 
-   You should see your predicted numbers in the printout. If they disagree, find out why before you move on.
+   You should see your predicted numbers in the printout. A difference in the last digit can come from the sampling (see the question below). If a number is further off, recheck your arithmetic and your edit before you move on.
 
    If a number is off in its last digit, why?
 
@@ -240,7 +240,7 @@ How long is a phase difference in milliseconds, and what does it do to the sum o
 
    ![F3](../assets/img/f03-two-signal.png)
 
-   It starts at Phase Δ = 60° and 100 Hz. Phase Δ is the phase difference $\phi$ between the two signals; the readout shows it as Δφ. Signal A is $\sin(2\pi f t)$ and signal B is $\sin(2\pi f t + \phi)$, so it's offset from signal A in time by $t_{\mathrm{delay}} = \frac{\phi}{360^\circ}\,T$. With a positive $\phi$, B runs ahead of A; the readout calls the size of that offset the delay.
+   It starts at Phase Δ = 60° and 100 Hz. Phase Δ is the phase difference $\phi$ between the two signals; the readout shows it as Δφ. Signal A is $\sin(2\pi f t)$ and signal B is $\sin(2\pi f t + \phi)$, so it's offset from signal A in time by $t_{\mathrm{delay}} = \frac{\phi}{360^\circ}\,T$. With a positive $\phi$, B runs ahead of A by $t_{\mathrm{delay}}$, and the readout shows that time as `delay`.
 
 2. Before you move anything, use the formula to predict the delay for a 90° phase difference at 100 Hz, and write it down.
 
