@@ -60,6 +60,8 @@ You should see a traceback ending in `NotImplementedError: TODO: synthesize the 
 
 ## Part 1: Build and plot the chord
 
+How do you turn three notes into one harmonic-rich chord, and plot it?
+
 1. Fill in `synthesize_chord`. Its docstring has you build each note with `harmonic_sum(t, fundamental=freq, harmonics=[1, 3, 5, 7, 9])`, add the three notes, and divide by the number of notes so the result stays roughly within ±1. The notes are `CHORD_NOTES` at the top of the file: C4, E4 and G4 at 261.6, 329.6 and 392.0 Hz.
 
    This is the chord from Lab 02, Part 1, except that each note now has odd harmonics, like the square wave from Lab 02, Part 2. Those high harmonics give the filter in Part 3 something to change audibly.
@@ -72,6 +74,8 @@ You should see the traceback move on and end in `NotImplementedError: TODO: comp
 
 ## Part 2: Compute and plot the spectrum
 
+How do you get from the chord's samples to its spectrum in dB?
+
 1. Fill in `compute_spectrum`. It calls `spectrum(v, fs)` from `common.adsig`, which wraps `numpy.fft.rfft` the same way your Lab 03 snippets did by hand.
 
 2. Fill in `plot_spectrum`: magnitude in dB (use `to_db`) against frequency, with the x-axis limited to something readable for a chord. The docstring suggests `ax.set_xlim(0, 3000)`.
@@ -81,6 +85,8 @@ You should see the traceback move on and end in `NotImplementedError: TODO: comp
 You should see the error move on to `NotImplementedError: TODO: apply the RC low-pass — see the docstring above`.
 
 ## Part 3: Filter the chord
+
+What does an RC low-pass do to the chord's spectrum?
 
 To filter a signal in the frequency domain, you transform it, multiply by the filter's response $H(f)$, and transform back. For the RC low-pass:
 
@@ -94,9 +100,9 @@ The first factor is the magnitude and the exponential carries the phase, the sam
 
 1. Fill in `apply_lowpass`, following the four numbered steps in its docstring: get `freqs`, get the magnitude and phase from `rc_lowpass` (the phase comes back in degrees, so convert it with `np.deg2rad`), build the complex `H`, then multiply in the frequency domain and transform back with `np.fft.irfft`. It's the same method as the `rc_lowpass_filter` snippet in Lab 04, Part 3.
 
-2. Run `python3 src/workshop.py --headless` again.
+2. `FILTER_R` and `FILTER_C` at the top of `src/workshop.py` set the filter to R = 1 kΩ and C = 150 nF. Work out $f_c$ and write it down. Then run `python3 src/workshop.py --headless` again.
 
-   You should see `Filter cutoff fc = 1061 Hz` (the scaffold uses R = 1 kΩ and C = 150 nF), then three `wrote …` lines for `results/workshop-waveform.png`, `results/workshop-spectrum.png` and `results/workshop-before-after.png`. The run then stops at `NotImplementedError: TODO: export a WAV file — see the docstring above`.
+   You should see `Filter cutoff fc = 1061 Hz`, then three `wrote …` lines for `results/workshop-waveform.png`, `results/workshop-spectrum.png` and `results/workshop-before-after.png`. The run then stops at `NotImplementedError: TODO: export a WAV file — see the docstring above`.
 
 3. Open the three PNGs and check them:
 
@@ -105,6 +111,8 @@ The first factor is the magnitude and the exponential carries the phase, the sam
    - Before/after: the three fundamental peaks survive filtering, and the higher-harmonic peaks are visibly shorter after filtering than before.
 
 ## Part 4: Export and listen
+
+Can you hear what the filter did?
 
 1. Fill in `export_wav`. Its docstring gives the normalization to 16-bit integers and the standard-library `wave` calls.
 
@@ -130,15 +138,20 @@ The first factor is the magnitude and the exponential carries the phase, the sam
 
 5. Listen to `chord-unfiltered.wav` and `chord-filtered.wav`. If playback doesn't work over your noVNC session, open them from your host machine: they're in `workspace/modules/ad101/labs/lab-05-signal-workshop/results/`.
 
-You should hear the same notes in both files, with the filtered one duller and more muffled, not different in pitch.
+   You should hear the same notes in both files, with the filtered one duller and more muffled, not different in pitch.
+
+   Why does the filter change the chord's timbre but not its pitch?
+
+   <details>
+   <summary>Answer</summary>
+
+   Pitch is set by the fundamentals, 261.6, 329.6 and 392.0 Hz, all well below $f_c$ = 1061 Hz, so they come through almost unchanged; that's the three peaks surviving in your before/after spectrum from Part 3. Timbre is the recipe of higher harmonics on top of each note, and the low-pass turns those down.
+
+   </details>
 
 ## Finishing
 
-You're done when:
-
-- `python3 src/workshop.py --headless` runs to the end without a traceback and writes three PNGs and two WAVs into `results/`.
-- The before/after spectrum shows the three fundamentals surviving filtering and the higher harmonics shorter.
-- You've heard (or opened) both WAV files and can hear the filter change the chord's timbre but not its pitch.
+You're done when `python3 src/workshop.py --headless`, running your own seven functions, finishes without a traceback and writes three PNGs and two WAVs into `results/`, and your before/after spectrum shows the three fundamentals surviving and the higher harmonics shorter.
 
 To compare your work with the reference, run the solution with its own output folder so it doesn't overwrite your files:
 
@@ -146,4 +159,12 @@ To compare your work with the reference, run the solution with its own output fo
 python3 solutions/workshop_solution.py --headless --out results/solution
 ```
 
-That's the end of AD101. Next course: [AD102: Linear Circuits & Fabrication](https://uoftasic.com/ad102/).
+### Questions
+
+1. Why does the filter change the chord's timbre but not its pitch? (Answered in Part 4, step 5.)
+
+### Submit
+
+Nothing to submit.
+
+Next on the [Course path](README.md#course-path): this was the last step of AD101. Carry on with [AD102: Linear Circuits & Fabrication](https://uoftasic.com/ad102/).
