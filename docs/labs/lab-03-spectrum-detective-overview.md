@@ -155,7 +155,7 @@ How much new energy does clipping put into the harmonics?
 
    You should see soft clipping flatten the peaks, the odd harmonics grow, and THD climb: about 2% at the lowest gain (0.5) and about 35% at gain 6. Set the gain to 1 and write down the THD it reads. Close the window.
 
-3. Save this as `clip_thd.py`, but don't run it yet. It clips a sine at three gains, 1, 3 and 8, and measures THD from the spectrum:
+3. Save this as `clip_thd.py`, but don't run it yet. It clips a sine at three gains, 1, 3 and 8, and measures THD from the spectrum. It only prints; no plot window opens:
 
    ```python
    import numpy as np
@@ -214,7 +214,7 @@ How slowly can you sample a tone before it shows up at the wrong frequency, and 
 
    You should see the box switch to `ALIASED → appears as … Hz` once the sample rate drops below 400 Hz, a bogus slow sine appear over the samples, and the spectrum peak fold below Nyquist. At 250 Hz the box reads `ALIASED → appears as 50 Hz`. Close the window.
 
-4. Save this as `aliasing.py`, but don't run it yet. It samples a 900 Hz tone twice, once above Nyquist and once below:
+4. Save this as `aliasing.py`, but don't run it yet. It samples a 900 Hz tone twice, once above Nyquist and once below. Here "Nyquist" means the Nyquist rate, $2f$ = 1800 Hz, not F11's `Nyquist` value of $f_s/2$; [Sampling fast enough](guide/sampling-fast-enough.md) explains the two:
 
    ```python
    import numpy as np
