@@ -7,9 +7,21 @@ Optimize for clear student learning paths, not template maintenance. Prefer conc
 ## Goals
 
 - Teach IC development skills: RTL (SystemVerilog/Verilog), simulation, synthesis, FPGA bring-up, and/or open ASIC flows (e.g. Yosys, LibreLane, SKY130) as the course requires.
-- Keep each lab self-contained: what you'll build, before you start (guide pages to read, setup), a time estimate, numbered parts with numbered steps that each end in a "You should see …" check, and a finishing section that says how to tell you're done.
+- Keep each lab self-contained: what you'll build, before you start (guide pages to read, setup), a time estimate, numbered parts that each open with the question they answer and end in a "You should see …" check, and Finishing.
+- In every lab, at least one required part has the student produce something: edit a file, write code, or work out a number and write it down before a script prints it. Ask for predictions wherever a student can make one.
+- Keep observed numbers in the "You should see …" checks. When a check would also explain *why*, make the explanation a question at that step, with the answer in a collapsed `<details><summary>Answer</summary> … </details>` block (blank lines inside, so Markdown and math render).
+- Put optional parts at the end of the lab, mark them "(optional)" in the header, and leave them out of the time estimate or give their time separately. No required part may depend on an optional one.
 - Separate what students read (`docs/`) from what they run (`labs/`, `scripts/`, `notebooks/`). Inside `docs/`, guide pages are reading only; every command a student runs belongs in a lab writeup.
-- Keep the Course path table on `docs/README.md` current: numbered rows, each either Read (guide pages) or Do (one lab), with time estimates, in the order a student should work. `docs/_sidebar.md` follows the same order.
+- Keep the Course path table on `docs/README.md` current, in the order a student should work, and in the format every course uses:
+
+  ```
+  | # | | What | Time |
+  |---|---|---|---|
+  | 1 | Read | [Page](guide/page.md) · [Page](guide/page.md) | 45 min |
+  | 2 | Do | [Lab 01: Title](labs/lab-01-...-overview.md). One sentence on what you'll do. | 1.5 h |
+  ```
+
+  Read and Do are plain text, lab titles use a colon, every Do row ends with one sentence on what the student will do, and the row times add up to the total on the home page. Lab page titles (`# Lab 01: Title`) and `docs/_sidebar.md` entries use the same "Lab 01: Title" form, and the sidebar follows the Course path order.
 - Never publish grades, solution keys, or PII under `docs/`. Put keys in `labs/**/solutions/` and gitignore them on student forks when policy requires.
 
 ## Layout (do not fight this)
@@ -36,8 +48,13 @@ Lab IDs: `lab-NN-short-name` (e.g. `lab-02-counter-sv`).
    - `src/` — HDL / Python / entrypoints
    - `data/` — small inputs (large binaries → Git LFS or external)
    - `requirements.txt` or tool notes when needed
-2. Add `docs/labs/<lab-id>-overview.md` with: a 2–3 line summary of what the student builds or measures, Before you start, Time, Part 1…N (numbered steps, each part ending in a "You should see …" check), and Finishing.
-3. Add a Do row to the Course path in `docs/README.md` and link the writeup from `docs/_sidebar.md` in the same position (and from `_navbar.md` only if it belongs in top nav).
+2. Add `docs/labs/<lab-id>-overview.md`, titled `# Lab NN: Title`, with: a 2–3 line summary of what the student builds or measures, Before you start, Time, Part 1…N (each opening with the question it answers, with numbered steps and a "You should see …" check), and Finishing. Finishing has three things, in this order:
+   1. "You're done when …": one checkable line tied to the student's own work, not to output the shipped package prints anyway.
+   2. Questions, if there are any: each with a collapsed answer or a pointer to the step that answers it.
+   3. Submit: what to submit, or "Nothing to submit."
+
+   After those come Going further (optional), if any, and last a `Next on the [Course path](README.md#course-path): …` line.
+3. Add a Do row to the Course path in `docs/README.md`, in the format above, and link the writeup from `docs/_sidebar.md` in the same position (and from `_navbar.md` only if it belongs in top nav).
 4. Cross-link: writeup → GitHub `labs/<lab-id>/`; package README → `docs/labs/<lab-id>-overview.md`.
 
 Writeups teach; packages execute. Don't dump long HDL into Docsify pages; reference files under `labs/`. Keep package READMEs short: a link to the writeup, how to run, the commands or make targets, and the file list.
