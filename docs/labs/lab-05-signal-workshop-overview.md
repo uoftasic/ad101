@@ -153,12 +153,6 @@ Can you hear what the filter did?
 
 You're done when `python3 src/workshop.py --headless`, running your own seven functions, finishes without a traceback and writes three PNGs and two WAVs into `results/`, and your before/after spectrum shows the three fundamentals surviving and the higher harmonics shorter.
 
-To compare your work with the reference, run the solution with its own output folder so it doesn't overwrite your files:
-
-```bash
-python3 solutions/workshop_solution.py --headless --out results/solution
-```
-
 ### Questions
 
 1. Why does the filter change the chord's timbre but not its pitch? (Answered in Part 4, step 5.)
@@ -166,5 +160,11 @@ python3 solutions/workshop_solution.py --headless --out results/solution
 ### Submit
 
 Nothing to submit.
+
+To compare your work with the reference, run the solution with its own output folder so it doesn't overwrite your files:
+
+```bash
+python3 solutions/workshop_solution.py --headless --out results/solution
+```
 
 Next on the [Course path](README.md#course-path): this was the last step of AD101. Carry on with [AD102: Linear Circuits & Fabrication](https://uoftasic.com/ad102/).
