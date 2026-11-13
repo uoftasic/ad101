@@ -1,6 +1,6 @@
 # Lab 02: Harmonic builder
 
-You'll add sines together into a chord, build a square wave out of odd harmonics while its spectrum updates beside it, and watch the duty cycle of a pulse train switch even harmonics on and off.
+You'll add sines together into a chord, build a square wave out of odd harmonics while its spectrum updates beside it, and watch the duty cycle of a pulse train switch even harmonics on and off. Before the scripts run, you'll work out the harmonic amplitudes and frequencies they should show.
 
 Lab package: [`labs/lab-02-harmonic-builder/`](https://github.com/uoftasic/ad101/tree/main/labs/lab-02-harmonic-builder)
 
@@ -21,6 +21,8 @@ Time: about 1 hour.
 As in Lab 01, each part pairs an explorer (`python3 src/explore.py --figure <id>`) with a snippet you save as a new `.py` file in this folder and run with `python3 <file>.py`.
 
 ## Part 1: Build a chord
+
+What does the sum of three notes look like in time?
 
 1. Save this as `chord.py` and run it. It adds the three notes of a C-major triad, sample by sample:
 
@@ -52,9 +54,11 @@ As in Lab 01, each part pairs an explorer (`python3 src/explore.py --figure <id>
    plt.show()
    ```
 
-You should see the three notes in the top panel and their sum in black in the bottom panel. Look at the bottom trace: you can't tell by eye that it's three sines. That's the blind spot Movement III fixes.
+You should see the three notes in the top panel and their sum in black in the bottom panel. Look at the bottom trace: you can't tell by eye that it's three sines. Movement III gives you a tool that can.
 
 ## Part 2: Build a square wave from sines (F4/F5)
+
+Which sines, at which amplitudes, add up to a square wave?
 
 1. Open the Fourier assembler. F4 (the waveform) and F5 (its spectrum) share one window:
 
@@ -64,19 +68,26 @@ You should see the three notes in the top panel and their sum in black in the bo
 
    ![F4/F5](../assets/img/f04-f05-harmonic-builder.png)
 
-2. All five harmonics (n=1, 3, 5, 7, 9) start ticked, with amplitudes set to $4/(n\pi)$. Untick 3, 5, 7 and 9 so only n=1 is left.
+2. All five harmonics (n=1, 3, 5, 7, 9) start ticked, with amplitudes set to $4/(n\pi)$, rounded to the sliders' 0.02 steps (A1 reads 1.28). Untick 3, 5, 7 and 9 so only n=1 is left.
 
    You should see a plain sine in F4 and a single stem in F5.
 
-3. Tick 3, 5, 7 and 9 back on, one at a time.
+3. You're about to tick 3, 5, 7 and 9 back on, one at a time. First, predict: as you add harmonics, will the overshoot at the square's edges shrink away? Write down your answer, then tick them on.
 
-   You should see the sum walk toward the gray ideal square, with an overshoot near each edge that doesn't go away. The F5 stems update in step with the waveform and sit on the dashed $4/(n\pi)$ curve, which is the fingerprint of a square.
+   You should see the sum walk toward the gray ideal square, with an overshoot near each edge that doesn't go away. The F5 stems update in step with the waveform and sit on the dashed $4/(n\pi)$ curve, the square-wave recipe from [Timbre and harmonics](guide/timbre-and-harmonics.md).
+
+   <details>
+   <summary>Answer</summary>
+
+   No. The overshoot is Gibbs ringing, and it doesn't go away however many harmonics you add. It's the result of approximating a sharp edge with a finite number of sines, and a real digital clock on an oscilloscope shows the same shape.
+
+   </details>
 
 4. Drag the amplitude sliders (A1 to A9) toward and away from $4/(n\pi)$.
 
    You should see the sum stop looking like a square as the stems move off the dashed curve, and return to one as they move back. Close the window.
 
-5. Save this as `square_from_sines.py` and run it:
+5. Save this as `square_from_sines.py`, but don't run it yet. It prints the amplitude it uses for each harmonic:
 
    ```python
    import numpy as np
@@ -89,8 +100,9 @@ You should see the three notes in the top panel and their sum in black in the bo
    harmonics = [1, 3, 5, 7, 9]       # odd harmonics only
    built = np.zeros_like(t)
    for n in harmonics:
-       amplitude = 4 / (n * np.pi)   # the recipe from the formula above
+       amplitude = 4 / (n * np.pi)   # the square-wave recipe
        built += amplitude * np.sin(2 * np.pi * n * f0 * t)
+       print(f"n = {n}   amplitude = {amplitude:.3f}")
 
    ideal_square = np.sign(np.sin(2 * np.pi * f0 * t))
 
@@ -102,15 +114,27 @@ You should see the three notes in the top panel and their sum in black in the bo
    plt.show()
    ```
 
-   The `4 / (n * np.pi)` line is the recipe from the square-wave formula in [Timbre and harmonics](guide/timbre-and-harmonics.md).
+   The `4 / (n * np.pi)` line is the recipe from the square-wave formula in [Timbre and harmonics](guide/timbre-and-harmonics.md). Before you run it, work out $4/(n\pi)$ for n = 1, 3, 5, 7 and 9 to three decimal places, and write the five numbers down. Then run it.
 
-   You should see the sum of five harmonics close to the dashed square, with ringing at the edges.
+   You should see:
+
+   ```text
+   n = 1   amplitude = 1.273
+   n = 3   amplitude = 0.424
+   n = 5   amplitude = 0.255
+   n = 7   amplitude = 0.182
+   n = 9   amplitude = 0.141
+   ```
+
+   The F4 sliders showed the same values rounded to 0.02. The plot shows the sum of five harmonics close to the dashed square, with ringing at the edges.
 
 6. Change the list to `harmonics = [1]` and re-run. Then add `3`, then `5`, `7` and `9`, re-running each time.
 
-   You should see the sum start as a plain sine and walk toward the dashed square with each sine you add. The little overshoot right at the edges appears and stays, however many harmonics you add. That's Gibbs ringing, not a bug in your code.
+   You should see the sum start as a plain sine and walk toward the dashed square with each sine you add, and one more `amplitude` line printed each time. The overshoot right at the edges appears and stays, as on F4. It's the Gibbs ringing from step 3, not a bug in your code.
 
 ## Part 3: Duty cycle and even harmonics (F6)
+
+Which harmonics does a pulse train's duty cycle switch on and off?
 
 1. Open the duty-cycle explorer:
 
@@ -126,7 +150,7 @@ You should see the three notes in the top panel and their sum in black in the bo
 
    You should see the even stems vanish at exactly 50% and come back on either side of it (harmonic 2 is the easiest to spot), with the box switching to `even harmonics PRESENT`. Close the window.
 
-3. Save this as `duty_sweep.py` and run it. It uses `np.fft.rfft`, the "count the harmonics for me" machine you'll meet properly in [The FFT as an equalizer](guide/the-fft-as-an-equalizer.md). For now, treat it as a black box:
+3. Save this as `duty_sweep.py`, but don't run it yet. It uses `np.fft.rfft`, the "count the harmonics for me" machine you'll meet properly in [The FFT as an equalizer](guide/the-fft-as-an-equalizer.md). For now, treat it as a black box:
 
    ```python
    import numpy as np
@@ -149,14 +173,20 @@ You should see the three notes in the top panel and their sum in black in the bo
    plt.show()
    ```
 
+   It plots the spectra of 200 Hz pulse trains at 25%, 50% and 75% duty. Before you run it, write down the frequencies between 0 and 2000 Hz where you expect stems in the 50% panel. Then run it.
+
 You should see three stem plots from 0 to 2000 Hz. In the middle panel (50%) the only stems are at odd multiples of 200 Hz: 200, 600, 1000, 1400 and 1800 Hz. The 25% and 75% panels also have stems at even multiples, such as 400 Hz.
 
 ## Finishing
 
-You're done when all of these hold:
+You're done when the five amplitudes you worked out match what `square_from_sines.py` prints (Part 2, step 5), and the stems in the 50% panel of `duty_sweep.py` sit at the frequencies you wrote down (Part 3, step 3).
 
-- With harmonics 1, 3, 5, 7 and 9 at $4/(n\pi)$, the F4 waveform closely matches the ideal square, with Gibbs ringing at the edges.
-- On F6 at 50% duty the even stems are about zero and the box reads `even harmonics GONE`. At 25% they're clearly visible.
-- Your three snippets run and show the plots described above.
+### Questions
 
-Next: Movement III, starting with [The FFT as an equalizer](guide/the-fft-as-an-equalizer.md).
+1. Does adding more harmonics remove the overshoot at a square's edges? (Answered in Part 2, step 3.)
+
+### Submit
+
+Nothing to submit.
+
+Next on the [Course path](README.md#course-path): read Movement III, [The FFT as an equalizer](guide/the-fft-as-an-equalizer.md), [Finding a quiet note](guide/finding-a-quiet-note.md), [Distortion and THD](guide/distortion-and-thd.md) and [Sampling fast enough](guide/sampling-fast-enough.md), then do [Lab 03: Spectrum detective](labs/lab-03-spectrum-detective-overview.md).
