@@ -1,6 +1,6 @@
 # Lab 04: RC filter and Bode
 
-You'll sweep an RC low-pass on a live Bode plot, link a point on that plot to a shrinking, lagging sine, filter a square wave until its edges round off, and compare low-pass, high-pass and band-pass shapes. Each explorer has a matching snippet that computes the same thing from the formulas.
+You'll sweep an RC low-pass on a live Bode plot, link a point on that plot to a shrinking, lagging sine, filter a square wave until its edges round off, and compare low-pass, high-pass and band-pass shapes. Each explorer has a matching snippet that computes the same thing from the formulas, and before each one runs you'll work out from the formulas what it should show.
 
 Lab package: [`labs/lab-04-rc-bode/`](https://github.com/uoftasic/ad101/tree/main/labs/lab-04-rc-bode)
 
@@ -32,6 +32,8 @@ As before, each part pairs an explorer (`python3 src/explore.py --figure <id>`) 
 
 ## Part 1: The Bode explorer (F12)
 
+What sets an RC low-pass's cutoff, and what do its magnitude and phase do there?
+
 1. Open the Bode explorer:
 
    ```bash
@@ -42,17 +44,26 @@ As before, each part pairs an explorer (`python3 src/explore.py --figure <id>`) 
 
    It starts at R = 1000 Ω and C = 100 nF. The box at the bottom starts with `fc = 1592 Hz`.
 
-2. Check that number against $f_c = 1/(2\pi RC)$ by hand.
+2. Check that number against $f_c = 1/(2\pi RC)$ by hand, and write down your result.
 
 3. Look at where the magnitude curve crosses the dotted −3 dB line, and at the phase curve below it.
 
    You should see the magnitude cross −3 dB at the dashed $f_c$ marker, the phase pass −45° there, and the dashed asymptote fall at −20 dB/decade past $f_c$.
 
-4. Move R and C and watch $f_c$ follow $1/(2\pi RC)$. Then set R = 2000 Ω and C = 50 nF (double R, halve C).
+4. Move R and C and watch $f_c$ follow $1/(2\pi RC)$. Next you'll set R = 2000 Ω and C = 50 nF (double R, halve C). Predict the new $f_c$ first and write it down, then set them.
 
-   You should see the box start with `fc = 1592 Hz` again: only the product $RC$ sets the cutoff. Close the window.
+   You should see the box start with `fc = 1592 Hz` again. Close the window.
 
-5. Save this as `bode.py` and run it. It draws a Bode plot from nothing but the two formulas:
+   Why didn't $f_c$ move?
+
+   <details>
+   <summary>Answer</summary>
+
+   Only the product $RC$ appears in $f_c = 1/(2\pi RC)$, and 2000 Ω × 50 nF is the same product as 1000 Ω × 100 nF. Double R on its own and the box reads `fc = 796 Hz`.
+
+   </details>
+
+5. Save this as `bode.py` and run it. It draws a Bode plot from the two formulas alone:
 
    ```python
    import numpy as np
@@ -84,11 +95,13 @@ As before, each part pairs an explorer (`python3 src/explore.py --figure <id>`) 
 
    You should see `cutoff fc ≈ 1592 Hz` printed, and a two-panel Bode plot where the magnitude crosses the dotted −3 dB line and the phase crosses the dotted −45° line, both at the orange dashed $f_c$ line.
 
-6. Change `R` and `C`, predict the new cutoff from $f_c = 1/(2\pi RC)$, and re-run.
+6. Pick your own values of `R` and `C`. Write down the cutoff you expect from $f_c = 1/(2\pi RC)$, then change the two values in the script and re-run. Keep your numbers for Finishing.
 
    You should see the printed cutoff match your prediction, with the −3 dB crossing still on the orange line.
 
 ## Part 2: One Bode point in time (F13)
+
+What does one point on the Bode curve do to a sine that goes through the filter?
 
 1. Open the marker explorer:
 
@@ -104,7 +117,7 @@ As before, each part pairs an explorer (`python3 src/explore.py --figure <id>`) 
 
    You should see the output at about 0.707× the input, lagging by about 45° (an eighth of a cycle).
 
-3. Move the `log10(f)` slider down by 1, to 2.2 (a decade below $f_c$), then up to 4.2 (a decade above).
+3. Before you move the slider, use the formulas at the top of this page to predict $\lvert H\rvert$ and the phase a decade below $f_c$ ($f = f_c/10$) and a decade above ($f = 10 f_c$). Write the four numbers down. Then move the `log10(f)` slider down by 1, to 2.2 (a decade below $f_c$), and up to 4.2 (a decade above).
 
    You should see the output almost identical to the input a decade below ($\lvert H\rvert \approx 0.995$, phase about −6°), and tiny with nearly −90° of lag a decade above ($\lvert H\rvert \approx 0.100$, −20 dB, phase about −84°). Close the window.
 
@@ -137,9 +150,11 @@ As before, each part pairs an explorer (`python3 src/explore.py --figure <id>`) 
        plt.show()
    ```
 
-   The three plots open one at a time; close each to see the next. You should see three points on the same Bode curve, matching what F13 showed. The middle one is titled `at fc: gain=0.707, phase=-45.0°`.
+   The three plots open one at a time; close each to see the next. You should see three points on the same Bode curve, matching what F13 showed, titled `a decade below fc: gain=0.995, phase=-5.7°`, `at fc: gain=0.707, phase=-45.0°` and `a decade above fc: gain=0.100, phase=-84.3°`. Compare them with your predictions from step 3.
 
 ## Part 3: A square wave through the RC (F14)
+
+What does a low-pass do to a square wave, and which harmonics go first?
 
 1. Open the square-wave explorer:
 
@@ -155,7 +170,7 @@ As before, each part pairs an explorer (`python3 src/explore.py --figure <id>`) 
 
    You should see the edges round off, and the output stems for the high odd harmonics (5, 7, 9) shrink first. Close the window.
 
-3. Save this as `filter_square.py` and run it. It filters a 500 Hz square by scaling its spectrum by $H(f)$ and transforming back, for three values of C:
+3. Save this as `filter_square.py`, but don't run it yet. It filters a 500 Hz square by scaling its spectrum by $H(f)$ and transforming back, for three values of C:
 
    ```python
    import numpy as np
@@ -189,9 +204,22 @@ As before, each part pairs an explorer (`python3 src/explore.py --figure <id>`) 
    plt.show()
    ```
 
-You should see three filtered versions of the dashed input square, labelled `C=10 nF (fc≈15915 Hz)`, `C=100 nF (fc≈1592 Hz)` and `C=1000 nF (fc≈159 Hz)`. The edges get softer with each step up in C, from nearly square at 10 nF to a small, rounded wave at 1000 nF. It's the same knob as Part 1, applied to a richer signal than a lone sine.
+   Before you run it, work out $f_c$ for each of the three capacitors with R = 1 kΩ, and write them down. Then run it.
+
+   You should see three filtered versions of the dashed input square, labelled `C=10 nF (fc≈15915 Hz)`, `C=100 nF (fc≈1592 Hz)` and `C=1000 nF (fc≈159 Hz)`. The edges get softer with each step up in C, from nearly square at 10 nF to a small, rounded wave at 1000 nF.
+
+   Why do the edges soften as C goes up?
+
+   <details>
+   <summary>Answer</summary>
+
+   Raising C lowers $f_c$. A square wave is a pile of odd harmonics, and the high ones make the sharp edges. The lower $f_c$ is, the more of those high harmonics the filter turns down, so the edges round off. [Filtering a beat](guide/filtering-a-beat.md) has the same picture.
+
+   </details>
 
 ## Part 4: Three filter shapes (F15)
+
+How do low-pass, high-pass and band-pass shapes differ around the same $f_c$?
 
 1. Open the filter-type comparison:
 
@@ -205,7 +233,7 @@ You should see three filtered versions of the dashed input square, labelled `C=1
 
    You should see three different pass/stop patterns around the same $f_c$, all moving together when $f_c$ moves. Close the window.
 
-3. Save this as `filter_shapes.py` and run it. All three curves use the same `fc`:
+3. Save this as `filter_shapes.py`, but don't run it yet. All three curves use the same `fc`:
 
    ```python
    import numpy as np
@@ -232,15 +260,21 @@ You should see three filtered versions of the dashed input square, labelled `C=1
    plt.show()
    ```
 
-You should see the three curves meet the dashed `fc` line from different sides: the low-pass keeps what's below it, the high-pass keeps what's above it, and the band-pass peaks there. Only the shape of the formula changes which side gets kept.
+   At $f = f_c$, `u` is 1. Before you run it, put $u = 1$ into the `lowpass` and `highpass` lines and work out both values in dB. Then run it.
+
+You should see the three curves meet the dashed `fc` line from different sides: the low-pass keeps what's below it, the high-pass keeps what's above it, and the band-pass peaks there. The low-pass and high-pass curves both pass through −3 dB at the dashed line.
 
 ## Finishing
 
-You're done when all of these hold:
+You're done when `bode.py`, run with an R and C you chose, prints the cutoff you predicted (Part 1, step 6), and your four predictions for the decade points match F13 and the `bode_point.py` titles (Part 2, steps 3 and 4).
 
-- With $R = 1\,\mathrm{k}\Omega$ and $C = 100\,\mathrm{nF}$, F12 and your script both give $f_c \approx 1592$ Hz.
-- With the F13 marker at $f_c$, $\lvert H\rvert \approx 0.707$ (−3 dB) and the phase is about −45°.
-- Raising C on F14 visibly softens the square's edges and shrinks harmonics 5, 7 and 9.
-- Your four snippets run and plot what the steps describe.
+### Questions
 
-Next: [Lab 05: Signal workshop](labs/lab-05-signal-workshop-overview.md), where you write a script that synthesizes, analyzes and filters a signal on its own.
+1. Why does doubling R and halving C leave $f_c$ where it was? (Answered in Part 1, step 4.)
+2. Why does raising C round off a square wave's edges? (Answered in Part 3, step 3.)
+
+### Submit
+
+Nothing to submit.
+
+Next on the [Course path](README.md#course-path): do [Lab 05: Signal workshop](labs/lab-05-signal-workshop-overview.md), where you write a script that synthesizes, analyzes and filters a signal on its own.
