@@ -1,6 +1,6 @@
 # Lab 03: Spectrum detective
 
-You'll compute your first FFT, match test signals to their spectra, find a tone hidden under noise and confirm it with a checker, watch clipping create harmonics and read the THD, and make a tone lie about its frequency by sampling it too slowly.
+You'll compute your first FFT, match test signals to their spectra, find a tone hidden under noise and confirm it with a checker, watch clipping create harmonics and read the THD, and make a tone lie about its frequency by sampling it too slowly. Before the scripts run, you'll predict a dB gap, a THD and an alias frequency.
 
 Lab package: [`labs/lab-03-spectrum-detective/`](https://github.com/uoftasic/ad101/tree/main/labs/lab-03-spectrum-detective)
 
@@ -17,13 +17,15 @@ Lab package: [`labs/lab-03-spectrum-detective/`](https://github.com/uoftasic/ad1
   cd labs/lab-03-spectrum-detective
   ```
 
-Time: about 1.5 hours (Part 3 is optional).
+Time: about 1.5 hours, not counting the optional Part 5.
 
 As before, each part pairs an explorer (`python3 src/explore.py --figure <id>`) with a snippet you save as a new `.py` file in this folder and run with `python3 <file>.py`.
 
 ## Part 1: Your first FFT (F7)
 
-1. Save this as `first_fft.py` and run it. It builds a two-note chord, A4 and E5, and plots it in time and in frequency:
+How does the same signal look in time and in frequency?
+
+1. Save this as `first_fft.py`, but don't run it yet. It builds a two-note chord, A4 and E5, and plots it in time and in frequency:
 
    ```python
    import numpy as np
@@ -56,7 +58,16 @@ As before, each part pairs an explorer (`python3 src/explore.py --figure <id>`) 
 
    `v - v.mean()` removes any DC offset before the FFT, and `np.maximum(..., 1e-6)` keeps `log10` away from zero.
 
-   You should see a tangle of two overlapping wiggles in the top plot, and two clear peaks at 440 Hz and 659 Hz in the bottom one. The dB values are raw FFT magnitudes, so the peaks sit far above 0 dB (60.0 dB and 53.4 dB in the course image). Only the gap matters: E5 has half A4's amplitude, so its peak is about 6 dB lower, as the dB table predicts. Close the window.
+   E5 has half A4's amplitude. Before you run it, use the dB table in [Reading plots](reference/reading-plots.md) to predict how many dB below the A4 peak the E5 peak will sit, and write it down. Then run it.
+
+   You should see a tangle of two overlapping wiggles in the top plot, and two clear peaks in the bottom one, at 440 Hz and near 659 Hz, at 60.0 dB and 53.4 dB in the course image. The dB values are raw FFT magnitudes, so the peaks sit far above 0 dB and only the gap between them means anything. Close the window.
+
+   <details>
+   <summary>Answer</summary>
+
+   A ratio of ×0.5 is about −6 dB, so E5 should sit about 6 dB below A4. The plot shows 60.0 − 53.4 = 6.6 dB. The extra 0.6 dB is leakage, which the optional Part 5 shows: in the 0.2 s window, 440 Hz fits a whole number of cycles (88) and 659 Hz doesn't (131.8). Change `659` to `660` in the script and the gap comes out at 6.0 dB.
+
+   </details>
 
 2. Open the twin-panel explorer:
 
@@ -71,6 +82,8 @@ As before, each part pairs an explorer (`python3 src/explore.py --figure <id>`) 
    You should see one spike for the pure tone, two spikes for two tones, a carrier with a sideband on each side for AM, and a comb of odd harmonics for the square. With dB on, small peaks show up that the linear axis hides. Close the window.
 
 ## Part 2: Find the hidden tone (F8)
+
+Can you find a tone you can't see in the time plot?
 
 1. Open the hidden-tone hunt:
 
@@ -90,7 +103,7 @@ As before, each part pairs an explorer (`python3 src/explore.py --figure <id>`) 
 
    You should see a line starting `Correct! Hidden tone is`. If you see `Not quite`, the message says how far off you were. Read the spike again: the checker accepts anything within 5 Hz.
 
-4. Save this as `hidden_tone.py` and run it. It hides the same 237 Hz tone as F8 under different noise and reads the peak's frequency off the data with `np.argmax` instead of by eye. That gives the answer away, so do steps 1–3 first:
+4. Save this as `hidden_tone.py` and run it. It hides the same tone as F8 under different noise and reads the peak's frequency off the data with `np.argmax` instead of by eye. The code names the tone's frequency, so do steps 1–3 first:
 
    ```python
    import numpy as np
@@ -126,25 +139,9 @@ As before, each part pairs an explorer (`python3 src/explore.py --figure <id>`) 
 
 You should see pure noise in the time plot and one obvious spike in the spectrum. After you close the window, the script prints `Loudest peak sits at ≈ 236 Hz`, within 5 Hz of the hidden 237 Hz.
 
-## Part 3 (optional): Spectral leakage (F10)
+## Part 3: Distortion and THD (F9)
 
-1. Open the leakage explorer:
-
-   ```bash
-   python3 src/explore.py --figure f10
-   ```
-
-   ![F10](../assets/img/f10-leakage.png)
-
-2. Set "Cycles in window" to 5.0, then to 5.3.
-
-   You should see a clean spike at 5.0 (the label reads `clean spike (integer cycles)`) and a smeared peak at 5.3 (`smeared peak (leakage!)`).
-
-3. Leave it at 5.3 and tick "Hann window".
-
-You should see the skirts (the smeared energy on either side of the peak) drop. This is why real measured spectra look soft instead of like textbook sticks. Close the window.
-
-## Part 4: Distortion and THD (F9)
+How much new energy does clipping put into the harmonics?
 
 1. Open the distortion explorer:
 
@@ -158,7 +155,7 @@ You should see the skirts (the smeared energy on either side of the peak) drop. 
 
    You should see soft clipping flatten the peaks, the odd harmonics grow, and THD climb: about 2% at the lowest gain (0.5), about 7% at gain 1, and about 35% at gain 6. Close the window.
 
-3. Save this as `clip_thd.py` and run it. It clips a sine at three gains and measures THD from the spectrum:
+3. Save this as `clip_thd.py`, but don't run it yet. It clips a sine at three gains, 1, 3 and 8, and measures THD from the spectrum:
 
    ```python
    import numpy as np
@@ -185,6 +182,8 @@ You should see the skirts (the smeared energy on either side of the peak) drop. 
        print(f"gain={gain:>4.1f}   THD = {thd*100:5.1f}%")
    ```
 
+   Before you run it, use what F9 showed you in step 2 to predict the THD it will print at gain 1, and whether gain 3 and gain 8 will print more or less. Write it down, then run it.
+
    You should see:
 
    ```text
@@ -195,7 +194,9 @@ You should see the skirts (the smeared energy on either side of the peak) drop. 
 
    The script sums harmonics 2 to 5 and F9 sums harmonics 2 to 7, so the two can differ slightly at high gain.
 
-## Part 5: Sampling and aliasing (F11)
+## Part 4: Sampling and aliasing (F11)
+
+How slowly can you sample a tone before it shows up at the wrong frequency, and which frequency does it show up at?
 
 1. Open the aliasing explorer:
 
@@ -207,13 +208,13 @@ You should see the skirts (the smeared energy on either side of the peak) drop. 
 
    The tone is 200 Hz and the sample rate starts at 1000 Hz. The box at the bottom ends in `OK (fs > 2f)`. Its `Nyquist` value is half the sample rate.
 
-2. Before you move anything, work out the sample rate below which a 200 Hz tone aliases.
+2. Before you move anything, work out the sample rate below which a 200 Hz tone aliases, and write it down.
 
 3. Drag "Sample rate (Hz)" down slowly until the box changes, then set it to 250 Hz.
 
    You should see the box switch to `ALIASED → appears as … Hz` once the sample rate drops below 400 Hz, a bogus slow sine appear over the samples, and the spectrum peak fold below Nyquist. At 250 Hz the box reads `ALIASED → appears as 50 Hz`. Close the window.
 
-4. Save this as `aliasing.py` and run it. It samples a 900 Hz tone twice, once above Nyquist and once below:
+4. Save this as `aliasing.py`, but don't run it yet. It samples a 900 Hz tone twice, once above Nyquist and once below:
 
    ```python
    import numpy as np
@@ -237,15 +238,50 @@ You should see the skirts (the smeared energy on either side of the peak) drop. 
    plt.show()
    ```
 
+   At 250 Hz, F11 showed the 200 Hz tone as 50 Hz, which is 250 − 200. Use the same pattern to predict the frequency the `fs=1000` points will appear to have, and write it down. Then run the script.
+
 You should see the `fs=5000` points trace a recognizable 900 Hz wiggle, while the `fs=1000` points join into a slow, wrong-looking wave with a period of about 10 ms (100 Hz, which is 1000 − 900), like the backwards-spinning wheel in [Sampling fast enough](guide/sampling-fast-enough.md).
+
+## Part 5 (optional): Spectral leakage (F10)
+
+What happens to a peak when the window doesn't hold a whole number of cycles, and what does a Hann window do about it? Nothing in Parts 1 to 4 depends on this part, and it isn't in the time estimate.
+
+1. Open the leakage explorer:
+
+   ```bash
+   python3 src/explore.py --figure f10
+   ```
+
+   ![F10](../assets/img/f10-leakage.png)
+
+2. Set "Cycles in window" to 5.0, then to 5.3.
+
+   You should see a clean spike at 5.0 (the label reads `clean spike (integer cycles)`) and a smeared peak at 5.3 (`smeared peak (leakage!)`).
+
+3. Leave it at 5.3 and tick "Hann window".
+
+   You should see the skirts (the smeared energy on either side of the peak) drop. Close the window.
+
+   Why do spectra measured on a real bench look soft instead of like textbook sticks?
+
+   <details>
+   <summary>Answer</summary>
+
+   Leakage. A real measurement window doesn't hold a whole number of cycles of every tone in the signal, so the peaks smear sideways into their neighbouring frequency bins, as at 5.3 cycles here. A window function such as Hann tapers the start and end of the recorded segment toward zero and reduces the smear.
+
+   </details>
 
 ## Finishing
 
-You're done when all of these hold:
+You're done when `python3 src/check.py --guess <Hz>`, with the frequency you read off F8 yourself, prints `Correct!` (Part 2, step 3), and your predictions from Parts 1, 3 and 4 are written down next to what the scripts printed.
 
-- `python3 src/check.py --guess <Hz>` prints `Correct!`.
-- F9 shows THD near 2% at gain 0.5 and clearly larger (about 35%) at gain 6.
-- F11 at $f_s = 250$ Hz with the 200 Hz tone reads `ALIASED → appears as 50 Hz`.
-- Your snippets run and print or plot what the steps describe.
+### Questions
 
-Next: Movement IV, starting with [Filters are tone knobs](guide/filters-are-tone-knobs.md).
+1. Why is the E5 peak 6.6 dB below A4 and not 6.0 dB? (Answered in Part 1, step 1.)
+2. Below what sample rate does a 200 Hz tone alias? (Answered in Part 4, steps 2 and 3.)
+
+### Submit
+
+Nothing to submit.
+
+Next on the [Course path](README.md#course-path): read Movement IV, [Filters are tone knobs](guide/filters-are-tone-knobs.md), [Reading a Bode plot](guide/reading-a-bode-plot.md), [Filtering a beat](guide/filtering-a-beat.md) and [More filter shapes](guide/more-filter-shapes.md), then do [Lab 04: RC filter and Bode](labs/lab-04-rc-bode-overview.md).
