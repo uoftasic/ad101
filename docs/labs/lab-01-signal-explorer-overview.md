@@ -64,12 +64,12 @@ If you haven't set up the workbench, do [IC101 Lab 03](https://uoftasic.com/ic10
    === All checks passed ===
    ```
 
-   The outputs printed in Labs 01–05 were checked with these numpy and matplotlib versions, in the IIC-OSIC-TOOLS 2026.08 image the workbench runs. If yours differ, a printed number that disagrees with these pages may come from the version rather than your code. The backend line names the GUI toolkit matplotlib found, the part of matplotlib that opens plot windows. `adsig` is the course's small signal library in `labs/common/`; the explorers use it.
+   The outputs printed in Labs 01–05 were checked with these numpy and matplotlib versions, in the IIC-OSIC-TOOLS 2026.08 image the workbench runs. If yours differ, a printed number that disagrees with these pages may come from the version rather than your code. The backend is the part of matplotlib that opens plot windows, and its line names the GUI toolkit matplotlib found. `adsig` is the course's small signal library in `labs/common/`; the explorers use it.
 
 | What you see | What to do |
 |---|---|
 | `WARN no interactive GUI backend (Agg / headless)` | The explorers can't open windows. Check that you ran it in a terminal in the noVNC desktop, not on your host, then see "If the GUI won't open" in [Python in the workbench](reference/python-in-the-workbench.md). |
-| `FAIL numpy` or `FAIL matplotlib` | Run `pip install --user numpy matplotlib` in the desktop terminal, then run `check_env.py` again. |
+| `FAIL numpy` or `FAIL matplotlib` | Run `pip install --user numpy matplotlib` in the desktop terminal, then run `check_env.py` again. The install goes into the container, not your `workspace` folder, so repeat it if you remove the container. |
 
 For anything else about the desktop, Docker or `mod`, see IC101's [Troubleshooting](https://uoftasic.com/ic101/#/reference/troubleshooting) page.
 
@@ -118,7 +118,7 @@ How do a sine's four knobs, amplitude, frequency, phase and DC offset, change it
 
    You should see `T = 10.00 ms   f = 100 Hz` and `pk-pk = 2.00 V   RMS = 0.707 V`. The dashed vertical line marks one period.
 
-3. Drag Amplitude, Freq (Hz), Phase (°) and DC offset one at a time. Before each drag, say what you expect the readout to do. $T = 1/f$, peak-to-peak $= 2A$ and $\mathrm{RMS} = A/\sqrt{2}$ cover Amplitude and Freq; for Phase and DC offset, make a guess.
+3. Drag Amplitude, Freq (Hz), Phase (°) and DC offset one at a time. Before each drag, write down what you expect the readout to do. $T = 1/f$, peak-to-peak $= 2A$ and $\mathrm{RMS} = A/\sqrt{2}$ cover Amplitude and Freq; for Phase and DC offset, make a guess.
 
    You should see the period marker track $T = 1/f$, RMS stay at about 0.707× the amplitude while DC is 0, Phase slide the wave sideways, and the DC slider lift the whole wave without changing the size of the wiggle. With DC offset at 0.5 and the other sliders at their starting values, the box reads `pk-pk = 2.00 V   RMS = 0.866 V`.
 
@@ -133,7 +133,7 @@ How do a sine's four knobs, amplitude, frequency, phase and DC offset, change it
 
    Close the window.
 
-4. Save this as `measure_sine.py`, but don't run it yet. It builds a sine at a chosen amplitude and frequency, computes the period from $T = 1/f$, and measures peak-to-peak and RMS straight from the array, the way you'd measure a scope trace by eye, except exact:
+4. Save this as `measure_sine.py`, but don't run it yet. It builds a sine at a chosen amplitude and frequency, computes the period from $T = 1/f$, and measures peak-to-peak and RMS from the samples in the array, where on a scope you'd read them off the trace by eye:
 
    ```python
    import numpy as np
@@ -165,7 +165,7 @@ How do a sine's four knobs, amplitude, frequency, phase and DC offset, change it
 
 5. Pick your own values of `A` and `f`. Write down the T, pk-pk and RMS you expect, then change the two values in the script and re-run. Keep your numbers and the printout for Finishing.
 
-   You should see your predicted numbers in the printout. A difference in the last digit can come from the sampling (see the question below). If a number is further off, recheck your arithmetic and your edit before you move on.
+   You should see your predicted numbers in the printout. If a number is off by more than its last digit, recheck your arithmetic and your edit before you move on.
 
    If a number is off in its last digit, why?
 
@@ -240,7 +240,7 @@ How long is a phase difference in milliseconds, and what does it do to the sum o
 
    ![F3](../assets/img/f03-two-signal.png)
 
-   It starts at Phase Δ = 60° and 100 Hz. Phase Δ is the phase difference $\phi$ between the two signals; the readout shows it as Δφ. Signal A is $\sin(2\pi f t)$ and signal B is $\sin(2\pi f t + \phi)$, so it's offset from signal A in time by $t_{\mathrm{delay}} = \frac{\phi}{360^\circ}\,T$. With a positive $\phi$, B runs ahead of A by $t_{\mathrm{delay}}$, and the readout shows that time as `delay`.
+   It starts at Phase Δ = 60° and 100 Hz. Phase Δ is the phase difference $\phi$ between the two signals; the readout shows it as Δφ. Signal A is $\sin(2\pi f t)$ and signal B is $\sin(2\pi f t + \phi)$, so it's offset from signal A in time by $t_{\mathrm{delay}} = \frac{\phi}{360^\circ}\,T$. With a positive $\phi$, B runs ahead of A, so A arrives $t_{\mathrm{delay}}$ later than B; the readout shows that time as `delay`.
 
 2. Before you move anything, use the formula to predict the delay for a 90° phase difference at 100 Hz, and write it down.
 
@@ -296,7 +296,7 @@ How long is a phase difference in milliseconds, and what does it do to the sum o
 
 ## Finishing
 
-You're done when `measure_sine.py`, run with an A and f you chose, prints the T, pk-pk and RMS you wrote down before running it (Part 3, step 5), and `two_voices.py` prints the four delays you predicted (Part 5, step 6).
+You're done when `measure_sine.py`, run with an A and f you chose, prints the T, pk-pk and RMS you wrote down before running it, to within the last digit (Part 3, step 5), and `two_voices.py` prints the four delays you predicted (Part 5, step 6).
 
 ### Questions
 
