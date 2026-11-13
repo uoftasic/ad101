@@ -62,6 +62,8 @@ How does the same signal look in time and in frequency?
 
    You should see a tangle of two overlapping wiggles in the top plot, and two clear peaks in the bottom one, at 440 Hz and near 659 Hz, at 60.0 dB and 53.4 dB in the course image. The dB values are raw FFT magnitudes, so the peaks sit far above 0 dB and only the gap between them means anything. Close the window.
 
+   How big is the gap, and why isn't it exactly the 6 dB the table gives?
+
    <details>
    <summary>Answer</summary>
 

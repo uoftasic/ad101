@@ -76,10 +76,12 @@ Which sines, at which amplitudes, add up to a square wave?
 
    You should see the sum walk toward the gray ideal square, with an overshoot near each edge that doesn't go away. The F5 stems update in step with the waveform and sit on the dashed $4/(n\pi)$ curve, the square-wave recipe from [Timbre and harmonics](guide/timbre-and-harmonics.md).
 
+   Why doesn't the overshoot go away as you add harmonics?
+
    <details>
    <summary>Answer</summary>
 
-   No. The overshoot is Gibbs ringing, and it doesn't go away however many harmonics you add. It's the result of approximating a sharp edge with a finite number of sines, and a real digital clock on an oscilloscope shows the same shape.
+   The overshoot is Gibbs ringing, and it stays however many harmonics you add. It's the result of approximating a sharp edge with a finite number of sines, and a real digital clock on an oscilloscope shows the same shape.
 
    </details>
 
@@ -183,7 +185,7 @@ You're done when the five amplitudes you worked out match what `square_from_sine
 
 ### Questions
 
-1. Does adding more harmonics remove the overshoot at a square's edges? (Answered in Part 2, step 3.)
+1. Why doesn't adding more harmonics remove the overshoot at a square's edges? (Answered in Part 2, step 3.)
 
 ### Submit
 
