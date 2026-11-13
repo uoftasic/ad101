@@ -14,7 +14,7 @@ $$
 
 ![F9 — THD](../assets/img/f09-thd.png)
 
-THD turns "how distorted does it sound?" into a single number you can read off instead of a listening test. You'll raise the gain on the F9 explorer and watch THD climb, then clip a sine and measure THD in your own script, in [Lab 03](labs/lab-03-spectrum-detective-overview.md), Part 4.
+THD turns "how distorted does it sound?" into a single number you can read off instead of a listening test. You'll raise the gain on the F9 explorer and watch THD climb, then clip a sine and measure THD in your own script, in [Lab 03](labs/lab-03-spectrum-detective-overview.md), Part 3.
 
 ## Why an engineer cares
 

@@ -18,7 +18,7 @@ Real FFTs don't draw perfect sticks. If the measurement window doesn't hold a wh
 
 ![F10 — Leakage](../assets/img/f10-leakage.png)
 
-Leakage is why measured spectra look soft and smeared instead of like the clean textbook sticks on the last page. It's worth knowing before it confuses you on a real bench measurement. Lab 03, Part 3 (optional) lets you smear and un-smear a peak on the F10 explorer.
+Leakage is why measured spectra look soft and smeared instead of like the clean textbook sticks on the last page. It's worth knowing before it confuses you on a real bench measurement. [Lab 03](labs/lab-03-spectrum-detective-overview.md), Part 5 (optional), lets you smear and un-smear a peak on the F10 explorer.
 
 ## Why an engineer cares
 
