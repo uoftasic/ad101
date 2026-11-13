@@ -66,6 +66,8 @@ If you haven't set up the workbench, do [IC101 Lab 03](https://uoftasic.com/ic10
 
    The outputs printed in Labs 01–05 were checked with these numpy and matplotlib versions, in the IIC-OSIC-TOOLS 2026.08 image the workbench runs. If yours differ, a printed number that disagrees with these pages may come from the version rather than your code. The backend is the part of matplotlib that opens plot windows, and its line names the GUI toolkit matplotlib found. `adsig` is the course's small signal library in `labs/common/`; the explorers use it.
 
+What to do if `check_env.py` prints one of these lines:
+
 | What you see | What to do |
 |---|---|
 | `WARN no interactive GUI backend (Agg / headless)` | The explorers can't open windows. Check that you ran `check_env.py` in a terminal in the noVNC desktop, not on your host, then see "If the GUI won't open" in [Python in the workbench](reference/python-in-the-workbench.md). |
@@ -133,7 +135,7 @@ How do a sine's four knobs, amplitude, frequency, phase and DC offset, change it
 
    Close the window.
 
-4. Save this as `measure_sine.py`, but don't run it yet. It builds a sine at a chosen amplitude and frequency, computes the period from $T = 1/f$, and measures peak-to-peak and RMS from the samples in the array, where on a scope you'd read them off the trace by eye:
+4. Save this as `measure_sine.py`, but don't run it yet. It builds a sine at a chosen amplitude and frequency, computes the period from $T = 1/f$, and measures peak-to-peak and RMS from the samples in the array. On a scope, you'd read those two off the trace by eye:
 
    ```python
    import numpy as np
@@ -163,7 +165,7 @@ How do a sine's four knobs, amplitude, frequency, phase and DC offset, change it
 
    You should see `T = 4.55 ms   pk-pk = 3.00 V   RMS = 1.061 V` printed, and a plot with an orange dashed line at one period.
 
-5. Pick your own values of `A` and `f`. Write down the T, pk-pk and RMS you expect, then change the two values in the script and re-run. Keep your numbers and the printout for Finishing.
+5. Pick your own values of `A` and `f`. Write down the T, pk-pk and RMS you expect, then change the two values in the script and re-run. Keep your numbers and the printout for the Finishing section at the end of this page.
 
    You should see your predicted numbers in the printout. If a number is off by more than its last digit, recheck your arithmetic and your edit before you move on.
 
@@ -240,7 +242,7 @@ How long is a phase difference in milliseconds, and what does it do to the sum o
 
    ![F3](../assets/img/f03-two-signal.png)
 
-   It starts at Phase Δ = 60° and 100 Hz. Phase Δ is the phase difference $\phi$ between the two signals; the readout shows it as Δφ. Signal A is $\sin(2\pi f t)$ and signal B is $\sin(2\pi f t + \phi)$, so it's offset from signal A in time by $t_{\mathrm{delay}} = \frac{\phi}{360^\circ}\,T$. With a positive $\phi$, B runs ahead of A by $t_{\mathrm{delay}}$, and the readout shows that time as `delay`.
+   It starts at Phase Δ = 60° and 100 Hz. Phase Δ is the phase difference $\phi$ between the two signals; the readout shows it as Δφ. Signal A is $\sin(2\pi f t)$ and signal B is $\sin(2\pi f t + \phi)$, so B is offset from A in time by $t_{\mathrm{delay}} = \frac{\phi}{360^\circ}\,T$. With a positive $\phi$, B runs ahead of A by $t_{\mathrm{delay}}$, and the readout shows that time as `delay`.
 
 2. Before you move anything, use the formula to predict the delay for a 90° phase difference at 100 Hz, and write it down.
 
