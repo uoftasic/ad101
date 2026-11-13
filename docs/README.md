@@ -13,7 +13,7 @@ The course uses music as its running example. A signal is a note, a chord is sig
 | Prerequisite | [IC101](https://uoftasic.com/ic101/): Docker and the IIC-OSIC-TOOLS noVNC desktop working, with the shared `workspace` repo from IC101 cloned. The labs run inside that workspace. |
 | Math | High-school level: sine, logarithm, basic algebra. No calculus. |
 | Tools | Python, numpy and matplotlib, already inside IIC-OSIC-TOOLS |
-| Time | About 10.5 hours: roughly 3 hours of reading and 7.5 hours of labs |
+| Time | About 10 hours 20 minutes: 2 hours 50 minutes of reading and 7.5 hours of labs, not counting the optional part of Lab 03 |
 
 ## What you'll learn
 
@@ -25,19 +25,19 @@ The course uses music as its running example. A signal is a note, a chord is sig
 
 ## Course path
 
-The guide pages are split into four movements, the course's name for its units, each followed by a lab; a capstone lab comes last. Work down this table in order. **Read** rows are guide pages: concepts, figures and worked examples, with nothing to run. **Do** rows are labs, where you run everything. The times are estimates.
+The guide pages are split into four movements, the course's name for its units, each followed by a lab; a capstone lab comes last. Work down this table in order. Read rows are guide pages: concepts, figures and worked examples, with nothing to run. Do rows are labs, where you run everything. The times are estimates, and they add up to the total above.
 
 | # | | What | Time |
 |---|---|---|---|
 | 1 | Read | [Getting started](guide/getting-started.md), then Movement I, a single note: [What is a signal?](guide/what-is-a-signal.md) · [Pitch and loudness](guide/pitch-and-loudness.md) · [A family of waveforms](guide/a-family-of-waveforms.md) · [Two voices in time](guide/two-voices-in-time.md) | 50 min |
-| 2 | Do | [Lab 01: Signal explorer](labs/lab-01-signal-explorer-overview.md). Set up AD101, then measure amplitude, period, RMS and phase delay | 1.5 h |
+| 2 | Do | [Lab 01: Signal explorer](labs/lab-01-signal-explorer-overview.md). Load AD101, then predict and measure a sine's period, peak-to-peak, RMS and phase delay. | 1.5 h |
 | 3 | Read | Movement II, chords and timbre: [Adding signals](guide/adding-signals.md) · [Timbre and harmonics](guide/timbre-and-harmonics.md) · [Rhythm and duty cycle](guide/rhythm-and-duty-cycle.md) | 30 min |
-| 4 | Do | [Lab 02: Harmonic builder](labs/lab-02-harmonic-builder-overview.md). Build a square wave from sines and watch duty cycle change its spectrum | 1 h |
+| 4 | Do | [Lab 02: Harmonic builder](labs/lab-02-harmonic-builder-overview.md). Build a square wave from sines, predict its harmonic amplitudes, and watch duty cycle change its spectrum. | 1 h |
 | 5 | Read | Movement III, the mixing board: [The FFT as an equalizer](guide/the-fft-as-an-equalizer.md) · [Finding a quiet note](guide/finding-a-quiet-note.md) · [Distortion and THD](guide/distortion-and-thd.md) · [Sampling fast enough](guide/sampling-fast-enough.md) | 45 min |
-| 6 | Do | [Lab 03: Spectrum detective](labs/lab-03-spectrum-detective-overview.md). Find a hidden tone, measure THD and make a tone alias | 1.5 h |
+| 6 | Do | [Lab 03: Spectrum detective](labs/lab-03-spectrum-detective-overview.md). Find a hidden tone and confirm it with a checker, measure THD, and make a tone alias. | 1.5 h |
 | 7 | Read | Movement IV, tone controls: [Filters are tone knobs](guide/filters-are-tone-knobs.md) · [Reading a Bode plot](guide/reading-a-bode-plot.md) · [Filtering a beat](guide/filtering-a-beat.md) · [More filter shapes](guide/more-filter-shapes.md) | 45 min |
-| 8 | Do | [Lab 04: RC filter and Bode](labs/lab-04-rc-bode-overview.md). Sweep an RC low-pass and filter a square wave | 1.5 h |
-| 9 | Do | [Lab 05: Signal workshop](labs/lab-05-signal-workshop-overview.md). Write your own chord synthesizer, spectrum plot and filter, then listen to the result | 2 h |
+| 8 | Do | [Lab 04: RC filter and Bode](labs/lab-04-rc-bode-overview.md). Predict an RC low-pass's cutoff and gain, check them on a Bode plot, and filter a square wave. | 1.5 h |
+| 9 | Do | [Lab 05: Signal workshop](labs/lab-05-signal-workshop-overview.md). Write your own chord synthesizer, spectrum plot and filter, then listen to the result. | 2 h |
 
 Three reference pages are worth keeping open while you work: [Reading plots](reference/reading-plots.md) is a cheat sheet for the three plots, [Music and signals](reference/music-and-signals.md) translates each musical term and lists note frequencies, and [Python in the workbench](reference/python-in-the-workbench.md) covers running the labs and what to do when a plot window won't open.
 
