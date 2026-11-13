@@ -27,6 +27,6 @@ If an explorer window won't open, each explorer has a `--headless` mode that wri
 - It doesn't go deep into Fourier proofs or complex numbers.
 - It doesn't use XSchem or ngspice yet. Those start in AD102 and AD103.
 
-You'll set up AD101 inside your IC101 workspace at the start of [Lab 01](labs/lab-01-signal-explorer-overview.md), Part 1.
+You'll load AD101 into your IC101 workspace in [Lab 01](labs/lab-01-signal-explorer-overview.md), Part 1.
 
 Next: [What is a signal?](guide/what-is-a-signal.md)

@@ -6,7 +6,7 @@ Docs: https://uoftasic.com/ad101/ · Hub: https://edu.uoftasic.com/
 
 Part of the UofT ASIC Team (`uoftasic`) Internal Education Initiative. Prerequisite: [IC101](https://github.com/uoftasic/ic101).
 
-Students should start at the docs site: its home page has the Course path, which lists every reading and lab in order. [Lab 01](docs/labs/lab-01-signal-explorer-overview.md), Part 1, covers setup in detail.
+Students should start at the docs site: its home page has the Course path, which lists every reading and lab in order. IC101 sets up the workbench, and [Lab 01](docs/labs/lab-01-signal-explorer-overview.md), Part 1, loads AD101 into it.
 
 ## Quick start
 

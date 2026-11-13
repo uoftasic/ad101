@@ -29,12 +29,14 @@ The init script fills only these three fields. This repo's values, with an examp
 | Docs pages | kebab-case `.md` under `docs/` |
 | Lab IDs | `lab-NN-short-name` |
 | Adding a doc page | add `.md` under `docs/`, link in `docs/_sidebar.md` |
-| Adding a lab | `labs/<id>/` + `docs/labs/<id>-overview.md` + sidebar entry + a row in the Course path on `docs/README.md` |
+| Adding a lab | `labs/<id>/` + `docs/labs/<id>-overview.md` + sidebar entry + a Do row in the Course path on `docs/README.md` (`[Lab NN: Title](labs/...). One sentence on what you'll do.`) |
 | Binaries | small images in `docs/assets/`; large data → Git LFS or external |
 
 ## Docs vs labs
 
 - `docs/` is the published site. Guide pages in `docs/guide/` are for reading only; every command a student runs belongs in a lab writeup in `docs/labs/`.
+- Lab writeups follow the shape in [AGENTS.md](AGENTS.md): numbered parts, at least one where the student produces something, optional parts last, and a Finishing section with "You're done when", Questions (collapsed answers) and Submit, in that order, then the "Next on the Course path" line.
+- Course path rows on `docs/README.md` use the shared format `| # | | What | Time |`, plain Read and Do, and row times that add up to the course total.
 - `labs/` holds runnable HDL, Python and data. Each `labs/<id>/README.md` links to its Docsify writeup.
 - `scripts/` holds utilities; list entry points in `scripts/README.md`.
 

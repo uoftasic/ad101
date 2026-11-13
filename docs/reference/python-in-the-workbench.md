@@ -1,6 +1,6 @@
 # Python in the workbench
 
-How to run the AD101 explorers and scripts inside the IIC-OSIC-TOOLS noVNC desktop from IC101, and what to do when something goes wrong. [Lab 01](labs/lab-01-signal-explorer-overview.md), Part 1, walks you through the first-time setup.
+How to run the AD101 explorers and scripts inside the IIC-OSIC-TOOLS noVNC desktop from IC101, and what to do when something goes wrong. [Lab 01](labs/lab-01-signal-explorer-overview.md), Part 1, walks you through loading the course the first time.
 
 ## One-time setup
 
