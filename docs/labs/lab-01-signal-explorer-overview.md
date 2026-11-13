@@ -64,7 +64,7 @@ If you haven't set up the workbench, do [IC101 Lab 03](https://uoftasic.com/ic10
    === All checks passed ===
    ```
 
-   The outputs printed in Labs 01–05 were checked with these numpy and matplotlib versions, in the IIC-OSIC-TOOLS 2026.08 image the workbench runs. If yours differ, a printed number that disagrees with these pages may come from the version rather than your code. The backend is the part of matplotlib that opens plot windows, and its line names the GUI toolkit matplotlib found. `adsig` is the course's small signal library in `labs/common/`; the explorers use it.
+   The outputs printed in Labs 01–05 were checked with these numpy and matplotlib versions, in the IIC-OSIC-TOOLS 2026.08 image the workbench runs. If yours differ, a printed number that disagrees with these pages may come from the version rather than your code. The backend is the part of matplotlib that opens plot windows, and the `matplotlib backend:` line names the GUI toolkit matplotlib found. `adsig` is the course's small signal library in `labs/common/`; the explorers use it.
 
 What to do if `check_env.py` prints one of these lines:
 
@@ -135,7 +135,7 @@ How do a sine's four knobs, amplitude, frequency, phase and DC offset, change it
 
    Close the window.
 
-4. Save this as `measure_sine.py`, but don't run it yet. It builds a sine at a chosen amplitude and frequency, computes the period from $T = 1/f$, and measures peak-to-peak and RMS from the samples in the array. On a scope, you'd read those two off the trace by eye:
+4. Save this as `measure_sine.py`, but don't run it yet. It builds a sine at a chosen amplitude and frequency, computes the period from $T = 1/f$, and measures peak-to-peak and RMS from the samples in the array, rather than off a scope trace by eye:
 
    ```python
    import numpy as np
