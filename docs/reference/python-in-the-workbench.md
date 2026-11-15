@@ -1,10 +1,10 @@
 # Python in the workbench
 
-How to run the AD101 explorers and scripts inside the IIC-OSIC-TOOLS noVNC desktop from IC101, and what to do when something goes wrong. [Lab 01](../labs/lab-01-signal-explorer-overview.md), Part 1, walks you through loading the course the first time.
+This page explains how to run the AD101 explorers and scripts inside the IIC-OSIC-TOOLS noVNC desktop you set up in IC101, and what to do when something goes wrong. The first time you load the course, [Lab 01](../labs/lab-01-signal-explorer-overview.md), Part 1 walks you through it.
 
 ## One-time setup
 
-Start noVNC as in IC101 (`./scripts/start_vnc.sh` from your `workspace` folder), open a terminal in the desktop, then:
+Start noVNC the way you did in IC101 (`./scripts/start_vnc.sh` from your `workspace` folder), open a terminal in the desktop, and run:
 
 ```bash
 . /foss/designs/common/.designinit
@@ -13,7 +13,7 @@ mod ad101                    # → /foss/designs/modules/ad101
 python3 scripts/check_env.py
 ```
 
-Instead of `mod add`, you can clone on the host:
+If you'd rather not use `mod add`, you can clone the repo on the host instead:
 
 ```bash
 # on the host, inside your workspace clone
@@ -21,7 +21,7 @@ cd workspace/modules
 git clone https://github.com/uoftasic/ad101.git
 ```
 
-`check_env.py` should print `OK` for numpy, matplotlib and the `adsig` smoke line, then `=== All checks passed ===`.
+`check_env.py` should print `OK` for numpy, for matplotlib and for the `adsig` smoke line, and finish with `=== All checks passed ===`.
 
 ## Running an explorer
 
@@ -32,21 +32,21 @@ python3 src/explore.py --figure f1  # one figure
 python3 src/explore.py --headless   # PNGs into results/ (no GUI)
 ```
 
-The terminal stays busy until you close the plot windows. Close a window with its × button, or press `q` while the figure has focus.
+The terminal stays busy until you close the plot windows, so you won't get a prompt back while they're open. You can close a window with its × button, or by pressing `q` while the figure has focus.
 
 ## Running the snippets
 
-The short Python snippets in Labs 01–04 only import `numpy` and `matplotlib`. Unlike the explorers, they don't need `_path.py` or `mod ad101`, so they run in any Python 3 that has those two packages: the noVNC desktop, your host machine or your own laptop. Save each one as its own `.py` file and run it with `python3 <file>.py`. In the desktop, files you save under `/foss/designs` live in your `workspace` folder on the host and survive a container restart.
+The short Python snippets in Labs 01–04 import only `numpy` and `matplotlib`. Unlike the explorers, they don't need `_path.py` or `mod ad101`, so they run in any Python 3 that has those two packages, whether that's the noVNC desktop, your host machine or your own laptop. Save each snippet as its own `.py` file and run it with `python3 <file>.py`. In the desktop, anything you save under `/foss/designs` is stored in your `workspace` folder on the host, so it survives a container restart.
 
 ## GUI backend
 
-Interactive explorers need a matplotlib GUI backend (Tk or Qt) and a display, which the noVNC desktop provides. A host machine without a display reports `Agg`. That's fine for `build_figures.py` and `--headless`. Inside IIC-OSIC-TOOLS and noVNC, re-run `check_env.py`; if it still warns, use one of the fixes below or `--headless`.
+The interactive explorers need a matplotlib GUI backend (Tk or Qt) and a display to draw on, and the noVNC desktop provides both. On a host machine without a display, `check_env.py` reports the `Agg` backend instead. That's fine for `build_figures.py` and `--headless`, because they only write PNG files and never open a window. If you get a backend warning inside IIC-OSIC-TOOLS and noVNC, run `check_env.py` again, and if it still warns, use one of the fixes below or run with `--headless`.
 
 ## If the GUI won't open
 
-`check_env.py` may report `WARN no interactive GUI backend`. Your options:
+`check_env.py` may report `WARN no interactive GUI backend`, which means the explorers have nothing to open their windows with. You have three ways round it:
 
-1. Use headless mode. You can still learn from the exported PNGs:
+1. Use headless mode. You lose the interactive windows, but the exported PNGs show the same figures, so you can still learn from them:
 
    ```bash
    python3 src/explore.py --headless
@@ -59,22 +59,22 @@ Interactive explorers need a matplotlib GUI backend (Tk or Qt) and a display, wh
    # or make sure Tk is available; then re-run check_env.py
    ```
 
-3. Check that you're in the noVNC desktop terminal, not a host terminal without a display.
+3. Check that you're typing in a terminal inside the noVNC desktop. A terminal on the host has no display for the windows to open on.
 
 ## Saving a figure
 
-- From an explorer or snippet window: click the save icon (the floppy disk) in the window's toolbar.
-- From an explorer, all figures at once: `python3 src/explore.py --headless` writes PNGs into the lab's `results/` folder.
-- From your own snippet: add `plt.savefig("my-capture.png", dpi=140)` just before `plt.show()`.
+- To save the figure in an explorer or snippet window, click the save icon (the floppy disk) in the window's toolbar.
+- To save every figure from an explorer at once, run `python3 src/explore.py --headless`, which writes PNGs into the lab's `results/` folder.
+- To save from your own snippet, add `plt.savefig("my-capture.png", dpi=140)` just before `plt.show()`.
 
 ## Listening to a filtered signal (Lab 05)
 
-Lab 05 exports and plays audio so you can hear a filter change a chord. Live playback needs a sound device, which the noVNC desktop may not pass through from the host. The lab script uses the same fallback idea as the GUI backend above:
+Lab 05 exports and plays audio so that you can hear what a filter does to a chord. Live playback needs a sound device, and the noVNC desktop may not pass one through from the host, so the lab script has a fallback, in the same spirit as `--headless` when there's no GUI backend:
 
-1. Try live playback with `sounddevice`. It isn't installed in the course image, and neither is `soundfile`; both are listed as optional in `labs/lab-05-signal-workshop/requirements.txt`. Install them with `pip install --user sounddevice soundfile`.
-2. If playback fails, the script still writes `.wav` files into `results/` and prints their paths. Open them from your host machine's file manager or media player.
+1. It tries live playback with `sounddevice`. Neither `sounddevice` nor `soundfile` is installed in the course image; both are listed as optional in `labs/lab-05-signal-workshop/requirements.txt`, and you can install them with `pip install --user sounddevice soundfile`.
+2. If playback fails, the script still writes `.wav` files into `results/` and prints their paths, and you can open them from your host machine's file manager or media player.
 
-Either way you can compare the filtered and unfiltered chord.
+Either way, you can compare the filtered chord with the unfiltered one.
 
 ## Regenerating the docs figures (maintainers)
 
@@ -85,17 +85,17 @@ python3 scripts/build_figures.py
 # → docs/assets/img/f01-….png … f15-….png
 ```
 
-Noise figures use a fixed seed (`RNG_SEED = 42` in `labs/common/adsig.py`), so rebuilds don't churn git.
+The noise figures use a fixed random seed (`RNG_SEED = 42` in `labs/common/adsig.py`), so a rebuild produces the same PNGs and doesn't leave a pile of changed images in git.
 
 ## Common errors
 
 | Symptom | Fix |
 |---------|-----|
-| `ModuleNotFoundError: common` | Run from the lab folder as `python3 src/explore.py` (uses `_path.py`), or `mod ad101` first |
-| `ModuleNotFoundError: numpy` | `pip install --user numpy matplotlib` |
-| Blank or frozen window over noVNC | Open fewer windows (`--figure f1`), close extras, check VNC bandwidth |
-| `check.py` says `Not quite` | Read the spectrum peak again; the tolerance is ±5 Hz |
-| `NotImplementedError: TODO: …` in Lab 05 | Expected: fill in the function the message names, then re-run |
+| `ModuleNotFoundError: common` | Run it from the lab folder as `python3 src/explore.py`, which uses `_path.py` to find `common`, or run `mod ad101` first |
+| `ModuleNotFoundError: numpy` | Install the packages with `pip install --user numpy matplotlib` |
+| Blank or frozen window over noVNC | Open fewer windows (`--figure f1` opens just one), close any extras, and check your VNC bandwidth |
+| `check.py` says `Not quite` | Read the spectrum peak again; your answer has to be within ±5 Hz |
+| `NotImplementedError: TODO: …` in Lab 05 | This is expected. Fill in the function the message names, then re-run |
 
 ## Related
 
