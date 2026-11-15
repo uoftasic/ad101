@@ -4,15 +4,15 @@ Signals in time and frequency: waveforms, spectra and Bode plots.
 
 AD101 is the first course in the UofT ASIC Team's analog track, published at https://uoftasic.com/ad101/. It's for students who have finished [IC101](https://uoftasic.com/ic101/) and want to read the three plots analog engineers use every day: the waveform (voltage against time), the spectrum (how strong each frequency is) and the Bode plot (what a circuit does to each frequency).
 
-The course uses music as its running example. A signal is a note, a chord is signals added together, timbre is a recipe of harmonics, and a filter is a tone knob. You don't need any musical background.
+The course uses music as its running example. A single signal plays the part of a note, a chord is several signals added together, timbre is the recipe of harmonics in a sound, and a filter works like a tone knob. You don't need any musical background to follow it.
 
 ## Before you start
 
 | | |
 |---|---|
 | Prerequisite | [IC101](https://uoftasic.com/ic101/): Docker and the IIC-OSIC-TOOLS noVNC desktop working, with the shared `workspace` repo from IC101 cloned. The labs run inside that workspace. |
-| Math | High-school level: sine, logarithm, basic algebra. No calculus. |
-| Tools | Python, numpy and matplotlib, already inside IIC-OSIC-TOOLS |
+| Math | High-school level: sines, logarithms and basic algebra. You won't need calculus. |
+| Tools | Python, numpy and matplotlib, which are already installed in IIC-OSIC-TOOLS |
 | Time | About 10 hours 20 minutes: 2 hours 50 minutes of reading and 7.5 hours of labs, not counting the optional spectral-leakage part at the end of Lab 03 |
 
 ## What you'll learn
@@ -25,7 +25,7 @@ The course uses music as its running example. A signal is a note, a chord is sig
 
 ## Course path
 
-The guide pages are split into four movements, the course's name for its units, each followed by a lab; a capstone lab comes last. Work down this table in order. Read rows are guide pages: concepts, figures and worked examples, with nothing to run. Do rows are labs, where you run everything. The times are estimates, and they add up to the total above.
+The guide pages are grouped into four units, which the course calls movements, and each movement is followed by a lab. A capstone lab comes last. Work down this table in order. The Read rows are guide pages, with concepts, figures and worked examples but nothing for you to run; the Do rows are labs, which is where you run everything. The times are estimates, and they add up to the total above.
 
 | # | | What | Time |
 |---|---|---|---|
