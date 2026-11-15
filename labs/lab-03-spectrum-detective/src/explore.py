@@ -3,7 +3,7 @@
 
     python3 src/explore.py
     python3 src/explore.py --figure f8
-    python3 src/check.py --guess 237
+    python3 src/check.py --guess <Hz>
 """
 
 from __future__ import annotations

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Confirm the hidden-tone frequency from F8.
 
-    python3 src/check.py --guess 237
+    python3 src/check.py --guess <Hz>
 """
 
 from __future__ import annotations

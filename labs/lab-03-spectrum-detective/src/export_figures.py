@@ -69,12 +69,12 @@ def _f8(path: Path) -> Path:
     ax_t.set_ylabel("Voltage (V)")
     freqs, mag = spectrum(y, fs)
     ax_f.plot(freqs, to_db(mag), color=COLORS["spectrum"], lw=1.0)
-    ax_f.axvline(HIDDEN_TONE_HZ, color=COLORS["marker"], ls="--", lw=1.2, label=f"tone @ {HIDDEN_TONE_HZ:.0f} Hz")
+    # No marker at the tone: Lab 03 Part 2 asks students to find it, and the
+    # live explorer hides its marker too.
     ax_f.set_xlim(0, 800)
     ax_f.set_ylim(-80, 5)
     ax_f.set_xlabel("Frequency (Hz)")
     ax_f.set_ylabel("Magnitude (dB)")
-    ax_f.legend(fontsize=8)
     fig.tight_layout()
     fig.savefig(path, dpi=140)
     plt.close(fig)
