@@ -1,12 +1,12 @@
 # Lab 01: Signal explorer
 
-Interactive matplotlib explorers for waveforms in the time domain (F1–F3).
+This package holds the interactive matplotlib explorers F1, F2 and F3, for looking at waveforms in the time domain.
 
-Follow the lab writeup, [`docs/labs/lab-01-signal-explorer-overview.md`](../../docs/labs/lab-01-signal-explorer-overview.md), published at https://uoftasic.com/ad101/labs/lab-01-signal-explorer-overview.html. This README is a command reference.
+You work through the lab from its writeup, [`docs/labs/lab-01-signal-explorer-overview.md`](../../docs/labs/lab-01-signal-explorer-overview.md), which is published at https://uoftasic.com/ad101/labs/lab-01-signal-explorer-overview.html. This README only lists the commands and files, for when you need to look one up.
 
 ## How to run
 
-In a terminal in the IIC-OSIC-TOOLS noVNC desktop:
+Open a terminal in the IIC-OSIC-TOOLS noVNC desktop and start from the lab folder:
 
 ```bash
 mod ad101
