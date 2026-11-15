@@ -23,7 +23,7 @@ Run explorers and snippets from the lab folder (Part 2 takes you there). If you 
 
 ## Part 1: Load the course
 
-If you haven't set up the workbench, do [IC101 Lab 03](https://uoftasic.com/ic101/#/labs/lab-03-launch-the-workbench-overview) first.
+If you haven't set up the workbench, do [IC101 Lab 03](https://uoftasic.com/ic101/labs/lab-03-launch-the-workbench-overview.html) first.
 
 1. Start the desktop from your `workspace` folder on the host (`./scripts/start_vnc.sh`, or `scripts\start_vnc.bat` on Windows), open it in your browser as in IC101, and open a terminal in the desktop.
 
@@ -73,7 +73,7 @@ What to do if `check_env.py` prints one of these lines:
 | `WARN no interactive GUI backend (Agg / headless)` | The explorers can't open windows. Check that you ran `check_env.py` in a terminal in the noVNC desktop, not on your host, then see "If the GUI won't open" in [Python in the workbench](../reference/python-in-the-workbench.md). |
 | `FAIL numpy` or `FAIL matplotlib` | Run `pip install --user numpy matplotlib` in the desktop terminal, then run `check_env.py` again. The install goes into the container, not your `workspace` folder, so repeat it if you remove the container. |
 
-For anything else about the desktop, Docker or `mod`, see IC101's [Troubleshooting](https://uoftasic.com/ic101/#/reference/troubleshooting) page.
+For anything else about the desktop, Docker or `mod`, see IC101's [Troubleshooting](https://uoftasic.com/ic101/reference/troubleshooting.html) page.
 
 ## Part 2: Plot your first signal
 
