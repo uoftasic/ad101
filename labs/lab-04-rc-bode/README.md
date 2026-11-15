@@ -2,7 +2,7 @@
 
 Bode plots of an RC low-pass, linked to what the filter does in time (F12–F15).
 
-Follow the lab writeup, [`docs/labs/lab-04-rc-bode-overview.md`](../../docs/labs/lab-04-rc-bode-overview.md), published at https://uoftasic.com/ad101/#/labs/lab-04-rc-bode-overview. This README is a command reference.
+Follow the lab writeup, [`docs/labs/lab-04-rc-bode-overview.md`](../../docs/labs/lab-04-rc-bode-overview.md), published at https://uoftasic.com/ad101/labs/lab-04-rc-bode-overview.html. This README is a command reference.
 
 ## How to run
 

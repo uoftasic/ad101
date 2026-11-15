@@ -2,7 +2,7 @@
 
 A code-along capstone with no slider explorers. You fill in the functions in `src/workshop.py` to synthesize a chord, plot its waveform and spectrum, filter it with an RC low-pass, and export the chord before and after filtering as WAV files.
 
-Follow the lab writeup, [`docs/labs/lab-05-signal-workshop-overview.md`](../../docs/labs/lab-05-signal-workshop-overview.md), published at https://uoftasic.com/ad101/#/labs/lab-05-signal-workshop-overview. This README is a command reference.
+Follow the lab writeup, [`docs/labs/lab-05-signal-workshop-overview.md`](../../docs/labs/lab-05-signal-workshop-overview.md), published at https://uoftasic.com/ad101/labs/lab-05-signal-workshop-overview.html. This README is a command reference.
 
 ## How to run
 

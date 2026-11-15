@@ -99,5 +99,5 @@ Noise figures use a fixed seed (`RNG_SEED = 42` in `labs/common/adsig.py`), so r
 
 ## Related
 
-- [IC101: Launch noVNC](https://uoftasic.com/ic101/#/guide/launch-novnc)
+- [IC101: Launch noVNC](https://uoftasic.com/ic101/guide/launch-novnc.html)
 - [Getting started](../guide/getting-started.md)

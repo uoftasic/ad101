@@ -2,7 +2,7 @@
 
 Identify signals from their spectra, hunt a hidden tone, measure THD and see aliasing (F7–F11).
 
-Follow the lab writeup, [`docs/labs/lab-03-spectrum-detective-overview.md`](../../docs/labs/lab-03-spectrum-detective-overview.md), published at https://uoftasic.com/ad101/#/labs/lab-03-spectrum-detective-overview. This README is a command reference.
+Follow the lab writeup, [`docs/labs/lab-03-spectrum-detective-overview.md`](../../docs/labs/lab-03-spectrum-detective-overview.md), published at https://uoftasic.com/ad101/labs/lab-03-spectrum-detective-overview.html. This README is a command reference.
 
 ## How to run
 
