@@ -14,10 +14,10 @@ $$
 
 ![F9 — THD](../assets/img/f09-thd.png)
 
-THD turns "how distorted does it sound?" into a single number you can read off instead of a listening test. You'll raise the gain on the F9 explorer and watch THD climb, then clip a sine and measure THD in your own script, in [Lab 03](labs/lab-03-spectrum-detective-overview.md), Part 3.
+THD turns "how distorted does it sound?" into a single number you can read off instead of a listening test. You'll raise the gain on the F9 explorer and watch THD climb, then clip a sine and measure THD in your own script, in [Lab 03](../labs/lab-03-spectrum-detective-overview.md), Part 3.
 
 ## Why an engineer cares
 
 Every amplifier datasheet quotes a linearity or THD number. AD103's MOSFET curves and AD201's amplifiers make this precise.
 
-Next: [Sampling fast enough](guide/sampling-fast-enough.md)
+Next: [Sampling fast enough](../guide/sampling-fast-enough.md)

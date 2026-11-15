@@ -31,6 +31,6 @@ At $f = f_c$: $\lvert H\rvert = 1/\sqrt{2}$ (−3 dB) and the phase is −45°. 
 
 Only the product $RC$ matters. Double $R$ and halve $C$ and $f_c$ stays where it is, like two different amp settings that happen to land on the same tone.
 
-You'll move R and C on the F12 explorer, then draw this Bode plot from the two formulas in your own script, in [Lab 04](labs/lab-04-rc-bode-overview.md), Part 1.
+You'll move R and C on the F12 explorer, then draw this Bode plot from the two formulas in your own script, in [Lab 04](../labs/lab-04-rc-bode-overview.md), Part 1.
 
-Next: [Reading a Bode plot](guide/reading-a-bode-plot.md)
+Next: [Reading a Bode plot](../guide/reading-a-bode-plot.md)

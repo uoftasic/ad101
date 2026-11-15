@@ -25,7 +25,7 @@ If any (nice) signal is a sum of sines, then the list of those sines' amplitudes
 
 A **stem plot**, with a stick at each harmonic whose height is that harmonic's amplitude, is the natural picture of the recipe. It's the same idea as an equalizer's bar display, applied to a single note instead of a whole song. F5 (right) is the stem plot for the waveform in F4 (left).
 
-You'll switch harmonics on and off in the F4/F5 explorer, then add them up yourself in a script, in [Lab 02](labs/lab-02-harmonic-builder-overview.md), Part 2.
+You'll switch harmonics on and off in the F4/F5 explorer, then add them up yourself in a script, in [Lab 02](../labs/lab-02-harmonic-builder-overview.md), Part 2.
 
 ## Why an engineer cares
 
@@ -35,4 +35,4 @@ You'll switch harmonics on and off in the F4/F5 explorer, then add them up yours
 | Ringing at sharp edges | Truncated harmonic series, or real interconnect behaving the same way |
 | Timbre = harmonic recipe | Two circuits with the same fundamental can look very different on a spectrum |
 
-Next: [Rhythm and duty cycle](guide/rhythm-and-duty-cycle.md)
+Next: [Rhythm and duty cycle](../guide/rhythm-and-duty-cycle.md)

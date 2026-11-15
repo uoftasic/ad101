@@ -16,7 +16,7 @@ A phase difference is a time delay, measured in degrees of one cycle instead of 
 
 When you add two equal sines, the phase between them decides what the sum looks like. At $0^\circ$ the two voices reinforce each other and the sum is tall. As the phase approaches $180^\circ$ they cancel and the sum flattens out. That's the audio equivalent of two speakers wired backwards.
 
-You'll set the phase on the F3 explorer, check the delay readout against the formula, and plot the two voices and their sum yourself in [Lab 01](labs/lab-01-signal-explorer-overview.md), Part 5.
+You'll set the phase on the F3 explorer, check the delay readout against the formula, and plot the two voices and their sum yourself in [Lab 01](../labs/lab-01-signal-explorer-overview.md), Part 5.
 
 ## Why an engineer cares
 
@@ -26,4 +26,4 @@ You'll set the phase on the F3 explorer, check the delay readout against the for
 | Phase at high frequency | Clock skew between two paths that "should" arrive together |
 | Phase margin | A preview of stability analysis in AD201 |
 
-That's the end of Movement I. Next: [Lab 01: Signal explorer](labs/lab-01-signal-explorer-overview.md). After the lab, Movement II starts with [Adding signals](guide/adding-signals.md).
+That's the end of Movement I. Next: [Lab 01: Signal explorer](../labs/lab-01-signal-explorer-overview.md). After the lab, Movement II starts with [Adding signals](../guide/adding-signals.md).

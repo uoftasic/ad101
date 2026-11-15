@@ -9,8 +9,8 @@ Lab package: [`labs/lab-05-signal-workshop/`](https://github.com/uoftasic/ad101/
 ## Before you start
 
 - Finish Labs 01–04. This lab assembles the ideas from their snippets into one script.
-- Read all four movements, [What is a signal?](guide/what-is-a-signal.md) through [More filter shapes](guide/more-filter-shapes.md).
-- Keep [Music and signals](reference/music-and-signals.md) open for its note-frequency table.
+- Read all four movements, [What is a signal?](../guide/what-is-a-signal.md) through [More filter shapes](../guide/more-filter-shapes.md).
+- Keep [Music and signals](../reference/music-and-signals.md) open for its note-frequency table.
 - In a terminal in the noVNC desktop, go to the lab folder:
 
   ```bash
@@ -118,7 +118,7 @@ Can you hear what the filter did?
 
 2. Fill in `play_audio`. Try `sounddevice` first, with the imports and the playback all inside one `try/except Exception`. If it fails, print the file's path and tell the user to open it from their host's file manager. Playback failing must never crash the script.
 
-   Neither `sounddevice` nor `soundfile` (which the docstring uses to read the WAV back) is installed in the course image. Both are listed as optional in this lab's `requirements.txt`; install them with `pip install --user sounddevice soundfile` if you want to try live playback. That install goes into the container, not your `workspace` folder, so you'd have to repeat it if you remove the container. Without them your fallback runs, and that's fine. The noVNC desktop may not have a sound device anyway; see [Python in the workbench](reference/python-in-the-workbench.md).
+   Neither `sounddevice` nor `soundfile` (which the docstring uses to read the WAV back) is installed in the course image. Both are listed as optional in this lab's `requirements.txt`; install them with `pip install --user sounddevice soundfile` if you want to try live playback. That install goes into the container, not your `workspace` folder, so you'd have to repeat it if you remove the container. Without them your fallback runs, and that's fine. The noVNC desktop may not have a sound device anyway; see [Python in the workbench](../reference/python-in-the-workbench.md).
 
 3. Run the headless version:
 
@@ -167,4 +167,4 @@ To compare your work with the reference, run the solution with its own output fo
 python3 solutions/workshop_solution.py --headless --out results/solution
 ```
 
-Next on the [Course path](README.md#course-path): this was the last step of AD101. Carry on with [AD102: Linear Circuits & Fabrication](https://uoftasic.com/ad102/).
+Next on the [Course path](../index.md#course-path): this was the last step of AD101. Carry on with [AD102: Linear Circuits & Fabrication](https://uoftasic.com/ad102/).

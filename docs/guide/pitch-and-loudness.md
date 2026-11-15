@@ -27,7 +27,7 @@ Turn the amplitude knob up and the note gets louder without changing pitch. Turn
 - **Peak-to-peak** is the full vertical swing, from the top of the wave to the bottom. For a pure sine it's $2A$.
 - **RMS** ("root mean square") is the signal's effective strength. For a sine with no DC offset, $\mathrm{RMS} = A/\sqrt{2} \approx 0.707\,A$. The power a signal delivers into a resistor depends on its RMS value, not its peak, which is why a multimeter reports RMS rather than amplitude when you measure an AC voltage.
 
-You'll read period, peak-to-peak and RMS off the F1 explorer, then compute them from an array in your own script, in [Lab 01](labs/lab-01-signal-explorer-overview.md), Part 3.
+You'll read period, peak-to-peak and RMS off the F1 explorer, then compute them from an array in your own script, in [Lab 01](../labs/lab-01-signal-explorer-overview.md), Part 3.
 
 ## Why an engineer cares
 
@@ -38,4 +38,4 @@ You'll read period, peak-to-peak and RMS off the F1 explorer, then compute them 
 | Frequency | Bandwidth budgets, sampling rates |
 | RMS | The number your multimeter and power calculations actually use |
 
-Next: [A family of waveforms](guide/a-family-of-waveforms.md)
+Next: [A family of waveforms](../guide/a-family-of-waveforms.md)

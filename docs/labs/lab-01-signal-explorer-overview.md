@@ -6,8 +6,8 @@ Lab package: [`labs/lab-01-signal-explorer/`](https://github.com/uoftasic/ad101/
 
 ## Before you start
 
-- Read [Getting started](guide/getting-started.md) and Movement I: [What is a signal?](guide/what-is-a-signal.md), [Pitch and loudness](guide/pitch-and-loudness.md), [A family of waveforms](guide/a-family-of-waveforms.md) and [Two voices in time](guide/two-voices-in-time.md).
-- Keep [Reading plots](reference/reading-plots.md) open as a cheat sheet.
+- Read [Getting started](../guide/getting-started.md) and Movement I: [What is a signal?](../guide/what-is-a-signal.md), [Pitch and loudness](../guide/pitch-and-loudness.md), [A family of waveforms](../guide/a-family-of-waveforms.md) and [Two voices in time](../guide/two-voices-in-time.md).
+- Keep [Reading plots](../reference/reading-plots.md) open as a cheat sheet.
 - Have a sheet of paper or a text file for your predictions.
 
 Time: about 1.5 hours.
@@ -70,14 +70,14 @@ What to do if `check_env.py` prints one of these lines:
 
 | What you see | What to do |
 |---|---|
-| `WARN no interactive GUI backend (Agg / headless)` | The explorers can't open windows. Check that you ran `check_env.py` in a terminal in the noVNC desktop, not on your host, then see "If the GUI won't open" in [Python in the workbench](reference/python-in-the-workbench.md). |
+| `WARN no interactive GUI backend (Agg / headless)` | The explorers can't open windows. Check that you ran `check_env.py` in a terminal in the noVNC desktop, not on your host, then see "If the GUI won't open" in [Python in the workbench](../reference/python-in-the-workbench.md). |
 | `FAIL numpy` or `FAIL matplotlib` | Run `pip install --user numpy matplotlib` in the desktop terminal, then run `check_env.py` again. The install goes into the container, not your `workspace` folder, so repeat it if you remove the container. |
 
 For anything else about the desktop, Docker or `mod`, see IC101's [Troubleshooting](https://uoftasic.com/ic101/#/reference/troubleshooting) page.
 
 ## Part 2: Plot your first signal
 
-What does the pair of arrays from [What is a signal?](guide/what-is-a-signal.md) look like as a plot?
+What does the pair of arrays from [What is a signal?](../guide/what-is-a-signal.md) look like as a plot?
 
 1. Go to the lab folder:
 
@@ -85,7 +85,7 @@ What does the pair of arrays from [What is a signal?](guide/what-is-a-signal.md)
    cd labs/lab-01-signal-explorer
    ```
 
-2. Save this as `first_signal.py`. It's the pair of arrays from [What is a signal?](guide/what-is-a-signal.md), plus four lines that plot them:
+2. Save this as `first_signal.py`. It's the pair of arrays from [What is a signal?](../guide/what-is-a-signal.md), plus four lines that plot them:
 
    ```python
    import numpy as np
@@ -228,7 +228,7 @@ How do square, triangle, pulse and noise differ from a sine, and what does the d
 
 4. Change the `0.25` in the `pulse` line to `0.5`, then to `0.75`, re-running each time.
 
-   You should see the on-time of each pulse grow. That single number is the duty cycle, which you'll meet again in [Rhythm and duty cycle](guide/rhythm-and-duty-cycle.md).
+   You should see the on-time of each pulse grow. That single number is the duty cycle, which you'll meet again in [Rhythm and duty cycle](../guide/rhythm-and-duty-cycle.md).
 
 ## Part 5: Turn phase into delay (F3)
 
@@ -311,4 +311,4 @@ Nothing to submit.
 
 Keep your snippet files. Lab 05 asks you to write the same kinds of pieces again, assembled into one script.
 
-Next on the [Course path](README.md#course-path): read Movement II, [Adding signals](guide/adding-signals.md), [Timbre and harmonics](guide/timbre-and-harmonics.md) and [Rhythm and duty cycle](guide/rhythm-and-duty-cycle.md), then do [Lab 02: Harmonic builder](labs/lab-02-harmonic-builder-overview.md).
+Next on the [Course path](../index.md#course-path): read Movement II, [Adding signals](../guide/adding-signals.md), [Timbre and harmonics](../guide/timbre-and-harmonics.md) and [Rhythm and duty cycle](../guide/rhythm-and-duty-cycle.md), then do [Lab 02: Harmonic builder](../labs/lab-02-harmonic-builder-overview.md).
