@@ -2,13 +2,13 @@
 
 You'll write a signal-analysis script yourself, one function at a time: it synthesizes a chord out of harmonic-rich tones, plots its waveform and spectrum, filters it with an RC low-pass, and exports the chord before and after filtering so you can hear the filter change its timbre without changing its pitch.
 
-This lab is different from Labs 01–04. There are no sliders: you fill in a scaffold, run it, and listen to what it produces.
+This lab works differently from Labs 01–04: instead of moving sliders, you fill in a scaffold, run it, and listen to what it produces.
 
 Lab package: [`labs/lab-05-signal-workshop/`](https://github.com/uoftasic/ad101/tree/main/labs/lab-05-signal-workshop)
 
 ## Before you start
 
-- Finish Labs 01–04. This lab assembles the ideas from their snippets into one script.
+- Finish Labs 01–04 first, because this lab puts the ideas from their snippets together into one script.
 - Read all four movements, [What is a signal?](../guide/what-is-a-signal.md) through [More filter shapes](../guide/more-filter-shapes.md).
 - Keep [Music and signals](../reference/music-and-signals.md) open for its note-frequency table.
 - In a terminal in the noVNC desktop, go to the lab folder:
@@ -23,7 +23,7 @@ Time: about 2 hours.
 
 ## How the scaffold works
 
-Open `src/workshop.py` in an editor. Seven functions are stubbed out with `raise NotImplementedError(...)`. Each has a docstring telling you exactly what to write. The part numbers below match the `Part` labels in those docstrings and in the comments in `run()`:
+Open `src/workshop.py` in an editor. Seven functions are stubbed out with `raise NotImplementedError(...)`, and each one has a docstring that tells you exactly what to write. The part numbers below match the `Part` labels in those docstrings and in the comments in `run()`:
 
 | Part | Function | What it does |
 |------|----------|----------------|
@@ -44,9 +44,9 @@ python3 src/workshop.py --headless   # save PNGs + WAVs into results/, skip live
 python3 src/workshop.py              # full run: plot windows + live audio, if available
 ```
 
-Until every function is filled in, the script stops at the first one that still raises `NotImplementedError`, and the error message says which step that is. That's how you'll know each part works: the error moves on to the next function.
+Until every function is filled in, the script stops at the first one that still raises `NotImplementedError`, and the error message says which step that is. That's how you'll know a part works: once its function is filled in, the error moves on to the next one.
 
-If you're stuck on one function, [`solutions/workshop_solution.py`](https://github.com/uoftasic/ad101/blob/main/labs/lab-05-signal-workshop/solutions/workshop_solution.py) has a filled-in reference. Try to get further on your own first. The end of this page shows how to run it without overwriting your own results.
+If you're stuck on one function, [`solutions/workshop_solution.py`](https://github.com/uoftasic/ad101/blob/main/labs/lab-05-signal-workshop/solutions/workshop_solution.py) has a filled-in reference, but try to get further on your own first. If you do run it, the end of this page shows how to do that without overwriting your own results.
 
 ## Run the empty scaffold
 
@@ -64,7 +64,7 @@ How do you turn three notes into one harmonic-rich chord, and plot it?
 
 1. Fill in `synthesize_chord`. Its docstring has you build each note with `harmonic_sum(t, fundamental=freq, harmonics=[1, 3, 5, 7, 9])`, add the three notes, and divide by the number of notes so the result stays roughly within ±1. The notes are `CHORD_NOTES` at the top of the file: C4, E4 and G4 at 261.6, 329.6 and 392.0 Hz.
 
-   This is the chord from Lab 02, Part 1, except that each note now has odd harmonics, like the square wave from Lab 02, Part 2. Those high harmonics give the filter in Part 3 something to change audibly.
+   This is the chord from Lab 02, Part 1, except that each note now has odd harmonics, like the square wave from Lab 02, Part 2, and those high harmonics give the filter in Part 3 something it can audibly change.
 
 2. Fill in `plot_waveform`: time in milliseconds on the x-axis, voltage on the y-axis, with `house_style(ax)` applied so it matches Labs 01–04.
 
@@ -96,7 +96,7 @@ H(f) = \frac{1}{\sqrt{1+(f/f_c)^2}}\,e^{-j\arctan(f/f_c)}
 f_c = \frac{1}{2\pi RC}
 $$
 
-The first factor is the magnitude and the exponential carries the phase, the same two curves as the Bode plot in Lab 04. $j$ is the imaginary unit ($j^2 = -1$; electrical engineers write $j$ instead of $i$). You don't need to work with complex numbers by hand here: numpy does the arithmetic once you build `H`.
+The first factor is the magnitude and the exponential carries the phase, the same two curves as the Bode plot in Lab 04. $j$ is the imaginary unit ($j^2 = -1$; electrical engineers write $j$ instead of $i$). You don't need to work with complex numbers by hand here, because numpy does the arithmetic once you've built `H`.
 
 1. Fill in `apply_lowpass`, following the four numbered steps in its docstring: get `freqs`, get the magnitude and phase from `rc_lowpass` (the phase comes back in degrees, so convert it with `np.deg2rad`), build the complex `H`, then multiply in the frequency domain and transform back with `np.fft.irfft`. It's the same method as the `rc_lowpass_filter` snippet in Lab 04, Part 3.
 
@@ -118,7 +118,7 @@ Can you hear what the filter did?
 
 2. Fill in `play_audio`. Try `sounddevice` first, with the imports and the playback all inside one `try/except Exception`. If it fails, print the file's path and tell the user to open it from their host's file manager. Playback failing must never crash the script.
 
-   Neither `sounddevice` nor `soundfile` (which the docstring uses to read the WAV back) is installed in the course image. Both are listed as optional in this lab's `requirements.txt`; install them with `pip install --user sounddevice soundfile` if you want to try live playback. That install goes into the container, not your `workspace` folder, so you'd have to repeat it if you remove the container. Without them your fallback runs, and that's fine. The noVNC desktop may not have a sound device anyway; see [Python in the workbench](../reference/python-in-the-workbench.md).
+   Neither `sounddevice` nor `soundfile` (which the docstring uses to read the WAV back) is installed in the course image. Both are listed as optional in this lab's `requirements.txt`; install them with `pip install --user sounddevice soundfile` if you want to try live playback. That install goes into the container, not your `workspace` folder, so you'd have to repeat it if you remove the container. Without them your fallback runs instead, and that's fine, because the noVNC desktop may not have a sound device anyway; see [Python in the workbench](../reference/python-in-the-workbench.md).
 
 3. Run the headless version:
 
@@ -138,7 +138,7 @@ Can you hear what the filter did?
 
 5. Listen to `chord-unfiltered.wav` and `chord-filtered.wav`. If playback doesn't work over your noVNC session, open them from your host machine: they're in `workspace/modules/ad101/labs/lab-05-signal-workshop/results/`.
 
-   You should hear the same notes in both files, with the filtered one duller and more muffled, not different in pitch.
+   You should hear the same notes in both files. The filtered one sounds duller and more muffled, but its pitch is the same.
 
    Why does the filter change the chord's timbre but not its pitch?
 
