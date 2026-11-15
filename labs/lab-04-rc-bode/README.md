@@ -1,8 +1,8 @@
 # Lab 04: RC filter and Bode
 
-Bode plots of an RC low-pass, linked to what the filter does in time (F12–F15).
+You draw Bode plots of an RC low-pass filter and link each one to what the filter does to a signal in time (explorers F12–F15).
 
-Follow the lab writeup, [`docs/labs/lab-04-rc-bode-overview.md`](../../docs/labs/lab-04-rc-bode-overview.md), published at https://uoftasic.com/ad101/labs/lab-04-rc-bode-overview.html. This README is a command reference.
+The steps and questions are in the lab writeup, [`docs/labs/lab-04-rc-bode-overview.md`](../../docs/labs/lab-04-rc-bode-overview.md), published at https://uoftasic.com/ad101/labs/lab-04-rc-bode-overview.html. This README only lists the commands and files, so work from the writeup.
 
 ## How to run
 
