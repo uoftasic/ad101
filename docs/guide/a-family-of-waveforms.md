@@ -13,14 +13,14 @@ Not every signal looks like a sine. A flute, a snare drum and radio static all m
 
 ![F2 — Signal zoo](../assets/img/f02-signal-zoo.png)
 
-The F2 explorer drives every shape from the same amplitude setting, and they still look completely different, which is why you can't judge a trace by its height alone: two waveforms can have the same height on a datasheet and still carry completely different information.
+The F2 explorer drives every shape from the same amplitude setting, and they still look completely different. That's why you can't judge a trace by its height alone: two waveforms can have the same height on a datasheet and still carry completely different information.
 
-You can build all of these shapes from the same time array `t` you met on [What is a signal?](../guide/what-is-a-signal.md), using a phase that counts from 0 to 1 once per cycle. If you compare the phase to a threshold you get a square or a pulse, and if you ramp it up and then down you get a triangle. You'll build the whole set this way in [Lab 01](../labs/lab-01-signal-explorer-overview.md), Part 4, and the duty cycle comes back in [Rhythm and duty cycle](../guide/rhythm-and-duty-cycle.md).
+You can build the square, pulse and triangle from the same time array `t` you met on [What is a signal?](../guide/what-is-a-signal.md), using a phase that counts from 0 to 1 once per cycle. If you compare the phase to a threshold you get a square or a pulse, and if you ramp it up and then down you get a triangle. You'll build those three this way in [Lab 01](../labs/lab-01-signal-explorer-overview.md), Part 4, along with a noise trace, and the duty cycle comes back in [Rhythm and duty cycle](../guide/rhythm-and-duty-cycle.md).
 
 ## Why an engineer cares
 
 - The clocks in a digital chip are square waves.
 - The ramps an ADC uses are triangle waves.
-- The noise trace is the **thermal noise floor**: the smallest signal a chip can resolve above its own randomness.
+- The noise trace is what the **thermal noise floor** looks like: the chip's own randomness, which sets the smallest signal the chip can resolve.
 
 Next: [Two voices in time](../guide/two-voices-in-time.md)

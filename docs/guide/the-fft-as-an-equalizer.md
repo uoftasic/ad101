@@ -10,7 +10,7 @@ Treat the FFT as a black box for now:
   time waveform  ──FFT──►  spectrum (amplitudes vs frequency)
 ```
 
-You don't need to know how the FFT is derived to use it: `numpy.fft.rfft` does the whole calculation in one line, and the Lab 03 explorers run it for you and plot the result. F7, below, shows a signal's time plot on top and its spectrum underneath.
+You don't need to know how the FFT is derived to use it: `numpy.fft.rfft` does the whole calculation in one line, and the Lab 03 explorers run it for you and plot the result. F7, below, shows five test signals, each with its time plot on the left and its spectrum on the right.
 
 ![F7 — Twin panel](../assets/img/f07-twin-panel.png)
 
@@ -20,7 +20,7 @@ You don't need to know how the FFT is derived to use it: `numpy.fft.rfft` does t
 |----------|---------|
 | Where peaks sit | The frequencies present in the signal, which for a chord are its notes |
 | How tall peaks are | The relative strength of each tone, which is how loud that note is in the mix |
-| The noise floor | The smallest features you can still see above the hiss |
+| The noise floor | The level of the hiss, which sets the smallest feature you can still see |
 | Harmonic combs | Distortion, clocks or square-ish shapes; in music, a comb is what you hear as the timbre from Movement II |
 
 Take a two-note chord, A4 (440 Hz) plus a quieter E5 (659 Hz). Its time plot is two wiggles on top of each other, and by eye it's hard to tell that there are exactly two notes. Its spectrum shows two clear peaks, one at 440 Hz and one at 659 Hz. That difference between the two views is the reason this movement exists, because identifying a signal by the shape of its spectrum is a core debugging skill.

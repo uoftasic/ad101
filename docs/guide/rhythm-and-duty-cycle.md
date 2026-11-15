@@ -4,7 +4,7 @@ A metronome that ticks 50/50, sounding for exactly as long as it stays silent, h
 
 ## Duty cycle and the recipe
 
-At exactly 50% duty, the square-wave recipe from [Timbre and harmonics](../guide/timbre-and-harmonics.md) holds, so only the odd harmonics are present. If you move the duty cycle away from 50% in either direction, the **even** harmonics ($n = 2, 4, 6, \ldots$) come back into the spectrum.
+At exactly 50% duty, the square-wave recipe from [Timbre and harmonics](../guide/timbre-and-harmonics.md) holds, so only the odd harmonics are present. If you move the duty cycle away from 50% in either direction, **even** harmonics ($n = 2, 4, 6, \ldots$) come back into the spectrum, though not always every one of them: in the 25% and 75% panels of F6 below, harmonics 4 and 8 are still missing.
 
 This is one of the reasons clock specifications care about duty cycle. The frequencies in a clock's spectrum drive the electromagnetic interference (**EMI**) it produces, and a clock with a clean, symmetric duty cycle radiates a cleaner spectrum than a lopsided one does.
 
@@ -17,7 +17,7 @@ You'll sweep the duty cycle on the F6 explorer and plot the spectra of three pul
 | Observation | Implication |
 |-------------|-------------|
 | A 50% duty cycle removes the even harmonics | The spectrum is cleaner, so there's less EMI |
-| A duty cycle away from 50% | The even harmonics come back and radiate at their own frequencies |
-| Clock spec sheets list a duty-cycle tolerance | The tolerance is there to keep the clock's spectrum clean, rather than for looks |
+| A duty cycle away from 50% | Even harmonics come back and radiate at their own frequencies |
+| Clock spec sheets list a duty-cycle tolerance | The tolerance is there to keep the clock's spectrum clean |
 
 This page ends Movement II, and next comes [Lab 02: Harmonic builder](../labs/lab-02-harmonic-builder-overview.md). After the lab, Movement III starts with [The FFT as an equalizer](../guide/the-fft-as-an-equalizer.md), which gives you a tool that reads off the recipe of any signal automatically, so you no longer have to build it up by hand.

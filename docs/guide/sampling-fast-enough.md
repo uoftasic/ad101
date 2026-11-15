@@ -17,7 +17,7 @@ Two related numbers both get called "Nyquist", so it's worth keeping them apart.
 
 ## Worked example: a 900 Hz tone
 
-Sample a 900 Hz tone at 5000 samples per second, well above Nyquist, and the sample points trace out a recognizable 900 Hz wiggle. Sample the same tone at 1000 samples per second, below the $2 \times 900 = 1800$ Hz Nyquist rate, and the points join up into a slow, wrong-looking wave, just like the backwards-spinning wheel. The tone is the same in both cases, and the only thing that changed is how often you looked at it.
+Sample a 900 Hz tone at 5000 samples per second, well above the Nyquist rate, and the sample points trace out a recognizable 900 Hz wiggle. Sample the same tone at 1000 samples per second, below the $2 \times 900 = 1800$ Hz Nyquist rate, and the points join up into a slow, wrong-looking wave, just like the backwards-spinning wheel. The tone is the same in both cases, and the only thing that changed is how often you looked at it.
 
 In [Lab 03](../labs/lab-03-spectrum-detective-overview.md), Part 4 you'll drop the sample rate on the F11 explorer until the tone aliases, and then reproduce this 900 Hz example in a script of your own.
 

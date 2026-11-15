@@ -40,13 +40,13 @@ The short Python snippets in Labs 01–04 import only `numpy` and `matplotlib`. 
 
 ## GUI backend
 
-The interactive explorers need a matplotlib GUI backend (Tk or Qt) and a display to draw on, and the noVNC desktop provides both. On a host machine without a display, `check_env.py` reports the `Agg` backend instead. That's fine for `build_figures.py` and `--headless`, because they only write PNG files and never open a window. If you get a backend warning inside IIC-OSIC-TOOLS and noVNC, run `check_env.py` again, and if it still warns, use one of the fixes below or run with `--headless`.
+The interactive explorers need a matplotlib GUI backend (Tk or Qt) and a display to draw on, and the noVNC desktop provides both. On a host machine without a display, `check_env.py` reports the `Agg` backend instead. That's fine for `--headless` and for the maintainers' `build_figures.py` (described further down), because they only write PNG files and never open a window. If you get a backend warning inside IIC-OSIC-TOOLS and noVNC, run `check_env.py` again, and if it still warns, use one of the fixes below or run with `--headless`.
 
 ## If the GUI won't open
 
 `check_env.py` may report `WARN no interactive GUI backend`, which means the explorers have nothing to open their windows with. You have three ways round it:
 
-1. Use headless mode. You lose the interactive windows, but the exported PNGs show the same figures, so you can still learn from them:
+1. Use headless mode. You lose the interactive windows, but the exported PNGs are the same figures you see on the guide pages, so you can still learn from them:
 
    ```bash
    python3 src/explore.py --headless
@@ -69,10 +69,10 @@ The interactive explorers need a matplotlib GUI backend (Tk or Qt) and a display
 
 ## Listening to a filtered signal (Lab 05)
 
-Lab 05 exports and plays audio so that you can hear what a filter does to a chord. Live playback needs a sound device, and the noVNC desktop may not pass one through from the host, so the lab script has a fallback, in the same spirit as `--headless` when there's no GUI backend:
+Lab 05 exports and plays audio so that you can hear what a filter does to a chord. Live playback needs a sound device, and the noVNC desktop may not pass one through from the host, so the lab has you write a fallback, in the same spirit as `--headless` when there's no GUI backend:
 
-1. It tries live playback with `sounddevice`. Neither `sounddevice` nor `soundfile` is installed in the course image; both are listed as optional in `labs/lab-05-signal-workshop/requirements.txt`, and you can install them with `pip install --user sounddevice soundfile`.
-2. If playback fails, the script still writes `.wav` files into `results/` and prints their paths, and you can open them from your host machine's file manager or media player.
+1. The `play_audio` function you write tries live playback with `sounddevice`. Neither `sounddevice` nor `soundfile` is installed in the course image; both are listed as optional in `labs/lab-05-signal-workshop/requirements.txt`, and you can install them with `pip install --user sounddevice soundfile`.
+2. If playback fails, your fallback prints the path of each `.wav` file, which the script has already written into `results/`, and you can open them from your host machine's file manager or media player.
 
 Either way, you can compare the filtered chord with the unfiltered one.
 
@@ -85,7 +85,7 @@ python3 scripts/build_figures.py
 # → docs/assets/img/f01-….png … f15-….png
 ```
 
-The noise figures use a fixed random seed (`RNG_SEED = 42` in `labs/common/adsig.py`), so a rebuild produces the same PNGs and doesn't leave a pile of changed images in git.
+The noise figures use fixed random seeds (`RNG_SEED = 42` in `labs/common/adsig.py`, and `HIDDEN_SEED = 7` for F8 in Lab 03's `src/explore.py`), so a rebuild produces the same PNGs and doesn't leave a pile of changed images in git.
 
 ## Common errors
 

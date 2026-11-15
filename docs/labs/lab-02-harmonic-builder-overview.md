@@ -18,7 +18,7 @@ Lab package: [`labs/lab-02-harmonic-builder/`](https://github.com/uoftasic/ad101
 
 Time: about 1 hour.
 
-As in Lab 01, each part pairs an explorer (`python3 src/explore.py --figure <id>`) with a snippet you save as a new `.py` file in this folder and run with `python3 <file>.py`.
+As in Lab 01, Part 1 is a snippet on its own, and the other parts each pair an explorer (`python3 src/explore.py --figure <id>`) with a snippet. You save each snippet as a new `.py` file in this folder and run it with `python3 <file>.py`.
 
 ## Part 1: Build a chord
 

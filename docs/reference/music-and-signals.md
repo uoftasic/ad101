@@ -26,7 +26,7 @@ Going up one **octave** doubles the frequency. A3 (220 Hz) and A4 (440 Hz) sound
 
 ## Note-name to frequency table
 
-Standard concert pitch is A4 = 440 Hz. The table lists the notes that the lab snippets and Lab 05 use.
+Standard concert pitch is A4 = 440 Hz. The table includes every note that the lab snippets and Lab 05 use, along with a few others.
 
 | Note | Frequency (Hz) |
 |------|-----------------|
