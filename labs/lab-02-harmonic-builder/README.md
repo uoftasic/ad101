@@ -2,7 +2,7 @@
 
 Build a square wave from sines and watch its spectrum update live (F4–F6).
 
-Follow the lab writeup, [`docs/labs/lab-02-harmonic-builder-overview.md`](../../docs/labs/lab-02-harmonic-builder-overview.md), published at https://uoftasic.com/ad101/labs/lab-02-harmonic-builder-overview.html. This README is a command reference.
+The steps and questions are in the lab writeup, [`docs/labs/lab-02-harmonic-builder-overview.md`](../../docs/labs/lab-02-harmonic-builder-overview.md), published at https://uoftasic.com/ad101/labs/lab-02-harmonic-builder-overview.html. This README only lists the commands and files, so work from the writeup.
 
 ## How to run
 
