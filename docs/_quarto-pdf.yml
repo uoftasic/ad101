@@ -1,0 +1,55 @@
+# The whole course as one PDF:
+#   quarto render docs --profile pdf --to typst      # writes docs/_book/*.pdf
+# Chapter order follows the sidebar in _quarto.yml.
+
+project:
+  type: book
+  output-dir: _book
+
+book:
+  title: "AD101 — Signals"
+  subtitle: "Signals in time and frequency: waveforms, spectra, and Bode plots."
+  author: "UofT ASIC Team"
+  output-file: ad101-course
+  chapters:
+    - index.md
+    - guide/getting-started.md
+    - part: "Movement I: A single note"
+      chapters:
+        - guide/what-is-a-signal.md
+        - guide/pitch-and-loudness.md
+        - guide/a-family-of-waveforms.md
+        - guide/two-voices-in-time.md
+        - labs/lab-01-signal-explorer-overview.md
+    - part: "Movement II: Chords and timbre"
+      chapters:
+        - guide/adding-signals.md
+        - guide/timbre-and-harmonics.md
+        - guide/rhythm-and-duty-cycle.md
+        - labs/lab-02-harmonic-builder-overview.md
+    - part: "Movement III: The mixing board"
+      chapters:
+        - guide/the-fft-as-an-equalizer.md
+        - guide/finding-a-quiet-note.md
+        - guide/distortion-and-thd.md
+        - guide/sampling-fast-enough.md
+        - labs/lab-03-spectrum-detective-overview.md
+    - part: "Movement IV: Tone controls"
+      chapters:
+        - guide/filters-are-tone-knobs.md
+        - guide/reading-a-bode-plot.md
+        - guide/filtering-a-beat.md
+        - guide/more-filter-shapes.md
+        - labs/lab-04-rc-bode-overview.md
+    - part: "Capstone"
+      chapters:
+        - labs/lab-05-signal-workshop-overview.md
+  appendices:
+    - reference/reading-plots.md
+    - reference/music-and-signals.md
+    - reference/python-in-the-workbench.md
+
+format:
+  typst:
+    toc: true
+    toc-depth: 1
