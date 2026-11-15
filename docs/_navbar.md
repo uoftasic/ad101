@@ -1,3 +1,0 @@
-- [Guide](guide/getting-started.md)
-- [Labs](labs/lab-01-signal-explorer-overview.md)
-- [GitHub](https://github.com/uoftasic/ad101)

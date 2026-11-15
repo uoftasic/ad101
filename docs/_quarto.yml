@@ -1,0 +1,143 @@
+# Quarto build of the AD101 docs (replacing Docsify's index.html,
+# _sidebar.md and _navbar.md).
+#
+#   quarto preview docs          # live site at http://localhost:4200
+#   quarto render docs           # site in docs/_site, with a PDF of every page
+#   quarto render docs --profile pdf --to typst
+#                                # the whole course as one PDF in docs/_book
+#
+# The sidebar follows the Course path order on the home page.
+
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "AD101 — Signals"
+  description: "Signals in time and frequency: waveforms, spectra, and Bode plots."
+  site-url: https://uoftasic.com/ad101/
+  repo-url: https://github.com/uoftasic/ad101
+  repo-subdir: docs
+  repo-actions: [issue]
+  search: true
+  page-navigation: true
+  navbar:
+    left:
+      - text: "Guide"
+        href: guide/getting-started.md
+      - text: "Labs"
+        href: labs/lab-01-signal-explorer-overview.md
+    right:
+      - text: Course PDF
+        icon: file-pdf
+        href: ad101-course.pdf
+      - icon: github
+        href: https://github.com/uoftasic/ad101
+        aria-label: GitHub
+  sidebar:
+    style: docked
+    contents:
+      - text: "Home and course path"
+        href: index.md
+      - text: "Getting started"
+        href: guide/getting-started.md
+      - section: "Movement I: A single note"
+        contents:
+          - text: "What is a signal?"
+            href: guide/what-is-a-signal.md
+          - text: "Pitch and loudness"
+            href: guide/pitch-and-loudness.md
+          - text: "A family of waveforms"
+            href: guide/a-family-of-waveforms.md
+          - text: "Two voices in time"
+            href: guide/two-voices-in-time.md
+          - text: "Lab 01: Signal explorer"
+            href: labs/lab-01-signal-explorer-overview.md
+      - section: "Movement II: Chords and timbre"
+        contents:
+          - text: "Adding signals"
+            href: guide/adding-signals.md
+          - text: "Timbre and harmonics"
+            href: guide/timbre-and-harmonics.md
+          - text: "Rhythm and duty cycle"
+            href: guide/rhythm-and-duty-cycle.md
+          - text: "Lab 02: Harmonic builder"
+            href: labs/lab-02-harmonic-builder-overview.md
+      - section: "Movement III: The mixing board"
+        contents:
+          - text: "The FFT as an equalizer"
+            href: guide/the-fft-as-an-equalizer.md
+          - text: "Finding a quiet note"
+            href: guide/finding-a-quiet-note.md
+          - text: "Distortion and THD"
+            href: guide/distortion-and-thd.md
+          - text: "Sampling fast enough"
+            href: guide/sampling-fast-enough.md
+          - text: "Lab 03: Spectrum detective"
+            href: labs/lab-03-spectrum-detective-overview.md
+      - section: "Movement IV: Tone controls"
+        contents:
+          - text: "Filters are tone knobs"
+            href: guide/filters-are-tone-knobs.md
+          - text: "Reading a Bode plot"
+            href: guide/reading-a-bode-plot.md
+          - text: "Filtering a beat"
+            href: guide/filtering-a-beat.md
+          - text: "More filter shapes"
+            href: guide/more-filter-shapes.md
+          - text: "Lab 04: RC filter and Bode"
+            href: labs/lab-04-rc-bode-overview.md
+      - section: "Capstone"
+        contents:
+          - text: "Lab 05: Signal workshop"
+            href: labs/lab-05-signal-workshop-overview.md
+      - section: "Reference"
+        contents:
+          - text: "Reading plots"
+            href: reference/reading-plots.md
+          - text: "Music and signals"
+            href: reference/music-and-signals.md
+          - text: "Python in the workbench"
+            href: reference/python-in-the-workbench.md
+      - section: "Repo"
+        contents:
+          - text: "Scripts"
+            href: https://github.com/uoftasic/ad101/tree/main/scripts
+          - text: "Lab packages"
+            href: https://github.com/uoftasic/ad101/tree/main/labs
+
+filters:
+  - _filters/course.lua
+
+# Collapsed answers move to the end of each page in PDFs; set this to
+# "inline" to print them where they sit instead.
+answers-in-pdf: end
+
+format:
+  html:
+    theme:
+      light: [cosmo, _light.scss]
+      dark: [darkly, _dark.scss]
+    css: _styles.css
+    # Keeps old Docsify links (.../ad101/#/labs/...) working.
+    include-in-header: _docsify-redirect.html
+    toc: true
+    toc-depth: 3
+    code-copy: true
+    lightbox: auto
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"
+    # Listing html first stops Quarto adding a second "Typst" link.
+    format-links:
+      - html
+      - format: typst
+        text: PDF
+        icon: file-pdf
+  typst:
+    papersize: us-letter
+    margin:
+      x: 0.9in
+      y: 0.9in
+    fontsize: 10.5pt
+    toc: false
