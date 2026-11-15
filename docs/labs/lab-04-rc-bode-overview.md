@@ -1,6 +1,6 @@
 # Lab 04: RC filter and Bode
 
-You'll sweep an RC low-pass on a live Bode plot, link a point on that plot to a shrinking, lagging sine, filter a square wave until its edges round off, and compare low-pass, high-pass and band-pass shapes. Each explorer has a matching snippet that computes the same thing from the formulas, and before each one runs you'll work out from the formulas what it should show.
+You'll sweep an RC low-pass on a live Bode plot, see what one point on that plot does to a sine (it comes out smaller and later than it went in), filter a square wave until its edges round off, and compare low-pass, high-pass and band-pass shapes. Each explorer has a matching snippet that computes the same thing from the formulas, and before you run each one you'll use the same formulas to work out what it should show.
 
 Lab package: [`labs/lab-04-rc-bode/`](https://github.com/uoftasic/ad101/tree/main/labs/lab-04-rc-bode)
 
@@ -42,7 +42,7 @@ What sets an RC low-pass's cutoff, and what do its magnitude and phase do there?
 
    ![F12](../assets/img/f12-bode-explorer.png)
 
-   It starts at R = 1000 Ω and C = 100 nF. The box at the bottom starts with `fc = 1592 Hz`.
+   It opens with R = 1000 Ω and C = 100 nF, and the box at the bottom starts with `fc = 1592 Hz`.
 
 2. Check that number against $f_c = 1/(2\pi RC)$ by hand, and write down your result.
 
@@ -59,7 +59,7 @@ What sets an RC low-pass's cutoff, and what do its magnitude and phase do there?
    <details>
    <summary>Answer</summary>
 
-   Only the product $RC$ appears in $f_c = 1/(2\pi RC)$, and 2000 Ω × 50 nF is the same product as 1000 Ω × 100 nF. Double R on its own and the box reads `fc = 796 Hz`.
+   Only the product $RC$ appears in $f_c = 1/(2\pi RC)$, and 2000 Ω × 50 nF is the same product as 1000 Ω × 100 nF, so the cutoff stays put. If you double R without halving C, the box reads `fc = 796 Hz`.
 
    </details>
 
@@ -111,17 +111,17 @@ What does one point on the Bode curve do to a sine that goes through the filter?
 
    ![F13](../assets/img/f13-bode-time.png)
 
-   The left panel is the Bode magnitude for R = 1 kΩ, C = 100 nF. The right panel shows the input and output sines at the marker's frequency. The marker starts at $f_c$: the slider reads 3.2 and the box reads `f = 1585 Hz   |H| = 0.709 (-3.0 dB)   phase = -45°`.
+   The left panel is the Bode magnitude for R = 1 kΩ, C = 100 nF. The right panel shows the input and output sines at the marker's frequency. The marker starts at $f_c$, so the slider reads 3.2 and the box reads `f = 1585 Hz   |H| = 0.709 (-3.0 dB)   phase = -45°`.
 
 2. With the marker at $f_c$, compare the two sines.
 
    You should see the output at about 0.707× the input, lagging by about 45° (an eighth of a cycle).
 
-3. Before you move the slider, use the formulas at the top of this page to predict $\lvert H\rvert$ and the phase a decade below $f_c$ ($f = f_c/10$) and a decade above ($f = 10 f_c$). Write the four numbers down. Then move the `log10(f)` slider down by 1, to 2.2 (a decade below $f_c$), and up to 4.2 (a decade above).
+3. Before you move the slider, use the formulas at the top of this page to predict $\lvert H\rvert$ and the phase a decade below $f_c$ ($f = f_c/10$) and a decade above ($f = 10 f_c$). Write the four numbers down. Then move the slider, which sets `log10(f)`: moving it down by 1, to 2.2, puts the marker a decade below $f_c$, and moving it up to 4.2 puts it a decade above.
 
    You should see the output almost identical to the input a decade below ($\lvert H\rvert \approx 0.995$, phase about −6°), and tiny with nearly −90° of lag a decade above ($\lvert H\rvert \approx 0.100$, −20 dB, phase about −84°). Close the window.
 
-4. Save this as `bode_point.py` and run it. For three frequencies it drives the filter with a sine and draws the output the Bode formulas predict:
+4. Save this as `bode_point.py` and run it. At each of three frequencies it makes an input sine and draws the output that the Bode formulas predict for it:
 
    ```python
    import numpy as np
@@ -150,7 +150,7 @@ What does one point on the Bode curve do to a sine that goes through the filter?
        plt.show()
    ```
 
-   The three plots open one at a time; close each to see the next. You should see three points on the same Bode curve, matching what F13 showed, titled `a decade below fc: gain=0.995, phase=-5.7°`, `at fc: gain=0.707, phase=-45.0°` and `a decade above fc: gain=0.100, phase=-84.3°`. Compare them with your predictions from step 3.
+   The three plots open one at a time; close each to see the next. You should see the same three points on the Bode curve that F13 showed you, drawn as time plots and titled `a decade below fc: gain=0.995, phase=-5.7°`, `at fc: gain=0.707, phase=-45.0°` and `a decade above fc: gain=0.100, phase=-84.3°`. Compare them with your predictions from step 3.
 
 ## Part 3: A square wave through the RC (F14)
 
@@ -164,13 +164,13 @@ What does a low-pass do to a square wave, and which harmonics go first?
 
    ![F14](../assets/img/f14-square-through-rc.png)
 
-   A 200 Hz square goes through an RC low-pass with R = 1 kΩ and C = 200 nF. The box reads `fc = 796 Hz`. The stem plot on the right compares harmonics 1, 3, 5, 7 and 9 of the input (gray) and the output.
+   A 200 Hz square wave goes through an RC low-pass with R = 1 kΩ and C = 200 nF. The box reads `fc = 796 Hz`. The stem plot on the right compares harmonics 1, 3, 5, 7 and 9 of the input (gray) and the output.
 
 2. Raise C, which lowers $f_c$, and compare input and output on both panels.
 
    You should see the edges round off, and the output stems for the high odd harmonics (5, 7, 9) shrink first. Close the window.
 
-3. Save this as `filter_square.py`, but don't run it yet. It filters a 500 Hz square by scaling its spectrum by $H(f)$ and transforming back, for three values of C:
+3. Save this as `filter_square.py`, but don't run it yet. It filters a 500 Hz square wave by scaling its spectrum by $H(f)$ and transforming back, for three values of C:
 
    ```python
    import numpy as np
@@ -213,7 +213,7 @@ What does a low-pass do to a square wave, and which harmonics go first?
    <details>
    <summary>Answer</summary>
 
-   Raising C lowers $f_c$. A square wave is a pile of odd harmonics, and the high ones make the sharp edges. The lower $f_c$ is, the more of those high harmonics the filter turns down, so the edges round off. [Filtering a beat](../guide/filtering-a-beat.md) has the same picture.
+   Raising C lowers $f_c$. A square wave is a pile of odd harmonics, and it's the high ones that make its edges sharp, so the lower $f_c$ goes, the more of those high harmonics the filter turns down and the rounder the edges get. [Filtering a beat](../guide/filtering-a-beat.md) has the same picture.
 
    </details>
 
@@ -233,7 +233,7 @@ How do low-pass, high-pass and band-pass shapes differ around the same $f_c$?
 
    You should see three different pass/stop patterns around the same $f_c$, all moving together when $f_c$ moves. Close the window.
 
-3. Save this as `filter_shapes.py`, but don't run it yet. All three curves use the same `fc`:
+3. Save this as `filter_shapes.py`, but don't run it yet. It computes all three curves from the same `fc`:
 
    ```python
    import numpy as np
@@ -262,7 +262,7 @@ How do low-pass, high-pass and band-pass shapes differ around the same $f_c$?
 
    At $f = f_c$, `u` is 1. Before you run it, put $u = 1$ into the `lowpass` and `highpass` lines and work out both values in dB. Then run it.
 
-You should see the three curves meet the dashed `fc` line from different sides: the low-pass keeps what's below it, the high-pass keeps what's above it, and the band-pass peaks there. The low-pass and high-pass curves both pass through −3 dB at the dashed line.
+   You should see the three curves meet the dashed `fc` line from different sides: the low-pass keeps what's below it, the high-pass keeps what's above it, and the band-pass peaks there. The low-pass and high-pass curves both pass through −3 dB at the dashed line.
 
 ## Finishing
 
