@@ -7,6 +7,7 @@
 | `build_figures.py` | Export every lab figure into `docs/assets/img/` (seeded RNG) |
 | `hello.py` | Tiny sanity print (template leftover) |
 | `init-template.py` | Already run; don't re-bootstrap |
+| `figures/` | The scripts that draw the diagrams in `docs/assets/img/` with schemdraw. `pip install -r scripts/figures/requirements.txt`, then `python3 scripts/figures/<name>.py` rewrites that figure's SVG |
 
 ```bash
 python3 scripts/check_env.py

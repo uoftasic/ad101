@@ -6,9 +6,7 @@ In Movement II you built waveforms out of sines by hand, choosing which harmonic
 
 Treat the FFT as a black box for now:
 
-```text
-  time waveform  ──FFT──►  spectrum (amplitudes vs frequency)
-```
+![A time waveform goes in, and its spectrum comes out.](../assets/img/ad101-fft-black-box.svg){width=440 fig-alt="A block diagram. An arrow labelled time waveform points into a box labelled FFT, and a second arrow, labelled spectrum (amplitudes vs frequency), leads out of the box."}
 
 You don't need to know how the FFT is derived to use it: `numpy.fft.rfft` does the whole calculation in one line, and the Lab 03 explorers run it for you and plot the result. F7, below, shows five test signals, each with its time plot on the left and its spectrum on the right.
 
