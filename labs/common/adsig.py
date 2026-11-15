@@ -198,6 +198,9 @@ def rc_bandpass(
     """Simple band-pass magnitude/phase centered at fc with quality Q.
 
     H(s) ≈ (s/(Q ωc)) / (1 + s/(Q ωc) + (s/ωc)²) — enough for visualization.
+    Only R and C set fc here: a passive RC band-pass never reaches Q = 0.5
+    (an equal-part RC high-pass into RC low-pass has Q = 1/3), so with the
+    default Q = 1 this curve stands for an RLC or active band-pass.
     """
     fc = rc_cutoff(R, C)
     u = f / fc
