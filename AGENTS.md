@@ -1,6 +1,6 @@
 # Agent guide — UofT ASIC course repos
 
-You are working in a course repository for the UofT ASIC Team (`uoftasic`): pedagogical materials for IC / RTL / FPGA / open-source ASIC flows. The site under `docs/` is published on GitHub Pages (Docsify, zero build). Runnable work lives outside `docs/`.
+You are working in a course repository for the UofT ASIC Team (`uoftasic`): pedagogical materials for IC / RTL / FPGA / open-source ASIC flows. The site under `docs/` is built with Quarto and published on GitHub Pages by `.github/workflows/site.yml`. Runnable work lives outside `docs/`.
 
 Optimize for clear student learning paths, not template maintenance. Prefer concrete labs and notes students can follow end-to-end over meta documentation.
 
@@ -12,7 +12,7 @@ Optimize for clear student learning paths, not template maintenance. Prefer conc
 - Keep observed numbers in the "You should see …" checks. When a check would also explain *why*, make the explanation a question at that step, with the answer in a collapsed `<details><summary>Answer</summary> … </details>` block (blank lines inside, so Markdown and math render).
 - Put optional parts at the end of the lab, mark them "(optional)" in the header, and leave them out of the time estimate or give their time separately. No required part may depend on an optional one.
 - Separate what students read (`docs/`) from what they run (`labs/`, `scripts/`, `notebooks/`). Inside `docs/`, guide pages are reading only; every command a student runs belongs in a lab writeup.
-- Keep the Course path table on `docs/README.md` current, in the order a student should work, and in the format every course uses:
+- Keep the Course path table on `docs/index.md` current, in the order a student should work, and in the format every course uses:
 
   ```
   | # | | What | Time |
@@ -21,7 +21,7 @@ Optimize for clear student learning paths, not template maintenance. Prefer conc
   | 2 | Do | [Lab 01: Title](labs/lab-01-...-overview.md). One sentence on what you'll do. | 1.5 h |
   ```
 
-  Read and Do are plain text, lab titles use a colon, every Do row ends with one sentence on what the student will do, and the row times add up to the total on the home page. Lab page titles (`# Lab 01: Title`) and `docs/_sidebar.md` entries use the same "Lab 01: Title" form, and the sidebar follows the Course path order.
+  Read and Do are plain text, lab titles use a colon, every Do row ends with one sentence on what the student will do, and the row times add up to the total on the home page. Lab page titles (`# Lab 01: Title`) and the sidebar entries in `docs/_quarto.yml` use the same "Lab 01: Title" form. The sidebar and the chapter list in `docs/_quarto-pdf.yml` both follow the Course path order.
 - Never publish grades, solution keys, or PII under `docs/`. Put keys in `labs/**/solutions/` and gitignore them on student forks when policy requires.
 
 ## Layout (do not fight this)
@@ -37,14 +37,14 @@ Optimize for clear student learning paths, not template maintenance. Prefer conc
 | `notebooks/` | No | Exploratory or assignment notebooks |
 | `data/`, `figures/` | No | Shared datasets / source figures |
 
-Site wiring: `docs/index.html`, `docs/_sidebar.md`, `docs/_navbar.md`. Math: `$inline$`, `$$display$$`.
+Site wiring: `docs/_quarto.yml` (site, sidebar, navbar, per-page PDFs), `docs/_quarto-pdf.yml` (the whole course as one PDF) and `docs/_filters/course.lua` (turns `<details>` answers into collapsible callouts, and moves them to an Answers section at the end of each page in PDFs). The home page is `docs/index.md`. Math: `$inline$`, `$$display$$`.
 
 ## Adding a lab (preferred unit of coursework)
 
 Lab IDs: `lab-NN-short-name` (e.g. `lab-02-counter-sv`).
 
 1. Create `labs/<lab-id>/` with at least:
-   - `README.md` — points at the Docsify writeup and how to run
+   - `README.md` — points at the writeup on the site and how to run
    - `src/` — HDL / Python / entrypoints
    - `data/` — small inputs (large binaries → Git LFS or external)
    - `requirements.txt` or tool notes when needed
@@ -53,19 +53,19 @@ Lab IDs: `lab-NN-short-name` (e.g. `lab-02-counter-sv`).
    2. Questions, if there are any: each with a collapsed answer or a pointer to the step that answers it.
    3. Submit: what to submit, or "Nothing to submit."
 
-   After those come Going further (optional), if any, and last a `Next on the [Course path](README.md#course-path): …` line.
-3. Add a Do row to the Course path in `docs/README.md`, in the format above, and link the writeup from `docs/_sidebar.md` in the same position (and from `_navbar.md` only if it belongs in top nav).
+   After those come Going further (optional), if any, and last a `Next on the [Course path](../index.md#course-path): …` line.
+3. Add a Do row to the Course path in `docs/index.md`, in the format above, and add the writeup to the sidebar in `docs/_quarto.yml` and the chapters in `docs/_quarto-pdf.yml`, in the same position (and to the navbar in `_quarto.yml` only if it belongs in top nav).
 4. Cross-link: writeup → GitHub `labs/<lab-id>/`; package README → `docs/labs/<lab-id>-overview.md`.
 
-Writeups teach; packages execute. Don't dump long HDL into Docsify pages; reference files under `labs/`. Keep package READMEs short: a link to the writeup, how to run, the commands or make targets, and the file list.
+Writeups teach; packages execute. Don't dump long HDL into site pages; reference files under `labs/` instead. Keep package READMEs short: a link to the writeup, how to run, the commands or make targets, and the file list.
 
 ## Adding a guide page
 
 1. Add kebab-case Markdown under `docs/guide/` (e.g. `yosys-synth.md`).
 2. Keep it reading only: concepts, figures, worked examples. If the student should run something, put it in the matching lab as a numbered step and leave a one-line pointer on the guide page.
-3. Link it from `docs/_sidebar.md` and the Course path in `docs/README.md`.
+3. Add it to the right Read row of the Course path in `docs/index.md`, and to the sidebar in `docs/_quarto.yml` and the chapters in `docs/_quarto-pdf.yml` in the same position.
 4. Images under `docs/assets/img/` with paths relative to `docs/`.
-5. Prefer relative Docsify links between pages; use GitHub URLs for `labs/` and `scripts/`.
+5. Write links between pages as paths relative to the page you are writing in (`../guide/x.md` from a lab), because that is how Quarto resolves them. Use GitHub URLs for `labs/` and `scripts/`.
 
 ## Pedagogy checklist (use when authoring)
 
@@ -82,7 +82,8 @@ Writeups teach; packages execute. Don't dump long HDL into Docsify pages; refere
 - Python helpers and graders: under `labs/<id>/src/` or `scripts/`; list entry points in the nearest `README.md`.
 - SystemVerilog/Verilog: under `labs/<id>/src/` (or `rtl/`, `tb/` if you split — stay consistent within the course).
 - Heavy outputs (GDS, large FSDB/VCD, PDK caches): local `results/` or LFS — never under `docs/`.
-- Preview docs locally: `npx docsify-cli serve docs` → http://localhost:3000
+- Preview docs locally: `quarto preview docs` → http://localhost:4200
+- Check links after a render: `python3 scripts/check_site.py docs/_site` (the site workflow runs it too).
 
 ## What not to do
 

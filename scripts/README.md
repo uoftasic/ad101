@@ -3,13 +3,14 @@
 | Script | Purpose |
 |--------|---------|
 | `check_env.py` | Preflight: Python, numpy, matplotlib, GUI backend, `adsig` smoke |
-| `check_docs_links.py` | Validate Docsify local links (nested pages must use `../`) |
+| `check_site.py` | Check every local link and anchor in the rendered site; `site.yml` runs it on `docs/_site` |
+| `check_docs_links.py` | Checks links against the old Docsify rules (page links from the docs root), so it reports errors on the Quarto pages' relative links; use `check_site.py` |
 | `build_figures.py` | Export every lab figure into `docs/assets/img/` (seeded RNG) |
 | `hello.py` | Tiny sanity print (template leftover) |
 | `init-template.py` | Already run; don't re-bootstrap |
 
 ```bash
 python3 scripts/check_env.py
-python3 scripts/check_docs_links.py
+python3 scripts/check_site.py docs/_site    # after a quarto render
 python3 scripts/build_figures.py
 ```
