@@ -28,4 +28,4 @@ v = np.sin(2 * np.pi * 440 * t)      # a voltage at each of those timestamps
 
 This pair describes one held note: a sine wave at 440 Hz, the note A4 that orchestras tune to. If you plot `v` against `t`, you get what an oscilloscope would show for that note. You'll write and plot it yourself in [Lab 01](../labs/lab-01-signal-explorer-overview.md), Part 2.
 
-Next: [Pitch and loudness](../guide/pitch-and-loudness.md), which gives you the words you'll use for the rest of the course to describe these two arrays: amplitude, frequency and phase.
+Next: [Pitch and loudness](../guide/pitch-and-loudness.md), which gives you the words you'll use for the rest of the course to describe these two arrays: amplitude, frequency, phase and DC offset.

@@ -111,7 +111,7 @@ What does one point on the Bode curve do to a sine that goes through the filter?
 
    ![F13](../assets/img/f13-bode-time.png)
 
-   The left panel is the Bode magnitude for R = 1 kΩ, C = 100 nF. The right panel shows the input and output sines at the marker's frequency. The marker starts at $f_c$, so the slider reads 3.2 and the box reads `f = 1585 Hz   |H| = 0.709 (-3.0 dB)   phase = -45°`.
+   The left panel is the Bode magnitude for R = 1 kΩ, C = 100 nF. The right panel shows the input and output sines at the marker's frequency. The marker starts as close to $f_c$ as the slider's 0.02 steps allow, so the slider reads 3.2 and the box reads `f = 1585 Hz   |H| = 0.709 (-3.0 dB)   phase = -45°`.
 
 2. With the marker at $f_c$, compare the two sines.
 

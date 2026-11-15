@@ -12,14 +12,14 @@ The course has four movements followed by a capstone lab, Lab 05. Each movement 
 
 Guide pages are for reading: they hold the concepts, figures and worked examples, and you don't need a terminal open while you read them. The labs are where you run things, and they teach each idea in two ways:
 
-1. **Drag it.** Labs 01–04 each come with an interactive explorer, a set of plot windows with sliders, numbered F1 to F15 (F for figure). Dragging a slider and watching the plot update is the fastest way to build intuition for how a knob changes a curve.
+1. **Drag it.** Labs 01–04 come with interactive explorers, which are plot windows with sliders, numbered F1 to F15 (F for figure). Dragging a slider and watching the plot update is the fastest way to build intuition for how a knob changes a curve.
 2. **Write it.** The same labs give you short Python snippets that you save, run and change yourself. [Lab 05: Signal workshop](../labs/lab-05-signal-workshop-overview.md) has no sliders at all. In that lab you put those ideas together into your own signal-analysis script, end to end, and listen to what a filter does to a chord.
 
 It's worth doing both. Dragging a slider builds intuition quickly, but writing the script is what lets you apply that intuition to a signal nobody has built a slider for.
 
-The figures on these guide pages come from the same explorer scripts you run in the labs, so what you read here matches what you'll see on your own screen.
+The figures on these guide pages are the PNG files that each lab's explorer script writes in its `--headless` mode, so you can make any of them yourself. The live explorer windows add sliders and open on their own starting settings, so they won't look exactly like the figures here.
 
-If an explorer window won't open, every explorer has a `--headless` mode that writes its figures to PNG files instead. [Python in the workbench](../reference/python-in-the-workbench.md) explains that mode and covers the other common problems, and [Reading plots](../reference/reading-plots.md) is a one-page cheat sheet for all three kinds of plot.
+If an explorer window won't open, the same `--headless` mode gets you its figures as PNG files instead. [Python in the workbench](../reference/python-in-the-workbench.md) explains that mode and covers the other common problems, and [Reading plots](../reference/reading-plots.md) is a one-page cheat sheet for all three kinds of plot.
 
 ## Out of scope
 

@@ -4,9 +4,7 @@ If you play three notes on a piano at once, you hear a **chord**: a single sound
 
 ## Superposition
 
-If $v_1(t)$ and $v_2(t)$ are voltages on the same wire, the wire carries $v_1(t) + v_2(t)$. The two signals don't interact with each other or multiply; they simply add, sample by sample, and this is called **superposition**. If you add two sines of different frequencies, the sum can look nothing like either of them, in the same way that a C-E-G chord doesn't sound like a C, an E or a G on its own.
-
-That one fact, that signals on a wire add, is enough to build almost any waveform you'll meet in this course.
+If $v_1(t)$ and $v_2(t)$ are voltages on the same wire, the wire carries $v_1(t) + v_2(t)$. The two signals don't interact with each other or multiply; they simply add, sample by sample, and this is called **superposition**. If you add two sines of different frequencies, the sum can look nothing like either of them, in the same way that a C-E-G chord doesn't sound like a C, an E or a G on its own. That one fact, that signals on a wire add, is enough to build almost any waveform you'll meet in this course.
 
 ## Reading a sum by eye
 
@@ -16,6 +14,6 @@ You'll build this chord yourself in [Lab 02](../labs/lab-02-harmonic-builder-ove
 
 ## Why an engineer cares
 
-Every wire on a chip is a point where signals add: what's on it is the signal you meant to put there, plus noise from the supply, plus whatever couples in from a neighbouring trace, plus anything else that touches it. The usual way to answer "What's actually on this node?" is to split the sum back into its parts, and the next two pages show you how. [Timbre and harmonics](../guide/timbre-and-harmonics.md) uses superposition to build a square wave out of nothing but sines.
+Every wire on a chip is a point where signals add: what's on it is the signal you meant to put there, plus noise from the supply, plus whatever couples in from a neighbouring trace, plus anything else that touches it. The usual way to answer "What's actually on this node?" is to split the sum back into its parts, which is what Movement III teaches. Before that, the next page, [Timbre and harmonics](../guide/timbre-and-harmonics.md), uses superposition to build a square wave out of nothing but sines.
 
 Next: [Timbre and harmonics](../guide/timbre-and-harmonics.md)

@@ -76,7 +76,7 @@ You should see the traceback move on and end in `NotImplementedError: TODO: comp
 
 How do you get from the chord's samples to its spectrum in dB?
 
-1. Fill in `compute_spectrum`. It calls `spectrum(v, fs)` from `common.adsig`, which wraps `numpy.fft.rfft` the same way your Lab 03 snippets did by hand.
+1. Fill in `compute_spectrum`. It calls `spectrum(v, fs)` from `common.adsig`, which wraps `numpy.fft.rfft` the way your Lab 03 snippets did by hand, and also scales the result so that a pure tone's peak comes out close to its amplitude rather than at a raw FFT magnitude.
 
 2. Fill in `plot_spectrum`: magnitude in dB (use `to_db`) against frequency, with the x-axis limited to something readable for a chord. The docstring suggests `ax.set_xlim(0, 3000)`.
 

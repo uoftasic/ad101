@@ -103,9 +103,9 @@ Can you find a tone you can't see in the time plot?
    python3 src/check.py --guess <Hz>
    ```
 
-   You should see a line starting `Correct! Hidden tone is`. If you see `Not quite` instead, the message tells you how far off you were. The checker accepts anything within 5 Hz, so read the spike again more carefully and try another guess.
+   You should see a line starting `Correct! Hidden tone is`. If you see `Not quite` instead, the message tells you how far off you were. The checker accepts anything within 5 Hz of the answer, so if you're further off than that, read the spike again more carefully and try another guess.
 
-4. Save this as `hidden_tone.py` and run it. It hides the same tone as F8 under different noise, and then reads the peak's frequency off the data with `np.argmax` instead of by eye. The code gives away the tone's frequency, so do steps 1–3 before you read it:
+4. Save this as `hidden_tone.py` and run it. It hides a tone at the same frequency as F8's, but quieter and under different noise, and then reads the peak's frequency off the data with `np.argmax` instead of by eye. The code gives away the tone's frequency, so do steps 1–3 before you read it:
 
    ```python
    import numpy as np

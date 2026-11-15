@@ -17,7 +17,7 @@ $$
 f_c = \frac{1}{2\pi R C}
 $$
 
-You don't need calculus to get its magnitude and phase, because they're what you would measure if you swept the filter through frequencies one at a time:
+You don't need calculus here, because the course doesn't derive its magnitude and phase; take the two formulas below as given for now. They describe what you would measure if you swept the filter through frequencies one at a time:
 
 $$
 \lvert H(f)\rvert = \frac{1}{\sqrt{1 + (f/f_c)^2}}
