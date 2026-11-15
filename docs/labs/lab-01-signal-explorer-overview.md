@@ -14,12 +14,12 @@ Time: about 1.5 hours.
 
 ### How the labs work
 
-Parts 3 to 5 each pair an explorer with a snippet. Part 1 loads the course, and Part 2 is a snippet on its own.
+Part 1 loads the course and Part 2 is a snippet on its own. Parts 3 to 5 each pair an explorer with a snippet, and the list below explains what each of those is.
 
-- An **explorer** is a plot window with sliders. You open one with `python3 src/explore.py --figure <id>`. The terminal stays busy until you close the window.
-- A **snippet** is a short Python script. Save it as a new `.py` file in the lab folder and run it with `python3 <file>.py`. The steps suggest a file name, but any name works. Snippets only use numpy and matplotlib. The desktop has `gedit`, `nano` and `vim` for editing.
+- An **explorer** is a plot window with sliders, which you open with `python3 src/explore.py --figure <id>`. The terminal stays busy until you close the window.
+- A **snippet** is a short Python script that you save as a new `.py` file in the lab folder and run with `python3 <file>.py`. The steps suggest a file name for each one, but any name works. Snippets use only numpy and matplotlib, and the desktop has `gedit`, `nano` and `vim` for editing them.
 
-Run explorers and snippets from the lab folder (Part 2 takes you there). If you open a new terminal partway through, run `. /foss/designs/common/.designinit`, `mod ad101` and `cd labs/lab-01-signal-explorer` first. Your snippet files are under `/foss/designs`, so they're in your `workspace` folder on the host and survive a container restart.
+Run explorers and snippets from the lab folder, which Part 2 takes you to. If you open a new terminal partway through, run `. /foss/designs/common/.designinit`, `mod ad101` and `cd labs/lab-01-signal-explorer` first, to load the environment and get back to the lab folder. Your snippet files are under `/foss/designs`, which is your `workspace` folder on the host, so they survive a container restart.
 
 ## Part 1: Load the course
 
@@ -37,7 +37,7 @@ If you haven't set up the workbench, do [IC101 Lab 03](https://uoftasic.com/ic10
 
    You should see `cwd: /foss/designs/modules/ad101` after `mod ad101`.
 
-   If you'd rather clone on the host, run this from the folder that contains your `workspace` clone instead of `mod add ad101`, then run `mod ad101` in the desktop terminal as above. It ends up in the same folder:
+   If you'd rather clone AD101 on the host, you can run the commands below instead of `mod add ad101`, from the folder that contains your `workspace` clone. The clone ends up in the same place that `mod add ad101` would put it, so afterwards you run `mod ad101` in the desktop terminal as above:
 
    ```bash
    cd workspace/modules
@@ -64,14 +64,14 @@ If you haven't set up the workbench, do [IC101 Lab 03](https://uoftasic.com/ic10
    === All checks passed ===
    ```
 
-   The outputs printed in Labs 01–05 were checked with these numpy and matplotlib versions, in the IIC-OSIC-TOOLS 2026.08 image the workbench runs. If yours differ, a printed number that disagrees with these pages may come from the version rather than your code. The backend is the part of matplotlib that opens plot windows, and the `matplotlib backend:` line names the GUI toolkit matplotlib found. `adsig` is the course's small signal library in `labs/common/`; the explorers use it.
+   We checked the outputs printed in Labs 01–05 with these numpy and matplotlib versions, in the IIC-OSIC-TOOLS 2026.08 image that the workbench runs. If your versions differ and a printed number disagrees with these pages, the difference may come from the version rather than from your code. The backend is the part of matplotlib that opens plot windows, and the `matplotlib backend:` line names the GUI toolkit that matplotlib found to do it. `adsig` is the course's small signal library, in `labs/common/`, and the explorers use it, so the `adsig smoke` line checks that it works.
 
-What to do if `check_env.py` prints one of these lines:
+If `check_env.py` prints one of these lines, here's what to do:
 
 | What you see | What to do |
 |---|---|
-| `WARN no interactive GUI backend (Agg / headless)` | The explorers can't open windows. Check that you ran `check_env.py` in a terminal in the noVNC desktop, not on your host, then see "If the GUI won't open" in [Python in the workbench](../reference/python-in-the-workbench.md). |
-| `FAIL numpy` or `FAIL matplotlib` | Run `pip install --user numpy matplotlib` in the desktop terminal, then run `check_env.py` again. The install goes into the container, not your `workspace` folder, so repeat it if you remove the container. |
+| `WARN no interactive GUI backend (Agg / headless)` | matplotlib has no way to open a window, so the explorers won't work. First check that you ran `check_env.py` in a terminal in the noVNC desktop, not on your host. If you did, see "If the GUI won't open" in [Python in the workbench](../reference/python-in-the-workbench.md). |
+| `FAIL numpy` or `FAIL matplotlib` | Run `pip install --user numpy matplotlib` in the desktop terminal, then run `check_env.py` again. The packages are installed inside the container rather than in your `workspace` folder, so you'll have to repeat the install if you remove the container. |
 
 For anything else about the desktop, Docker or `mod`, see IC101's [Troubleshooting](https://uoftasic.com/ic101/reference/troubleshooting.html) page.
 
@@ -102,11 +102,11 @@ What does the pair of arrays from [What is a signal?](../guide/what-is-a-signal.
 
 3. Before you run it, work out how many full cycles of a 440 Hz sine fit in the 50 ms window and write the number down. Then run it with `python3 first_signal.py`.
 
-You should see a sine wave between −1 V and +1 V across 0 to 50 ms: one held note, A4 at 440 Hz, which is 22 cycles in that window. Close the window to get the terminal back.
+You should see a sine wave swinging between −1 V and +1 V across 0 to 50 ms. It's one held note, A4 at 440 Hz, and 22 cycles of it fit in the window. Close the window to get the terminal back.
 
 ## Part 3: Measure a sine (F1)
 
-How do a sine's four knobs, amplitude, frequency, phase and DC offset, change its period, peak-to-peak and RMS?
+How does each of a sine's four knobs (amplitude, frequency, phase and DC offset) change its period, peak-to-peak and RMS?
 
 1. Open the sine explorer:
 
@@ -120,7 +120,7 @@ How do a sine's four knobs, amplitude, frequency, phase and DC offset, change it
 
    You should see `T = 10.00 ms   f = 100 Hz` and `pk-pk = 2.00 V   RMS = 0.707 V`. The dashed vertical line marks one period.
 
-3. Drag Amplitude, Freq (Hz), Phase (°) and DC offset one at a time, putting each back to its starting value before you move the next. Before each drag, write down what you expect the readout to do. $T = 1/f$, peak-to-peak $= 2A$ and $\mathrm{RMS} = A/\sqrt{2}$ cover Amplitude and Freq; for Phase and DC offset, make a guess.
+3. Drag Amplitude, Freq (Hz), Phase (°) and DC offset one at a time, putting each back to its starting value before you move the next. Before each drag, write down what you expect the readout to do. The formulas $T = 1/f$, peak-to-peak $= 2A$ and $\mathrm{RMS} = A/\sqrt{2}$ tell you what Amplitude and Freq will do; for Phase and DC offset you'll have to make a guess.
 
    You should see the period marker track $T = 1/f$, RMS stay at about 0.707× the amplitude while DC is 0, Phase slide the wave sideways, and the DC slider lift the whole wave without changing the size of the wiggle. With DC offset at 0.5 and the other sliders at their starting values, the box reads `pk-pk = 2.00 V   RMS = 0.866 V`.
 
@@ -129,7 +129,7 @@ How do a sine's four knobs, amplitude, frequency, phase and DC offset, change it
    <details>
    <summary>Answer</summary>
 
-   RMS is the square root of the mean of $v^2$ over the window. A DC offset shifts every sample by the same amount, which changes $v^2$, so RMS counts the offset. Peak-to-peak is the maximum minus the minimum, and the same shift cancels out of that.
+   RMS is the square root of the mean of $v^2$ over the window. A DC offset shifts every sample by the same amount, which changes every $v^2$, so the offset shows up in the RMS. Peak-to-peak is the maximum minus the minimum, and because the shift moves both of them by the same amount, it cancels out of the difference.
 
    </details>
 
@@ -174,7 +174,7 @@ How do a sine's four knobs, amplitude, frequency, phase and DC offset, change it
    <details>
    <summary>Answer</summary>
 
-   The script measures the sampled array, not the formula. If $f \times 0.05$ s isn't a whole number, the 50 ms window ends partway through a cycle and RMS comes out slightly off: A = 1, f = 333 Hz prints `RMS = 0.705 V`. If no sample lands exactly on a peak, pk-pk comes out a little short: A = 2, f = 200 Hz prints `pk-pk = 3.99 V`.
+   The script measures the sampled array rather than evaluating the formulas, and a finite set of samples doesn't always match them exactly. If $f \times 0.05$ s isn't a whole number, the 50 ms window ends partway through a cycle and RMS comes out slightly off; for example, A = 1, f = 333 Hz prints `RMS = 0.705 V`. If no sample lands exactly on a peak, pk-pk comes out a little short; A = 2, f = 200 Hz prints `pk-pk = 3.99 V`.
 
    </details>
 
@@ -192,9 +192,9 @@ How do square, triangle, pulse and noise differ from a sine, and what does the d
 
 2. Click through sine, square, triangle, pulse and noise on the left. With pulse selected, sweep the Duty slider (it starts at 0.25), and compare 0.25 with 0.5.
 
-   You should see five very different shapes from the same Amplitude setting. Noise never repeats. The pulse at 25% duty looks clearly lopsided next to the pulse at 50%. Close the window.
+   You should see five very different shapes from the same Amplitude setting, and noise is the only one that never repeats. At 25% duty the pulse looks clearly lopsided next to the pulse at 50%. Close the window.
 
-3. Save this as `waveform_zoo.py` and run it. Besides a sine (which it doesn't plot), it builds square, pulse and triangle from the same time array `t`, using a `phase` variable that counts from 0 to 1 once per cycle, and adds a noise trace:
+3. Save this as `waveform_zoo.py` and run it. It builds a sine, which it doesn't plot, and then square, pulse and triangle waves from the same time array `t`, using a `phase` variable that counts from 0 to 1 once per cycle. It also adds a noise trace:
 
    ```python
    import numpy as np
@@ -228,7 +228,7 @@ How do square, triangle, pulse and noise differ from a sine, and what does the d
 
 4. Change the `0.25` in the `pulse` line to `0.5`, then to `0.75`, re-running each time.
 
-   You should see the on-time of each pulse grow. That single number is the duty cycle, which you'll meet again in [Rhythm and duty cycle](../guide/rhythm-and-duty-cycle.md).
+   You should see the on-time of each pulse grow. The number you changed is the duty cycle, the fraction of each cycle that the pulse is on, and you'll meet it again in [Rhythm and duty cycle](../guide/rhythm-and-duty-cycle.md).
 
 ## Part 5: Turn phase into delay (F3)
 
@@ -242,7 +242,7 @@ How long is a phase difference in milliseconds, and what does it do to the sum o
 
    ![F3](../assets/img/f03-two-signal.png)
 
-   It starts at Phase Δ = 60° and 100 Hz. Phase Δ is the phase difference $\phi$ between the two signals; the readout shows it as Δφ. Signal A is $\sin(2\pi f t)$ and signal B is $\sin(2\pi f t + \phi)$, so B is offset from A in time by $t_{\mathrm{delay}} = \frac{\phi}{360^\circ}\,T$. With a positive $\phi$, B runs ahead of A by $t_{\mathrm{delay}}$, and the readout shows that time as `delay`.
+   The explorer starts at Phase Δ = 60° and 100 Hz. The Phase Δ slider sets the phase difference $\phi$ between the two signals, which the readout labels Δφ. Signal A is $\sin(2\pi f t)$ and signal B is $\sin(2\pi f t + \phi)$, so B is offset from A in time by $t_{\mathrm{delay}} = \frac{\phi}{360^\circ}\,T$. With a positive $\phi$, B runs ahead of A by $t_{\mathrm{delay}}$, and the readout shows that time as `delay`.
 
 2. Before you move anything, use the formula to predict the delay for a 90° phase difference at 100 Hz, and write it down.
 
@@ -252,7 +252,7 @@ How long is a phase difference in milliseconds, and what does it do to the sum o
 
 4. Sweep Phase Δ from 0° to 180° and watch the green sum A+B.
 
-   You should see the sum tall at 0° and cancelled flat at 180°. Close the window.
+   You should see the sum at its tallest at 0° and cancelled to a flat line at 180°. Close the window.
 
 5. Save this as `two_voices.py` and run it:
 
@@ -292,7 +292,7 @@ How long is a phase difference in milliseconds, and what does it do to the sum o
    <details>
    <summary>Answer</summary>
 
-   At 180°, B is offset from A by half a period, 5 ms at 100 Hz, so B is at its lowest point whenever A is at its highest. B is $-A$, and the two cancel. At 360°, the offset is a whole period, 10 ms, and a sine shifted by one full period lands back on itself, so B is A again and the two reinforce each other as at 0°.
+   At 180°, B is offset from A by half a period, 5 ms at 100 Hz, so B is at its lowest point whenever A is at its highest. In other words B is $-A$, so the two cancel. At 360°, the offset is a whole period, 10 ms, and a sine shifted by one full period lands back on itself, so B is A again and the two reinforce each other as they do at 0°.
 
    </details>
 
@@ -309,6 +309,6 @@ You're done when `measure_sine.py`, run with an A and f you chose, prints the T,
 
 Nothing to submit.
 
-Keep your snippet files. Lab 05 asks you to write the same kinds of pieces again, assembled into one script.
+Keep your snippet files anyway, because Lab 05 asks you to write the same kinds of pieces again and assemble them into one script.
 
 Next on the [Course path](../index.md#course-path): read Movement II, [Adding signals](../guide/adding-signals.md), [Timbre and harmonics](../guide/timbre-and-harmonics.md) and [Rhythm and duty cycle](../guide/rhythm-and-duty-cycle.md), then do [Lab 02: Harmonic builder](../labs/lab-02-harmonic-builder-overview.md).
