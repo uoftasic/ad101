@@ -1,8 +1,8 @@
 # Lab 03: Spectrum detective
 
-Identify signals from their spectra, hunt a hidden tone, measure THD and see aliasing (F7–F11).
+In this lab you identify signals from their spectra, hunt for a hidden tone, measure THD and watch aliasing happen, using the five explorers F7 to F11.
 
-Follow the lab writeup, [`docs/labs/lab-03-spectrum-detective-overview.md`](../../docs/labs/lab-03-spectrum-detective-overview.md), published at https://uoftasic.com/ad101/labs/lab-03-spectrum-detective-overview.html. This README is a command reference.
+Work through the lab writeup, [`docs/labs/lab-03-spectrum-detective-overview.md`](../../docs/labs/lab-03-spectrum-detective-overview.md), published at https://uoftasic.com/ad101/labs/lab-03-spectrum-detective-overview.html. That page has the steps and the explanations, and this file is a quick reference to the commands.
 
 ## How to run
 
@@ -27,7 +27,7 @@ cd labs/lab-03-spectrum-detective
 | F7 | Twin panel: time ↔ frequency for several test signals |
 | F8 | Hidden-tone hunt (confirm with `src/check.py`) |
 | F9 | Distortion and THD meter |
-| F10 | Spectral leakage (optional stretch) |
+| F10 | Spectral leakage (optional Part 5) |
 | F11 | Sampling and aliasing |
 
 ## Files
