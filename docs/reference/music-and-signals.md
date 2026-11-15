@@ -6,19 +6,19 @@ Every idea in this course has a musical twin. Use this page as a translation tab
 
 | Musical term | Signal-processing term | Where it's covered |
 |---------------|-------------------------|----------------------|
-| Pitch | Frequency ($f$) | [Pitch and loudness](guide/pitch-and-loudness.md) |
-| Loudness | Amplitude ($A$) | [Pitch and loudness](guide/pitch-and-loudness.md) |
-| Beat length | Period ($T = 1/f$) | [Pitch and loudness](guide/pitch-and-loudness.md) |
-| Two voices out of sync | Phase / delay ($\phi$) | [Two voices in time](guide/two-voices-in-time.md) |
-| Chord | Superposition (signals added) | [Adding signals](guide/adding-signals.md) |
-| Timbre (why instruments sound different) | Harmonic content / spectrum | [Timbre and harmonics](guide/timbre-and-harmonics.md) |
-| Rhythm's "on" fraction | Duty cycle | [Rhythm and duty cycle](guide/rhythm-and-duty-cycle.md) |
-| Equalizer display | FFT / spectrum | [The FFT as an equalizer](guide/the-fft-as-an-equalizer.md) |
-| Distorted / crunchy tone | Harmonic distortion (THD) | [Distortion and THD](guide/distortion-and-thd.md) |
-| Wagon-wheel effect | Aliasing | [Sampling fast enough](guide/sampling-fast-enough.md) |
-| Bass/treble knob | Filter (low-pass / high-pass) | [Filters are tone knobs](guide/filters-are-tone-knobs.md) |
-| EQ curve | Bode plot | [Reading a Bode plot](guide/reading-a-bode-plot.md) |
-| Muffled sound through a wall | Low-pass-filtered signal | [Filtering a beat](guide/filtering-a-beat.md) |
+| Pitch | Frequency ($f$) | [Pitch and loudness](../guide/pitch-and-loudness.md) |
+| Loudness | Amplitude ($A$) | [Pitch and loudness](../guide/pitch-and-loudness.md) |
+| Beat length | Period ($T = 1/f$) | [Pitch and loudness](../guide/pitch-and-loudness.md) |
+| Two voices out of sync | Phase / delay ($\phi$) | [Two voices in time](../guide/two-voices-in-time.md) |
+| Chord | Superposition (signals added) | [Adding signals](../guide/adding-signals.md) |
+| Timbre (why instruments sound different) | Harmonic content / spectrum | [Timbre and harmonics](../guide/timbre-and-harmonics.md) |
+| Rhythm's "on" fraction | Duty cycle | [Rhythm and duty cycle](../guide/rhythm-and-duty-cycle.md) |
+| Equalizer display | FFT / spectrum | [The FFT as an equalizer](../guide/the-fft-as-an-equalizer.md) |
+| Distorted / crunchy tone | Harmonic distortion (THD) | [Distortion and THD](../guide/distortion-and-thd.md) |
+| Wagon-wheel effect | Aliasing | [Sampling fast enough](../guide/sampling-fast-enough.md) |
+| Bass/treble knob | Filter (low-pass / high-pass) | [Filters are tone knobs](../guide/filters-are-tone-knobs.md) |
+| EQ curve | Bode plot | [Reading a Bode plot](../guide/reading-a-bode-plot.md) |
+| Muffled sound through a wall | Low-pass-filtered signal | [Filtering a beat](../guide/filtering-a-beat.md) |
 
 ## Octaves and doubling
 
@@ -42,9 +42,9 @@ Standard concert pitch is A4 = 440 Hz. These are the notes used in the lab snipp
 | E5 | 659.3 |
 | A5 | 880.0 |
 
-A C-major triad (C4, E4, G4) is the chord in [Adding signals](guide/adding-signals.md), Lab 02 and Lab 05.
+A C-major triad (C4, E4, G4) is the chord in [Adding signals](../guide/adding-signals.md), Lab 02 and Lab 05.
 
 ## Related
 
-- [Reading plots](reference/reading-plots.md): the three plots themselves
-- [Getting started](guide/getting-started.md): how the course is organized
+- [Reading plots](../reference/reading-plots.md): the three plots themselves
+- [Getting started](../guide/getting-started.md): how the course is organized

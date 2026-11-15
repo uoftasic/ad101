@@ -1,6 +1,6 @@
 # Python in the workbench
 
-How to run the AD101 explorers and scripts inside the IIC-OSIC-TOOLS noVNC desktop from IC101, and what to do when something goes wrong. [Lab 01](labs/lab-01-signal-explorer-overview.md), Part 1, walks you through loading the course the first time.
+How to run the AD101 explorers and scripts inside the IIC-OSIC-TOOLS noVNC desktop from IC101, and what to do when something goes wrong. [Lab 01](../labs/lab-01-signal-explorer-overview.md), Part 1, walks you through loading the course the first time.
 
 ## One-time setup
 
@@ -100,4 +100,4 @@ Noise figures use a fixed seed (`RNG_SEED = 42` in `labs/common/adsig.py`), so r
 ## Related
 
 - [IC101: Launch noVNC](https://uoftasic.com/ic101/#/guide/launch-novnc)
-- [Getting started](guide/getting-started.md)
+- [Getting started](../guide/getting-started.md)

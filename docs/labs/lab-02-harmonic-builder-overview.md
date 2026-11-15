@@ -6,8 +6,8 @@ Lab package: [`labs/lab-02-harmonic-builder/`](https://github.com/uoftasic/ad101
 
 ## Before you start
 
-- Finish [Lab 01](labs/lab-01-signal-explorer-overview.md).
-- Read Movement II: [Adding signals](guide/adding-signals.md), [Timbre and harmonics](guide/timbre-and-harmonics.md) and [Rhythm and duty cycle](guide/rhythm-and-duty-cycle.md).
+- Finish [Lab 01](../labs/lab-01-signal-explorer-overview.md).
+- Read Movement II: [Adding signals](../guide/adding-signals.md), [Timbre and harmonics](../guide/timbre-and-harmonics.md) and [Rhythm and duty cycle](../guide/rhythm-and-duty-cycle.md).
 - In a terminal in the noVNC desktop, go to the lab folder:
 
   ```bash
@@ -74,7 +74,7 @@ Which sines, at which amplitudes, add up to a square wave?
 
 3. You're about to tick 3, 5, 7 and 9 back on, one at a time. First, predict: as you add harmonics, will the overshoot at the square's edges shrink away? Write down your answer, then tick them on.
 
-   You should see the sum walk toward the gray ideal square, with an overshoot near each edge that doesn't go away. The F5 stems update in step with the waveform and sit on the dashed $4/(n\pi)$ curve, the square-wave recipe from [Timbre and harmonics](guide/timbre-and-harmonics.md).
+   You should see the sum walk toward the gray ideal square, with an overshoot near each edge that doesn't go away. The F5 stems update in step with the waveform and sit on the dashed $4/(n\pi)$ curve, the square-wave recipe from [Timbre and harmonics](../guide/timbre-and-harmonics.md).
 
    Why doesn't the overshoot go away as you add harmonics?
 
@@ -116,7 +116,7 @@ Which sines, at which amplitudes, add up to a square wave?
    plt.show()
    ```
 
-   The `4 / (n * np.pi)` line is the recipe from the square-wave formula in [Timbre and harmonics](guide/timbre-and-harmonics.md). Before you run it, work out $4/(n\pi)$ for n = 1, 3, 5, 7 and 9 to three decimal places, and write the five numbers down. Then run it.
+   The `4 / (n * np.pi)` line is the recipe from the square-wave formula in [Timbre and harmonics](../guide/timbre-and-harmonics.md). Before you run it, work out $4/(n\pi)$ for n = 1, 3, 5, 7 and 9 to three decimal places, and write the five numbers down. Then run it.
 
    You should see:
 
@@ -152,7 +152,7 @@ Which harmonics does a pulse train's duty cycle switch on and off?
 
    You should see the even stems vanish at exactly 50% and come back on either side of it (harmonic 2 is the easiest to spot), with the box switching to `even harmonics PRESENT`. Close the window.
 
-3. Save this as `duty_sweep.py`, but don't run it yet. It uses `np.fft.rfft`, the "count the harmonics for me" machine you'll meet properly in [The FFT as an equalizer](guide/the-fft-as-an-equalizer.md). For now, treat it as a black box:
+3. Save this as `duty_sweep.py`, but don't run it yet. It uses `np.fft.rfft`, the "count the harmonics for me" machine you'll meet properly in [The FFT as an equalizer](../guide/the-fft-as-an-equalizer.md). For now, treat it as a black box:
 
    ```python
    import numpy as np
@@ -191,4 +191,4 @@ You're done when the five amplitudes you worked out match what `square_from_sine
 
 Nothing to submit.
 
-Next on the [Course path](README.md#course-path): read Movement III, [The FFT as an equalizer](guide/the-fft-as-an-equalizer.md), [Finding a quiet note](guide/finding-a-quiet-note.md), [Distortion and THD](guide/distortion-and-thd.md) and [Sampling fast enough](guide/sampling-fast-enough.md), then do [Lab 03: Spectrum detective](labs/lab-03-spectrum-detective-overview.md).
+Next on the [Course path](../index.md#course-path): read Movement III, [The FFT as an equalizer](../guide/the-fft-as-an-equalizer.md), [Finding a quiet note](../guide/finding-a-quiet-note.md), [Distortion and THD](../guide/distortion-and-thd.md) and [Sampling fast enough](../guide/sampling-fast-enough.md), then do [Lab 03: Spectrum detective](../labs/lab-03-spectrum-detective-overview.md).

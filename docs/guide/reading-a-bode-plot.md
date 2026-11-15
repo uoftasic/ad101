@@ -23,6 +23,6 @@ Take three points on the RC low-pass curve:
 - At $f_c$, the output shrinks to about 0.707× the input and lags by about an eighth of a cycle (45°). This is the point every Bode plot is anchored to.
 - A decade above $f_c$, the output is tiny and lags by nearly 90°.
 
-You'll park the F13 marker at these three points, then draw the input and output sines for each in your own script, in [Lab 04](labs/lab-04-rc-bode-overview.md), Part 2.
+You'll park the F13 marker at these three points, then draw the input and output sines for each in your own script, in [Lab 04](../labs/lab-04-rc-bode-overview.md), Part 2.
 
-Next: [Filtering a beat](guide/filtering-a-beat.md)
+Next: [Filtering a beat](../guide/filtering-a-beat.md)

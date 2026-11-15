@@ -10,12 +10,12 @@ That one fact, that signals on a wire add, is enough to build almost any wavefor
 
 ## Reading a sum by eye
 
-Add the three notes of a C-major chord (C4, E4 and G4: 261.6, 329.6 and 392.0 Hz) and plot the result. The sum no longer looks like three sines. Once more than one or two tones are added together, the shape of a time plot stops telling you what went into it. Movement III, starting with [The FFT as an equalizer](guide/the-fft-as-an-equalizer.md), gives you a tool that undoes the sum.
+Add the three notes of a C-major chord (C4, E4 and G4: 261.6, 329.6 and 392.0 Hz) and plot the result. The sum no longer looks like three sines. Once more than one or two tones are added together, the shape of a time plot stops telling you what went into it. Movement III, starting with [The FFT as an equalizer](../guide/the-fft-as-an-equalizer.md), gives you a tool that undoes the sum.
 
-You'll build this chord yourself in [Lab 02](labs/lab-02-harmonic-builder-overview.md), Part 1.
+You'll build this chord yourself in [Lab 02](../labs/lab-02-harmonic-builder-overview.md), Part 1.
 
 ## Why an engineer cares
 
-Every wire on a chip is a superposition point: the signal, plus supply noise, plus coupling from a neighbouring trace, plus whatever else touches it. "What's actually on this node?" is usually answered by splitting the sum back into its parts, and the next two pages show you how. [Timbre and harmonics](guide/timbre-and-harmonics.md) uses superposition to build a square wave out of nothing but sines.
+Every wire on a chip is a superposition point: the signal, plus supply noise, plus coupling from a neighbouring trace, plus whatever else touches it. "What's actually on this node?" is usually answered by splitting the sum back into its parts, and the next two pages show you how. [Timbre and harmonics](../guide/timbre-and-harmonics.md) uses superposition to build a square wave out of nothing but sines.
 
-Next: [Timbre and harmonics](guide/timbre-and-harmonics.md)
+Next: [Timbre and harmonics](../guide/timbre-and-harmonics.md)

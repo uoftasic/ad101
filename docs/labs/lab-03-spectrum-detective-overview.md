@@ -6,9 +6,9 @@ Lab package: [`labs/lab-03-spectrum-detective/`](https://github.com/uoftasic/ad1
 
 ## Before you start
 
-- Finish [Lab 02](labs/lab-02-harmonic-builder-overview.md).
-- Read Movement III: [The FFT as an equalizer](guide/the-fft-as-an-equalizer.md), [Finding a quiet note](guide/finding-a-quiet-note.md), [Distortion and THD](guide/distortion-and-thd.md) and [Sampling fast enough](guide/sampling-fast-enough.md).
-- Know the dB table in [Reading plots](reference/reading-plots.md).
+- Finish [Lab 02](../labs/lab-02-harmonic-builder-overview.md).
+- Read Movement III: [The FFT as an equalizer](../guide/the-fft-as-an-equalizer.md), [Finding a quiet note](../guide/finding-a-quiet-note.md), [Distortion and THD](../guide/distortion-and-thd.md) and [Sampling fast enough](../guide/sampling-fast-enough.md).
+- Know the dB table in [Reading plots](../reference/reading-plots.md).
 - In a terminal in the noVNC desktop, go to the lab folder:
 
   ```bash
@@ -58,7 +58,7 @@ How does the same signal look in time and in frequency?
 
    `v - v.mean()` removes any DC offset before the FFT, and `np.maximum(..., 1e-6)` keeps `log10` away from zero.
 
-   E5 has half A4's amplitude. Before you run it, use the dB table in [Reading plots](reference/reading-plots.md) to predict how many dB below the A4 peak the E5 peak will sit, and write it down. Then run it.
+   E5 has half A4's amplitude. Before you run it, use the dB table in [Reading plots](../reference/reading-plots.md) to predict how many dB below the A4 peak the E5 peak will sit, and write it down. Then run it.
 
    You should see a tangle of two overlapping wiggles in the top plot, and two clear peaks in the bottom one, at 440 Hz and near 659 Hz, at 60.0 dB and 53.4 dB in the course image. The dB values are raw FFT magnitudes, so the peaks sit far above 0 dB and only the gap between them means anything. Close the window.
 
@@ -67,7 +67,7 @@ How does the same signal look in time and in frequency?
    <details>
    <summary>Answer</summary>
 
-   A ratio of ×0.5 is about −6 dB, so E5 should sit about 6 dB below A4. The plot shows 60.0 − 53.4 = 6.6 dB. The extra 0.6 dB is leakage, from [Finding a quiet note](guide/finding-a-quiet-note.md) (the optional Part 5 shows it on F10): in the 0.2 s window, 440 Hz fits a whole number of cycles (88) and 659 Hz doesn't (131.8). Change `659` to `660` in the script and the gap comes out at 6.0 dB.
+   A ratio of ×0.5 is about −6 dB, so E5 should sit about 6 dB below A4. The plot shows 60.0 − 53.4 = 6.6 dB. The extra 0.6 dB is leakage, from [Finding a quiet note](../guide/finding-a-quiet-note.md) (the optional Part 5 shows it on F10): in the 0.2 s window, 440 Hz fits a whole number of cycles (88) and 659 Hz doesn't (131.8). Change `659` to `660` in the script and the gap comes out at 6.0 dB.
 
    </details>
 
@@ -153,7 +153,7 @@ How much new energy does clipping put into the harmonics?
 
    ![F9](../assets/img/f09-thd.png)
 
-2. Raise "Gain (into tanh)" and watch the waveform, the harmonic stems and the THD readout. $\tanh$ is the smooth clipping curve from [Distortion and THD](guide/distortion-and-thd.md); more gain drives the sine harder into it.
+2. Raise "Gain (into tanh)" and watch the waveform, the harmonic stems and the THD readout. $\tanh$ is the smooth clipping curve from [Distortion and THD](../guide/distortion-and-thd.md); more gain drives the sine harder into it.
 
    You should see soft clipping flatten the peaks, the odd harmonics grow, and THD climb: about 2% at the lowest gain (0.5) and about 35% at gain 6. Set the gain to 1 and write down the THD it reads. Close the window.
 
@@ -216,7 +216,7 @@ How slowly can you sample a tone before it shows up at the wrong frequency, and 
 
    You should see the box switch to `ALIASED → appears as … Hz` once the sample rate drops below 400 Hz, a bogus slow sine appear over the samples, and the spectrum peak fold below Nyquist. At 250 Hz the box reads `ALIASED → appears as 50 Hz`. Close the window.
 
-4. Save this as `aliasing.py`, but don't run it yet. It samples a 900 Hz tone twice, once above Nyquist and once below. Here "Nyquist" means the Nyquist rate, $2f$ = 1800 Hz, not F11's `Nyquist` value of $f_s/2$; [Sampling fast enough](guide/sampling-fast-enough.md) explains the two:
+4. Save this as `aliasing.py`, but don't run it yet. It samples a 900 Hz tone twice, once above Nyquist and once below. Here "Nyquist" means the Nyquist rate, $2f$ = 1800 Hz, not F11's `Nyquist` value of $f_s/2$; [Sampling fast enough](../guide/sampling-fast-enough.md) explains the two:
 
    ```python
    import numpy as np
@@ -242,7 +242,7 @@ How slowly can you sample a tone before it shows up at the wrong frequency, and 
 
    At 250 Hz, F11 showed the 200 Hz tone as 50 Hz, which is 250 − 200. A tone between half the sample rate and the sample rate shows up at the sample rate minus the tone. Use that to predict the frequency the `fs=1000` points will appear to have, and write it down. Then run the script.
 
-You should see the `fs=5000` points trace a recognizable 900 Hz wiggle, while the `fs=1000` points join into a slow, wrong-looking wave with a period of about 10 ms (100 Hz, which is 1000 − 900), like the backwards-spinning wheel in [Sampling fast enough](guide/sampling-fast-enough.md).
+You should see the `fs=5000` points trace a recognizable 900 Hz wiggle, while the `fs=1000` points join into a slow, wrong-looking wave with a period of about 10 ms (100 Hz, which is 1000 − 900), like the backwards-spinning wheel in [Sampling fast enough](../guide/sampling-fast-enough.md).
 
 ## Part 5 (optional): Spectral leakage (F10)
 
@@ -286,4 +286,4 @@ You're done when `python3 src/check.py --guess <Hz>`, with the frequency you rea
 
 Nothing to submit.
 
-Next on the [Course path](README.md#course-path): read Movement IV, [Filters are tone knobs](guide/filters-are-tone-knobs.md), [Reading a Bode plot](guide/reading-a-bode-plot.md), [Filtering a beat](guide/filtering-a-beat.md) and [More filter shapes](guide/more-filter-shapes.md), then do [Lab 04: RC filter and Bode](labs/lab-04-rc-bode-overview.md).
+Next on the [Course path](../index.md#course-path): read Movement IV, [Filters are tone knobs](../guide/filters-are-tone-knobs.md), [Reading a Bode plot](../guide/reading-a-bode-plot.md), [Filtering a beat](../guide/filtering-a-beat.md) and [More filter shapes](../guide/more-filter-shapes.md), then do [Lab 04: RC filter and Bode](../labs/lab-04-rc-bode-overview.md).

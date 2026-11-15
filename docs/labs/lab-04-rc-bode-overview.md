@@ -6,8 +6,8 @@ Lab package: [`labs/lab-04-rc-bode/`](https://github.com/uoftasic/ad101/tree/mai
 
 ## Before you start
 
-- Finish [Lab 03](labs/lab-03-spectrum-detective-overview.md).
-- Read Movement IV: [Filters are tone knobs](guide/filters-are-tone-knobs.md), [Reading a Bode plot](guide/reading-a-bode-plot.md), [Filtering a beat](guide/filtering-a-beat.md) and [More filter shapes](guide/more-filter-shapes.md).
+- Finish [Lab 03](../labs/lab-03-spectrum-detective-overview.md).
+- Read Movement IV: [Filters are tone knobs](../guide/filters-are-tone-knobs.md), [Reading a Bode plot](../guide/reading-a-bode-plot.md), [Filtering a beat](../guide/filtering-a-beat.md) and [More filter shapes](../guide/more-filter-shapes.md).
 - In a terminal in the noVNC desktop, go to the lab folder:
 
   ```bash
@@ -213,7 +213,7 @@ What does a low-pass do to a square wave, and which harmonics go first?
    <details>
    <summary>Answer</summary>
 
-   Raising C lowers $f_c$. A square wave is a pile of odd harmonics, and the high ones make the sharp edges. The lower $f_c$ is, the more of those high harmonics the filter turns down, so the edges round off. [Filtering a beat](guide/filtering-a-beat.md) has the same picture.
+   Raising C lowers $f_c$. A square wave is a pile of odd harmonics, and the high ones make the sharp edges. The lower $f_c$ is, the more of those high harmonics the filter turns down, so the edges round off. [Filtering a beat](../guide/filtering-a-beat.md) has the same picture.
 
    </details>
 
@@ -277,4 +277,4 @@ You're done when `bode.py`, run with an R and C you chose, prints the cutoff you
 
 Nothing to submit.
 
-Next on the [Course path](README.md#course-path): do [Lab 05: Signal workshop](labs/lab-05-signal-workshop-overview.md), where you write a script that synthesizes, analyzes and filters a signal on its own.
+Next on the [Course path](../index.md#course-path): do [Lab 05: Signal workshop](../labs/lab-05-signal-workshop-overview.md), where you write a script that synthesizes, analyzes and filters a signal on its own.

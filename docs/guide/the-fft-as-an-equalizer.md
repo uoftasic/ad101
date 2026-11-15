@@ -25,7 +25,7 @@ You don't need the derivation to use it. `numpy.fft.rfft` does the work in one l
 
 Take a two-note chord, A4 (440 Hz) plus a quieter E5 (659 Hz). Its time plot is two overlapping wiggles, and it's hard to tell by eye that there are exactly two notes. Its spectrum has two clear peaks, at 440 and 659 Hz. That contrast is the reason this movement exists. Identifying a signal by the shape of its spectrum is a core debugging skill.
 
-You'll compute this chord's spectrum yourself, then flip between test signals on the F7 explorer, in [Lab 03](labs/lab-03-spectrum-detective-overview.md), Part 1.
+You'll compute this chord's spectrum yourself, then flip between test signals on the F7 explorer, in [Lab 03](../labs/lab-03-spectrum-detective-overview.md), Part 1.
 
 ## Decibels
 
@@ -47,4 +47,4 @@ These are worth memorizing:
 
 A dB axis lets a loud tone and a quiet tone share one plot without the quiet one disappearing into the baseline. That's why a studio equalizer's meters are marked in dB, not volts.
 
-Next: [Finding a quiet note](guide/finding-a-quiet-note.md)
+Next: [Finding a quiet note](../guide/finding-a-quiet-note.md)
