@@ -54,13 +54,13 @@ What does the sum of three notes look like in time?
    plt.show()
    ```
 
-You should see the three notes in the top panel and their sum in black in the bottom panel. Look at the bottom trace: you can't tell by eye that it's three sines. Movement III gives you a tool that can.
+You should see the three notes in the top panel and their sum in black in the bottom panel. From the bottom trace alone you couldn't tell by eye that it's made of three sines, and Movement III gives you a tool that can.
 
 ## Part 2: Build a square wave from sines (F4/F5)
 
 Which sines, at which amplitudes, add up to a square wave?
 
-1. Open the Fourier assembler. F4 (the waveform) and F5 (its spectrum) share one window:
+1. Open the Fourier assembler, which shows F4 (the waveform) and F5 (its spectrum) in the same window:
 
    ```bash
    python3 src/explore.py --figure f4
@@ -68,11 +68,11 @@ Which sines, at which amplitudes, add up to a square wave?
 
    ![F4/F5](../assets/img/f04-f05-harmonic-builder.png)
 
-2. All five harmonics (n=1, 3, 5, 7, 9) start ticked, with amplitudes set to $4/(n\pi)$, rounded to the sliders' 0.02 steps (A1 reads 1.28). Untick 3, 5, 7 and 9 so only n=1 is left.
+2. All five harmonics (n=1, 3, 5, 7, 9) start ticked, with their amplitudes set to $4/(n\pi)$ rounded to the sliders' 0.02 steps, which is why A1 reads 1.28. Untick 3, 5, 7 and 9 so that only n=1 is left.
 
    You should see a plain sine in F4 and a single stem in F5.
 
-3. You're about to tick 3, 5, 7 and 9 back on, one at a time. First, predict: as you add harmonics, will the overshoot at the square's edges shrink away? Write down your answer, then tick them on.
+3. Next you'll tick 3, 5, 7 and 9 back on, one at a time. Before you do, predict whether the overshoot at the square's edges will shrink away as you add harmonics, and write your answer down. Then tick them on.
 
    You should see the sum walk toward the gray ideal square, with an overshoot near each edge that doesn't go away. The F5 stems update in step with the waveform and sit on the dashed $4/(n\pi)$ curve, the square-wave recipe from [Timbre and harmonics](../guide/timbre-and-harmonics.md).
 
@@ -81,13 +81,13 @@ Which sines, at which amplitudes, add up to a square wave?
    <details>
    <summary>Answer</summary>
 
-   The overshoot is Gibbs ringing, and it stays however many harmonics you add. It's the result of approximating a sharp edge with a finite number of sines, and a real digital clock on an oscilloscope shows the same shape.
+   The overshoot is called Gibbs ringing. It comes from approximating a sharp edge with a finite number of sines, so it stays however many harmonics you add. A real digital clock on an oscilloscope shows the same shape.
 
    </details>
 
 4. Drag the amplitude sliders (A1 to A9) toward and away from $4/(n\pi)$.
 
-   You should see the sum stop looking like a square as the stems move off the dashed curve, and return to one as they move back. Close the window.
+   You should see the sum stop looking like a square as the stems move off the dashed curve, and look like one again as they move back onto it. Close the window.
 
 5. Save this as `square_from_sines.py`, but don't run it yet. It prints the amplitude it uses for each harmonic:
 
@@ -128,11 +128,11 @@ Which sines, at which amplitudes, add up to a square wave?
    n = 9   amplitude = 0.141
    ```
 
-   The F4 sliders showed the same values rounded to 0.02. The plot shows the sum of five harmonics close to the dashed square, with ringing at the edges.
+   These are the values the F4 sliders showed, before they were rounded to 0.02. The plot shows the sum of five harmonics close to the dashed square, with ringing at the edges.
 
 6. Change the list to `harmonics = [1]` and re-run. Then add `3`, then `5`, `7` and `9`, re-running each time.
 
-   You should see the sum start as a plain sine and walk toward the dashed square with each sine you add, and one more `amplitude` line printed each time. The overshoot right at the edges appears and stays, as on F4. It's the Gibbs ringing from step 3, not a bug in your code.
+   You should see the sum start as a plain sine and walk toward the dashed square with each sine you add, and one more `amplitude` line printed each time. The overshoot right at the edges appears and stays, as it did on F4. That's the Gibbs ringing from step 3, not a bug in your code.
 
 ## Part 3: Duty cycle and even harmonics (F6)
 
@@ -146,7 +146,7 @@ Which harmonics does a pulse train's duty cycle switch on and off?
 
    ![F6](../assets/img/f06-duty-spectrum.png)
 
-   It starts at 50% duty. The box under the plots reads `duty = 50%   →   even harmonics GONE (50% duty)`.
+   It starts at 50% duty, and the box under the plots reads `duty = 50%   →   even harmonics GONE (50% duty)`.
 
 2. Sweep Duty from 25% to 50% to 75% and watch the even-numbered stems in the spectrum.
 
