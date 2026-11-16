@@ -1,6 +1,6 @@
 # AD101 — Signals
 
-Signals in time and frequency: waveforms, spectra and Bode plots.
+Use notes and chords to learn to read signals in time and in frequency, and to see what a filter does to them.
 
 AD101 is the first course in the UofT ASIC Team's analog track, published at https://uoftasic.com/ad101/. It's for students who have finished [IC101](https://uoftasic.com/ic101/) and want to read the three plots analog engineers use every day: the waveform (voltage against time), the spectrum (how strong each frequency is) and the Bode plot (what a circuit does to each frequency).
 
