@@ -13,7 +13,7 @@ Create a course or lab-notes repo from this template under `uoftasic`, fill in t
 |-------|---------|---------|
 | `ad101` | Repo slug / course id | `dd103`, `ic101`, `serdes-lab` |
 | `AD101 — Signals` | Display name | `DD103 — RTL on FPGAs & ASICs` |
-| `Signals in time and frequency: waveforms, spectra, and Bode plots.` | One-line blurb | `RTL synthesis intro with Yosys` |
+| `Use notes and chords to learn to read signals in time and in frequency, and to see what a filter does to them.` | One-line blurb | `RTL synthesis intro with Yosys` |
 
 ## Init script
 

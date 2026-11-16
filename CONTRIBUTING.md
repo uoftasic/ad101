@@ -18,7 +18,7 @@ The init script fills only these three fields. This repo's values, with an examp
 |-------|---------|
 | `ad101` | `dd103` |
 | `AD101 — Signals` | `DD103 — RTL on FPGAs & ASICs` |
-| `Signals in time and frequency: waveforms, spectra, and Bode plots.` | `RTL synthesis intro with Yosys` |
+| `Use notes and chords to learn to read signals in time and in frequency, and to see what a filter does to them.` | `RTL synthesis intro with Yosys` |
 
 ## Conventions
 

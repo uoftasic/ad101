@@ -1,6 +1,6 @@
 # AD101 — Signals
 
-Signals in time and frequency: waveforms, spectra, and Bode plots.
+Use notes and chords to learn to read signals in time and in frequency, and to see what a filter does to them.
 
 Docs: https://uoftasic.com/ad101/ · Hub: https://edu.uoftasic.com/
 

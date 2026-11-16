@@ -18,7 +18,7 @@ project:
 
 website:
   title: "AD101 — Signals"
-  description: "Signals in time and frequency: waveforms, spectra, and Bode plots."
+  description: "Use notes and chords to learn to read signals in time and in frequency, and to see what a filter does to them."
   site-url: https://uoftasic.com/ad101/
   repo-url: https://github.com/uoftasic/ad101
   repo-subdir: docs

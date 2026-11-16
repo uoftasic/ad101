@@ -8,7 +8,7 @@ project:
 
 book:
   title: "AD101 — Signals"
-  subtitle: "Signals in time and frequency: waveforms, spectra, and Bode plots."
+  subtitle: "Use notes and chords to learn to read signals in time and in frequency, and to see what a filter does to them."
   author: "UofT ASIC Team"
   output-file: ad101-course
   chapters:
