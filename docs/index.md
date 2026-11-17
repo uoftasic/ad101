@@ -2,9 +2,9 @@
 
 Use notes and chords to learn to read signals in time and in frequency, and to see what a filter does to them.
 
-AD101 is the first course in the UofT ASIC Team's analog track, published at https://uoftasic.com/ad101/. It's for students who have finished [IC101](https://uoftasic.com/ic101/) and want to read the three plots analog engineers use every day: the waveform (voltage against time), the spectrum (how strong each frequency is) and the Bode plot (what a circuit does to each frequency).
+AD101 is the first course in the UofT ASIC Team's analog track, published at https://uoftasic.com/ad101/. It's for students who have finished [IC101](https://uoftasic.com/ic101/), and it covers three plots: the waveform (voltage against time), the spectrum (how strong each frequency is) and the Bode plot (what a circuit does to each frequency).
 
-The course uses music as its running example. A single signal plays the part of a note, a chord is several signals added together, timbre is the recipe of harmonics in a sound, and a filter works like a tone knob. You don't need any musical background to follow it.
+The course uses music as its running example. A held note is a sine wave, a chord is several sines added together, an instrument's timbre is the recipe of harmonics it adds on top of a note, and a tone knob is a filter. You don't need any musical background to follow it.
 
 ## Before you start
 
