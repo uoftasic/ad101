@@ -19,7 +19,7 @@ Part 1 loads the course and Part 2 is a snippet on its own. Parts 3 to 5 each pa
 - An **explorer** is a plot window with sliders, which you open with `python3 src/explore.py --figure <id>`. The terminal stays busy until you close the window.
 - A **snippet** is a short Python script that you save as a new `.py` file in the lab folder and run with `python3 <file>.py`. The steps suggest a file name for each one, but any name works. Snippets use only numpy and matplotlib, and the desktop has `gedit`, `nano` and `vim` for editing them.
 
-Run explorers and snippets from the lab folder, which Part 2 takes you to. If you open a new terminal partway through, run `. /foss/designs/common/.designinit`, `mod ad101` and `cd labs/lab-01-signal-explorer` first, to load the environment and get back to the lab folder. Your snippet files are under `/foss/designs`, which is your `workspace` folder on the host, so they survive a container restart.
+Run explorers and snippets from the lab folder, which Part 2 takes you to. If you open a new terminal partway through, run `mod ad101` and `cd labs/lab-01-signal-explorer` first, to get back to the lab folder. Your snippet files are under `/foss/designs`, which is your `workspace` folder on the host, so they survive a container restart.
 
 ## Part 1: Load the course
 
