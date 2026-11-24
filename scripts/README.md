@@ -3,7 +3,7 @@
 | Script | Purpose |
 |--------|---------|
 | `check_env.py` | Preflight: Python, numpy, matplotlib, GUI backend, `adsig` smoke |
-| `check_site.py` | Check every local link and anchor in the rendered site; `site.yml` runs it on `docs/_site` |
+| `check_site.py` | Check every local link and anchor in the rendered site, and that every page has the navbar's link to https://edu.uoftasic.com/; `site.yml` runs it on `docs/_site` |
 | `build_figures.py` | Export every lab figure into `docs/assets/img/` (seeded RNG) |
 | `hello.py` | Tiny sanity print (template leftover) |
 | `init-template.py` | Already run; don't re-bootstrap |
