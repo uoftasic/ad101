@@ -37,13 +37,6 @@ If you haven't set up the workbench, do [IC101 Lab 03](https://uoftasic.com/ic10
 
    You should see `cwd: /foss/designs/modules/ad101` after `mod ad101`.
 
-   If you'd rather clone AD101 on the host, you can run the commands below instead of `mod add ad101`, from the folder that contains your `workspace` clone. The clone ends up in the same place that `mod add ad101` would put it, so afterwards you run `mod ad101` in the desktop terminal as above:
-
-   ```bash
-   cd workspace/modules
-   git clone https://github.com/uoftasic/ad101.git
-   ```
-
 3. Check the Python environment, including the numpy and matplotlib versions:
 
    ```bash
