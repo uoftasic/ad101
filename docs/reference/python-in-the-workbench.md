@@ -13,14 +13,6 @@ mod ad101                    # → /foss/designs/modules/ad101
 python3 scripts/check_env.py
 ```
 
-If you'd rather not use `mod add`, you can clone the repo on the host instead:
-
-```bash
-# on the host, inside your workspace clone
-cd workspace/modules
-git clone https://github.com/uoftasic/ad101.git
-```
-
 `check_env.py` should print `OK` for numpy, for matplotlib and for the `adsig` smoke line, and finish with `=== All checks passed ===`.
 
 ## Running an explorer

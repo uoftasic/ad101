@@ -18,7 +18,7 @@ Lab package: [`labs/lab-02-harmonic-builder/`](https://github.com/uoftasic/ad101
 
 Time: about 1 hour.
 
-As in Lab 01, Part 1 is a snippet on its own, and the other parts each pair an explorer (`python3 src/explore.py --figure <id>`) with a snippet. You save each snippet as a new `.py` file in this lab folder and run it with `python3 <file>.py`. The folder is `/foss/designs/modules/ad101/labs/lab-02-harmonic-builder` in the desktop and `modules/ad101/labs/lab-02-harmonic-builder` in your `workspace` folder on your laptop, and you save a snippet there the same way you saved `first_signal.py` in [Lab 01, Part 2](../labs/lab-01-signal-explorer-overview.md#part-2-plot-your-first-signal).
+Part 1 is a snippet on its own, like Part 2 of Lab 01, and the other parts each pair an explorer (`python3 src/explore.py --figure <id>`) with a snippet. You save each snippet as a new `.py` file in this lab folder and run it with `python3 <file>.py`. The folder is `/foss/designs/modules/ad101/labs/lab-02-harmonic-builder` in the desktop and `modules/ad101/labs/lab-02-harmonic-builder` in your `workspace` folder on your laptop, and you save a snippet there the same way you saved `first_signal.py` in [Lab 01, Part 2](../labs/lab-01-signal-explorer-overview.md#part-2-plot-your-first-signal).
 
 ## Part 1: Build a chord
 
