@@ -17,7 +17,7 @@ Time: about 1.5 hours.
 Part 1 loads the course and Part 2 is a snippet on its own. Parts 3 to 5 each pair an explorer with a snippet, and the list below explains what each of those is.
 
 - An **explorer** is a plot window with sliders, which you open with `python3 src/explore.py --figure <id>`. The terminal stays busy until you close the window.
-- A **snippet** is a short Python script that you save as a new `.py` file in the lab folder and run with `python3 <file>.py`. The steps suggest a file name for each one, but any name works. Snippets use only numpy and matplotlib, and the desktop has `gedit`, `nano` and `vim` for editing them.
+- A **snippet** is a short Python script that you save as a new `.py` file in the lab folder and run with `python3 <file>.py`. Part 2 shows you how to save one, either with VS Code on your laptop or with `gedit` in the desktop (the desktop also has `nano` and `vim`). The steps suggest a file name for each snippet, but any name works. Snippets use only numpy and matplotlib.
 
 Run explorers and snippets from the lab folder, which Part 2 takes you to. If you open a new terminal partway through, run `mod ad101` and `cd labs/lab-01-signal-explorer` first, to get back to the lab folder. Your snippet files are under `/foss/designs`, which is your `workspace` folder on the host, so they survive a container restart.
 
@@ -78,7 +78,7 @@ What does the pair of arrays from [What is a signal?](../guide/what-is-a-signal.
    cd labs/lab-01-signal-explorer
    ```
 
-2. Save this as `first_signal.py`. It's the pair of arrays from [What is a signal?](../guide/what-is-a-signal.md), plus four lines that plot them:
+2. Save this as `first_signal.py` in the lab folder. It's the pair of arrays from [What is a signal?](../guide/what-is-a-signal.md), plus four lines that plot them:
 
    ```python
    import numpy as np
@@ -92,6 +92,25 @@ What does the pair of arrays from [What is a signal?](../guide/what-is-a-signal.
    plt.ylabel("Voltage (V)")
    plt.show()
    ```
+
+   The lab folder is `/foss/designs/modules/ad101/labs/lab-01-signal-explorer` in the desktop and `modules/ad101/labs/lab-01-signal-explorer` inside your `workspace` folder on your laptop (the host). These are the same folder, as IC101's [The workbench desktop](https://uoftasic.com/ic101/guide/launch-novnc.html#your-files-on-your-laptop-and-in-the-desktop) explains, so you can make the file from either side, in one of these two ways:
+
+   - With VS Code on your laptop: open your `workspace` folder in VS Code, as in [IC101 Lab 03, Part 6](https://uoftasic.com/ic101/labs/lab-03-launch-the-workbench-overview.html#part-6-edit-a-file-from-your-laptop). In the Explorer, click the folder `modules/ad101/labs/lab-01-signal-explorer` to select it, then click the New File button in the Explorer toolbar and name the file `first_signal.py`. Copy the code above, paste it into the new file with Ctrl+V (Cmd+V on macOS), and press Ctrl+S (Cmd+S) to save it.
+   - With gedit in the desktop: in the desktop terminal, which step 1 left in the lab folder, run `gedit first_signal.py &`. A gedit window titled `first_signal.py` opens, and the `&` gives you the terminal back while gedit stays open. To paste the code, copy it on this page, click the clipboard icon in the noVNC sidebar, and paste the code into the text box that opens. Then click in the gedit window and press Ctrl+V. In gedit it's plain Ctrl+V; Ctrl+Shift+V is the terminal's paste. Press Ctrl+S to save. When you paste, gedit prints a `Gtk-WARNING` line about `org.xfce.Session.Manager.Inhibit` in the terminal, which doesn't affect your file.
+
+   Then, in the desktop terminal, check that the file is in the lab folder:
+
+   ```bash
+   ls
+   ```
+
+   You should see `first_signal.py` next to the lab's own files and folders:
+
+   ```text
+   first_signal.py  README.md  requirements.txt  results  src
+   ```
+
+   If `first_signal.py` isn't in the list, it went into another folder. Save it again in `lab-01-signal-explorer`.
 
 3. Before you run it, work out how many full cycles of a 440 Hz sine fit in the 50 ms window and write the number down. Then run it with `python3 first_signal.py`.
 
@@ -128,7 +147,7 @@ How does each of a sine's four knobs (amplitude, frequency, phase and DC offset)
 
    Close the window.
 
-4. Save this as `measure_sine.py`, but don't run it yet. It builds a sine at a chosen amplitude and frequency, computes the period from $T = 1/f$, and measures peak-to-peak and RMS from the samples in the array, rather than off a scope trace by eye:
+4. Save this as `measure_sine.py` in the lab folder, the same way you saved `first_signal.py` in [Part 2](#part-2-plot-your-first-signal), but don't run it yet. It builds a sine at a chosen amplitude and frequency, computes the period from $T = 1/f$, and measures peak-to-peak and RMS from the samples in the array, rather than off a scope trace by eye:
 
    ```python
    import numpy as np
@@ -187,7 +206,7 @@ How do square, triangle, pulse and noise differ from a sine, and what does the d
 
    You should see five very different shapes from the same Amplitude setting, and noise is the only one that never repeats. At 25% duty the pulse looks clearly lopsided next to the pulse at 50%. Close the window.
 
-3. Save this as `waveform_zoo.py` and run it. It builds a sine, which it doesn't plot, and then square, pulse and triangle waves from the same time array `t`, using a `phase` variable that counts from 0 to 1 once per cycle. It also adds a noise trace:
+3. Save this as `waveform_zoo.py` in the lab folder, as you saved `first_signal.py` in [Part 2](#part-2-plot-your-first-signal), and run it. It builds a sine, which it doesn't plot, and then square, pulse and triangle waves from the same time array `t`, using a `phase` variable that counts from 0 to 1 once per cycle. It also adds a noise trace:
 
    ```python
    import numpy as np
@@ -247,7 +266,7 @@ How long is a phase difference in milliseconds, and what does it do to the sum o
 
    You should see the sum at its tallest at 0° and cancelled to a flat line at 180°. Close the window.
 
-5. Save this as `two_voices.py` and run it:
+5. Save this as `two_voices.py` in the lab folder, as you saved `first_signal.py` in [Part 2](#part-2-plot-your-first-signal), and run it:
 
    ```python
    import numpy as np

@@ -28,7 +28,7 @@ f_c = \frac{1}{2\pi R C}
 \angle H(f) = -\arctan(f/f_c)
 $$
 
-As before, each part pairs an explorer (`python3 src/explore.py --figure <id>`) with a snippet you save as a new `.py` file in this folder and run with `python3 <file>.py`.
+As before, each part pairs an explorer (`python3 src/explore.py --figure <id>`) with a snippet that you save as a new `.py` file in this lab folder and run with `python3 <file>.py`. The folder is `/foss/designs/modules/ad101/labs/lab-04-rc-bode` in the desktop and `modules/ad101/labs/lab-04-rc-bode` in your `workspace` folder on your laptop, and you save a snippet there the same way you saved `first_signal.py` in [Lab 01, Part 2](../labs/lab-01-signal-explorer-overview.md#part-2-plot-your-first-signal).
 
 ## Part 1: The Bode explorer (F12)
 
@@ -63,7 +63,7 @@ What sets an RC low-pass's cutoff, and what do its magnitude and phase do there?
 
    </details>
 
-5. Save this as `bode.py` and run it. It draws a Bode plot from the two formulas alone:
+5. Save this as `bode.py` in the lab folder, as you saved `first_signal.py` in [Lab 01, Part 2](../labs/lab-01-signal-explorer-overview.md#part-2-plot-your-first-signal), and run it. It draws a Bode plot from the two formulas alone:
 
    ```python
    import numpy as np
@@ -121,7 +121,7 @@ What does one point on the Bode curve do to a sine that goes through the filter?
 
    You should see the output almost identical to the input a decade below ($\lvert H\rvert \approx 0.995$, phase about −6°), and tiny with nearly −90° of lag a decade above ($\lvert H\rvert \approx 0.100$, −20 dB, phase about −84°). Close the window.
 
-4. Save this as `bode_point.py` and run it. At each of three frequencies it makes an input sine and draws the output that the Bode formulas predict for it:
+4. Save this as `bode_point.py` in the lab folder, as you saved `first_signal.py` in [Lab 01, Part 2](../labs/lab-01-signal-explorer-overview.md#part-2-plot-your-first-signal), and run it. At each of three frequencies it makes an input sine and draws the output that the Bode formulas predict for it:
 
    ```python
    import numpy as np
@@ -170,7 +170,7 @@ What does a low-pass do to a square wave, and which harmonics go first?
 
    You should see the edges round off, and the output stems for the high odd harmonics (5, 7, 9) shrink first. Close the window.
 
-3. Save this as `filter_square.py`, but don't run it yet. It filters a 500 Hz square wave by scaling its spectrum by $H(f)$ and transforming back, for three values of C:
+3. Save this as `filter_square.py` in the lab folder, as you saved `first_signal.py` in [Lab 01, Part 2](../labs/lab-01-signal-explorer-overview.md#part-2-plot-your-first-signal), but don't run it yet. It filters a 500 Hz square wave by scaling its spectrum by $H(f)$ and transforming back, for three values of C:
 
    ```python
    import numpy as np
@@ -233,7 +233,7 @@ How do low-pass, high-pass and band-pass shapes differ around the same $f_c$?
 
    You should see three different pass/stop patterns around the same $f_c$, all moving together when $f_c$ moves. Close the window.
 
-3. Save this as `filter_shapes.py`, but don't run it yet. It computes all three curves from the same `fc`:
+3. Save this as `filter_shapes.py` in the lab folder, as you saved `first_signal.py` in [Lab 01, Part 2](../labs/lab-01-signal-explorer-overview.md#part-2-plot-your-first-signal), but don't run it yet. It computes all three curves from the same `fc`:
 
    ```python
    import numpy as np

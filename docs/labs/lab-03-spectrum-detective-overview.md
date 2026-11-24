@@ -19,13 +19,13 @@ Lab package: [`labs/lab-03-spectrum-detective/`](https://github.com/uoftasic/ad1
 
 Time: about 1.5 hours, not counting the optional Part 5.
 
-As before, most parts pair an explorer (`python3 src/explore.py --figure <id>`) with a short snippet that you save as a new `.py` file in this folder and run with `python3 <file>.py`.
+As before, most parts pair an explorer (`python3 src/explore.py --figure <id>`) with a short snippet that you save as a new `.py` file in this lab folder and run with `python3 <file>.py`. The folder is `/foss/designs/modules/ad101/labs/lab-03-spectrum-detective` in the desktop and `modules/ad101/labs/lab-03-spectrum-detective` in your `workspace` folder on your laptop, and you save a snippet there the same way you saved `first_signal.py` in [Lab 01, Part 2](../labs/lab-01-signal-explorer-overview.md#part-2-plot-your-first-signal).
 
 ## Part 1: Your first FFT (F7)
 
 How does the same signal look in time and in frequency?
 
-1. Save this as `first_fft.py`, but don't run it yet. It builds a two-note chord, A4 and E5, and plots it in time and in frequency:
+1. Save this as `first_fft.py` in the lab folder, as you saved `first_signal.py` in [Lab 01, Part 2](../labs/lab-01-signal-explorer-overview.md#part-2-plot-your-first-signal), but don't run it yet. It builds a two-note chord, A4 and E5, and plots it in time and in frequency:
 
    ```python
    import numpy as np
@@ -105,7 +105,7 @@ Can you find a tone you can't see in the time plot?
 
    You should see a line starting `Correct! Hidden tone is`. If you see `Not quite` instead, the message tells you how far off you were. The checker accepts anything within 5 Hz of the answer, so if you're further off than that, read the spike again more carefully and try another guess.
 
-4. Save this as `hidden_tone.py` and run it. It hides a tone at the same frequency as F8's, but quieter and under different noise, and then reads the peak's frequency off the data with `np.argmax` instead of by eye. The code gives away the tone's frequency, so do steps 1–3 before you read it:
+4. Save this as `hidden_tone.py` in the lab folder, as you saved `first_signal.py` in [Lab 01, Part 2](../labs/lab-01-signal-explorer-overview.md#part-2-plot-your-first-signal), and run it. It hides a tone at the same frequency as F8's, but quieter and under different noise, and then reads the peak's frequency off the data with `np.argmax` instead of by eye. The code gives away the tone's frequency, so do steps 1–3 before you read it:
 
    ```python
    import numpy as np
@@ -157,7 +157,7 @@ How much new energy does clipping put into the harmonics?
 
    You should see the soft clipping flatten the peaks of the sine, the odd harmonics grow, and the THD climb from about 2% at the lowest gain (0.5) to about 35% at gain 6. Set the gain to 1 and write down the THD it reads. Close the window.
 
-3. Save this as `clip_thd.py`, but don't run it yet. It clips a sine at three gains, 1, 3 and 8, and measures the THD from the spectrum. It only prints its results, so no plot window opens:
+3. Save this as `clip_thd.py` in the lab folder, as you saved `first_signal.py` in [Lab 01, Part 2](../labs/lab-01-signal-explorer-overview.md#part-2-plot-your-first-signal), but don't run it yet. It clips a sine at three gains, 1, 3 and 8, and measures the THD from the spectrum. It only prints its results, so no plot window opens:
 
    ```python
    import numpy as np
@@ -216,7 +216,7 @@ How slowly can you sample a tone before it shows up at the wrong frequency, and 
 
    You should see the box switch to `ALIASED → appears as … Hz` once the sample rate drops below 400 Hz, a bogus slow sine appear over the samples, and the spectrum peak fold below Nyquist. At 250 Hz the box reads `ALIASED → appears as 50 Hz`. Close the window.
 
-4. Save this as `aliasing.py`, but don't run it yet. It samples a 900 Hz tone twice, once above Nyquist and once below. In this script "Nyquist" means the Nyquist rate, $2f$ = 1800 Hz, rather than F11's `Nyquist` value of $f_s/2$, and [Sampling fast enough](../guide/sampling-fast-enough.md) explains the difference between the two:
+4. Save this as `aliasing.py` in the lab folder, as you saved `first_signal.py` in [Lab 01, Part 2](../labs/lab-01-signal-explorer-overview.md#part-2-plot-your-first-signal), but don't run it yet. It samples a 900 Hz tone twice, once above Nyquist and once below. In this script "Nyquist" means the Nyquist rate, $2f$ = 1800 Hz, rather than F11's `Nyquist` value of $f_s/2$, and [Sampling fast enough](../guide/sampling-fast-enough.md) explains the difference between the two:
 
    ```python
    import numpy as np

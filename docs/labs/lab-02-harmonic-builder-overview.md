@@ -18,13 +18,13 @@ Lab package: [`labs/lab-02-harmonic-builder/`](https://github.com/uoftasic/ad101
 
 Time: about 1 hour.
 
-As in Lab 01, Part 1 is a snippet on its own, and the other parts each pair an explorer (`python3 src/explore.py --figure <id>`) with a snippet. You save each snippet as a new `.py` file in this folder and run it with `python3 <file>.py`.
+As in Lab 01, Part 1 is a snippet on its own, and the other parts each pair an explorer (`python3 src/explore.py --figure <id>`) with a snippet. You save each snippet as a new `.py` file in this lab folder and run it with `python3 <file>.py`. The folder is `/foss/designs/modules/ad101/labs/lab-02-harmonic-builder` in the desktop and `modules/ad101/labs/lab-02-harmonic-builder` in your `workspace` folder on your laptop, and you save a snippet there the same way you saved `first_signal.py` in [Lab 01, Part 2](../labs/lab-01-signal-explorer-overview.md#part-2-plot-your-first-signal).
 
 ## Part 1: Build a chord
 
 What does the sum of three notes look like in time?
 
-1. Save this as `chord.py` and run it. It adds the three notes of a C-major triad, sample by sample:
+1. Save this as `chord.py` in the lab folder, as you saved `first_signal.py` in [Lab 01, Part 2](../labs/lab-01-signal-explorer-overview.md#part-2-plot-your-first-signal), and run it. It adds the three notes of a C-major triad, sample by sample:
 
    ```python
    import numpy as np
@@ -89,7 +89,7 @@ Which sines, at which amplitudes, add up to a square wave?
 
    You should see the sum stop looking like a square as the stems move off the dashed curve, and look like one again as they move back onto it. Close the window.
 
-5. Save this as `square_from_sines.py`, but don't run it yet. It prints the amplitude it uses for each harmonic:
+5. Save this as `square_from_sines.py` in the lab folder, as you saved `first_signal.py` in [Lab 01, Part 2](../labs/lab-01-signal-explorer-overview.md#part-2-plot-your-first-signal), but don't run it yet. It prints the amplitude it uses for each harmonic:
 
    ```python
    import numpy as np
@@ -152,7 +152,7 @@ Which harmonics does a pulse train's duty cycle switch on and off?
 
    You should see the even stems vanish at exactly 50% and come back on either side of it (harmonic 2 is the easiest to spot), with the box switching to `even harmonics PRESENT`. Close the window.
 
-3. Save this as `duty_sweep.py`, but don't run it yet. It uses `np.fft.rfft`, the "count the harmonics for me" machine you'll meet properly in [The FFT as an equalizer](../guide/the-fft-as-an-equalizer.md). For now, treat it as a black box:
+3. Save this as `duty_sweep.py` in the lab folder, as you saved `first_signal.py` in [Lab 01, Part 2](../labs/lab-01-signal-explorer-overview.md#part-2-plot-your-first-signal), but don't run it yet. It uses `np.fft.rfft`, the "count the harmonics for me" machine you'll meet properly in [The FFT as an equalizer](../guide/the-fft-as-an-equalizer.md). For now, treat it as a black box:
 
    ```python
    import numpy as np
