@@ -17,10 +17,6 @@ Guide pages are for reading: they hold the concepts, figures and worked examples
 
 It's worth doing both. Dragging a slider builds intuition quickly, but writing the script is what lets you apply that intuition to a signal nobody has built a slider for.
 
-The figures on these guide pages are the PNG files that each lab's explorer script writes in its `--headless` mode, so you can make any of them yourself. The live explorer windows add sliders and open on their own starting settings, so they won't look exactly like the figures here.
-
-If an explorer window won't open, the same `--headless` mode gets you its figures as PNG files instead. [Python in the workbench](../reference/python-in-the-workbench.md) explains that mode and covers the other common problems, and [Reading plots](../reference/reading-plots.md) is a one-page cheat sheet for all three kinds of plot.
-
 ## Out of scope
 
 - AD101 doesn't replace the ECE signals courses.
