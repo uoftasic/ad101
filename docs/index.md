@@ -45,4 +45,4 @@ Three reference pages are worth keeping open while you work: [Reading plots](ref
 
 - [AD102](https://uoftasic.com/ad102/): Linear Circuits & Fabrication
 - [AD103](https://uoftasic.com/ad103/): Nonlinear Circuits (XSchem)
-- [AD104](https://uoftasic.com/ad104/): Layout (Magic / Netgen)
+- [AD104-M](https://uoftasic.com/ad104-m/): Layout (Magic / Netgen)
