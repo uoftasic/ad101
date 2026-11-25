@@ -328,3 +328,19 @@ def configure_matplotlib(headless: bool = False) -> str:
                 except Exception:
                     continue
     return matplotlib.get_backend()
+
+
+def keep_widgets(fig, *widgets) -> None:
+    """Keep strong references to an explorer's widgets on its figure.
+
+    matplotlib's canvas holds only weak references to a widget's event
+    handlers, and each slider and its ``update`` callback form a reference
+    cycle that nothing else points to. Python's cycle collector frees such a
+    cycle the next time it runs, and from then on the sliders and buttons
+    stop responding while the window itself (keys, close button) keeps
+    working. The collector runs after enough allocations, so this showed up
+    after some dragging, soonest in F11, whose update rebuilt its spectrum
+    plot each time. Storing the widgets on the figure keeps them alive for
+    as long as the window is open.
+    """
+    fig._explorer_widgets = list(getattr(fig, "_explorer_widgets", [])) + list(widgets)

@@ -23,6 +23,7 @@ from common.adsig import (  # noqa: E402
     COLORS,
     configure_matplotlib,
     house_style,
+    keep_widgets,
     noise,
     peak_to_peak,
     pulse_train,
@@ -80,6 +81,7 @@ def _build_f1(fig, t, fs):
     for s in (s_a, s_f, s_p, s_d):
         s.on_changed(update)
     update()
+    keep_widgets(fig, s_a, s_f, s_p, s_d)
     return fig
 
 
@@ -128,6 +130,7 @@ def _build_f2(fig, t, fs):
     s_duty.on_changed(update)
     s_amp.on_changed(update)
     update()
+    keep_widgets(fig, radio, s_duty, s_amp)
     return fig
 
 
@@ -180,6 +183,7 @@ def _build_f3(fig, t, fs):
     s_ph.on_changed(update)
     s_f.on_changed(update)
     update()
+    keep_widgets(fig, s_ph, s_f)
     return fig
 
 

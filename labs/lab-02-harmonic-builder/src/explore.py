@@ -17,6 +17,7 @@ from common.adsig import (  # noqa: E402
     configure_matplotlib,
     harmonic_sum,
     house_style,
+    keep_widgets,
     pulse_train,
     spectrum,
     square,
@@ -112,6 +113,7 @@ def _build_f4_f5(fig, t, fs):
     for s in sliders:
         s.on_changed(update)
     update()
+    keep_widgets(fig, checks, *sliders)
     return fig
 
 
@@ -170,6 +172,7 @@ def _build_f6(fig, t, fs):
 
     s_duty.on_changed(update)
     update()
+    keep_widgets(fig, s_duty)
     return fig
 
 

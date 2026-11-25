@@ -19,6 +19,7 @@ from common.adsig import (  # noqa: E402
     apply_rc_lowpass,
     configure_matplotlib,
     house_style,
+    keep_widgets,
     rc_cutoff,
     rc_response,
     sine,
@@ -93,6 +94,7 @@ def _build_f12(fig, *_):
     s_r.on_changed(update)
     s_c.on_changed(update)
     update()
+    keep_widgets(fig, s_r, s_c)
     return fig
 
 
@@ -163,6 +165,7 @@ def _build_f13(fig, *_):
 
     s_f.on_changed(update)
     update()
+    keep_widgets(fig, s_f)
     return fig
 
 
@@ -220,6 +223,7 @@ def _build_f14(fig, *_):
 
     s_c.on_changed(update)
     update()
+    keep_widgets(fig, s_c)
     return fig
 
 
@@ -263,6 +267,7 @@ def _build_f15(fig, *_):
     s_r.on_changed(update)
     s_c.on_changed(update)
     update()
+    keep_widgets(fig, s_r, s_c)
     return fig
 
 

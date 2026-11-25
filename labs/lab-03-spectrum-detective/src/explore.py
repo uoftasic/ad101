@@ -19,10 +19,11 @@ from common.adsig import (  # noqa: E402
     COLORS,
     configure_matplotlib,
     house_style,
+    keep_widgets,
     noise,
+    sine,
     soft_clip,
     spectrum,
-    sine,
     square,
     thd,
     time_axis,
@@ -102,6 +103,7 @@ def _build_f7(fig, t, fs):
     radio.on_clicked(update)
     opts.on_clicked(update)
     update()
+    keep_widgets(fig, radio, opts)
     return fig
 
 
@@ -150,6 +152,7 @@ def _build_f8(fig, t, fs):
 
     s_noise.on_changed(update)
     update()
+    keep_widgets(fig, s_noise)
     return fig
 
 
@@ -203,6 +206,7 @@ def _build_f9(fig, t, fs):
 
     s_g.on_changed(update)
     update()
+    keep_widgets(fig, s_g)
     return fig
 
 
@@ -253,6 +257,7 @@ def _build_f10(fig, t_base, fs):
     s_cycles.on_changed(update)
     win_btn.on_clicked(update)
     update()
+    keep_widgets(fig, s_cycles, win_btn)
     return fig
 
 
@@ -288,6 +293,14 @@ def _build_f11(fig, t_full, fs_full):
         bbox=dict(boxstyle="round", facecolor="wheat", alpha=0.8),
     )
 
+    # The spectrum's artists are made once here and updated in update(), which
+    # used to clear ax_s and draw it again from scratch on every slider move.
+    stems = ax_s.stem([0.0], [0.0], linefmt=COLORS["spectrum"], markerfmt=" ", basefmt=" ")
+    (l_spec,) = ax_s.plot([], [], color=COLORS["spectrum"], lw=1.0)
+    l_tone = ax_s.axvline(f_tone, color=COLORS["marker"], ls="--", alpha=0.7)
+    ax_s.set_title("Spectrum of samples")
+    ax_s.set_xlabel("Hz")
+
     ax_fs = fig.add_axes([0.15, 0.30, 0.70, 0.04])
     s_fs = Slider(ax_fs, "Sample rate (Hz)", 50.0, 1000.0, valinit=1000.0, valstep=10.0)
 
@@ -314,20 +327,16 @@ def _build_f11(fig, t_full, fs_full):
 
         # Stem of one-sided spectrum of samples
         freqs, mag = spectrum(samples, fs)
-        ax_s.cla()
-        house_style(ax_s)
-        ax_s.stem(
-            freqs[:: max(1, len(freqs) // 40)],
-            mag[:: max(1, len(freqs) // 40)],
-            linefmt=COLORS["spectrum"],
-            markerfmt=" ",
-            basefmt=" ",
-        )
-        ax_s.plot(freqs, mag, color=COLORS["spectrum"], lw=1.0)
-        ax_s.axvline(min(f_tone, nyquist), color=COLORS["marker"], ls="--", alpha=0.7)
+        step = max(1, len(freqs) // 40)
+        f_st, m_st = freqs[::step], mag[::step]
+        stems.markerline.set_data(f_st, m_st)
+        stems.stemlines.set_segments([[(f, 0.0), (f, m)] for f, m in zip(f_st, m_st)])
+        stems.baseline.set_data([f_st.min(), f_st.max()], [0.0, 0.0])
+        l_spec.set_data(freqs, mag)
+        l_tone.set_xdata([min(f_tone, nyquist)] * 2)
         ax_s.set_xlim(0, max(nyquist, 50))
-        ax_s.set_title("Spectrum of samples")
-        ax_s.set_xlabel("Hz")
+        ax_s.relim()
+        ax_s.autoscale_view(scalex=False)
 
         status = "OK (fs > 2f)" if fs >= 2 * f_tone else f"ALIASED → appears as {aliased:.0f} Hz"
         note.set_text(f"tone = {f_tone:.0f} Hz   fs = {fs:.0f} Hz   Nyquist = {nyquist:.0f} Hz   {status}")
@@ -335,6 +344,7 @@ def _build_f11(fig, t_full, fs_full):
 
     s_fs.on_changed(update)
     update()
+    keep_widgets(fig, s_fs)
     return fig
 
 
